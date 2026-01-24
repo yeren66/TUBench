@@ -230,3 +230,33 @@ class GitAnalyzer:
     def _is_source_file(self, file_path):
         """判断是否为源代码文件"""
         return any(pattern in file_path for pattern in Config.SOURCE_PATH_PATTERNS)
+    
+    def get_full_diff(self, commit):
+        """
+        获取commit的完整diff
+        
+        Args:
+            commit: commit对象
+            
+        Returns:
+            str: 完整的diff文本（unified diff格式）
+        """
+        try:
+            if not commit.parents:
+                return ""
+            
+            parent = commit.parents[0]
+            
+            # 获取完整的unified diff
+            diff_text = self.repo.git.diff(
+                parent.hexsha,
+                commit.hexsha,
+                unified=3
+            )
+            
+            return diff_text
+            
+        except Exception as e:
+            logger.error(f"获取完整diff失败 [{commit.hexsha}]: {e}")
+            return ""
+

@@ -1,0 +1,32 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 8632cf78..91fb9b41 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -48,7 +48,8 @@
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Define and use Maven property commons.jmh.version.</action> 
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Add CSVFormat.Builder.setMaxRows(long).</action> 
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Add CSVFormat.getMaxRows().</action> 
+-      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(ResultSet) knows how to use CSVFormat's maxRows.</action> 
++      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(ResultSet) knows how to use CSVFormat's maxRows.</action>
++      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(Iterable) knows how to use CSVFormat's maxRows.</action>
+       <!-- UPDATE -->
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump com.opencsv:opencsv from 5.9 to 5.10.</action>
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump commons-codec:commons-codec from 1.17.2 to 1.18.0 #522.</action>
+
+diff --git a/src/main/java/org/apache/commons/csv/CSVPrinter.java b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+index a09e0b63..d2f08b57 100644
+--- a/src/main/java/org/apache/commons/csv/CSVPrinter.java
++++ b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+@@ -383,7 +383,11 @@ public final class CSVPrinter implements Flushable, Closeable {
+      */
+     @SuppressWarnings("resource")
+     public void printRecords(final Iterable<?> values) throws IOException {
+-        IOStream.of(values).forEachOrdered(this::printRecordObject);
++        IOStream<?> stream = IOStream.of(values);
++        if (format.getMaxRows() > 0) {
++            stream = stream.limit(format.getMaxRows());
++        }
++        stream.forEachOrdered(this::printRecordObject);
+     }
+ 
+     /**

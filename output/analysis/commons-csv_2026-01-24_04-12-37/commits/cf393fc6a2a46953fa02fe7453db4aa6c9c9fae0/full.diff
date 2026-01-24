@@ -1,0 +1,132 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 80a6edd6..a9382c3f 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -53,6 +53,7 @@
+       <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(Stream) knows how to use CSVFormat's maxRows.</action>
+       <action type="add" dev="ggregory" due-to="Gary Gregory">CSVParser.stream() knows how to use CSVFormat's maxRows.</action>
+       <action type="add" dev="ggregory" due-to="Gary Gregory">CSVParser.getRecords() knows how to use CSVFormat's maxRows.</action>
++      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVParser.iterator() knows how to use CSVFormat's maxRows.</action>
+       <!-- UPDATE -->
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump com.opencsv:opencsv from 5.9 to 5.10.</action>
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump commons-codec:commons-codec from 1.17.2 to 1.18.0 #522.</action>
+diff --git a/src/main/java/org/apache/commons/csv/CSVFormat.java b/src/main/java/org/apache/commons/csv/CSVFormat.java
+index 5f8c76ea..b98893a9 100644
+--- a/src/main/java/org/apache/commons/csv/CSVFormat.java
++++ b/src/main/java/org/apache/commons/csv/CSVFormat.java
+@@ -2091,11 +2091,11 @@ public final class CSVFormat implements Serializable {
+     }
+ 
+     <T> IOStream<T> limit(final IOStream<T> stream) {
+-        return getMaxRows() > 0 ? stream.limit(getMaxRows()) : stream;
++        return useMaxRows() ? stream.limit(getMaxRows()) : stream;
+     }
+ 
+     <T> Stream<T> limit(final Stream<T> stream) {
+-        return getMaxRows() > 0 ? stream.limit(getMaxRows()) : stream;
++        return useMaxRows() ? stream.limit(getMaxRows()) : stream;
+     }
+ 
+     /**
+@@ -2582,6 +2582,14 @@ public final class CSVFormat implements Serializable {
+         return getTrim() ? value.trim() : value;
+     }
+ 
++    boolean useMaxRows() {
++        return getMaxRows() > 0;
++    }
++
++    boolean useRow(final long rowNum) {
++        return !useMaxRows() || rowNum <= getMaxRows();
++    }
++
+     /**
+      * Verifies the validity and consistency of the attributes, and throws an {@link IllegalArgumentException} if necessary.
+      * <p>
+diff --git a/src/main/java/org/apache/commons/csv/CSVParser.java b/src/main/java/org/apache/commons/csv/CSVParser.java
+index 2e4c8133..409e40bf 100644
+--- a/src/main/java/org/apache/commons/csv/CSVParser.java
++++ b/src/main/java/org/apache/commons/csv/CSVParser.java
+@@ -221,14 +221,18 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {
+         private CSVRecord current;
+ 
+         /**
+-         * Gets the next record.
++         * Gets the next record or null at the end of stream or max rows read.
+          *
+          * @throws IOException  on parse error or input read-failure
+          * @throws CSVException on invalid input.
+          * @return the next record, or {@code null} if the end of the stream has been reached.
+          */
+         private CSVRecord getNextRecord() {
+-            return Uncheck.get(CSVParser.this::nextRecord);
++            CSVRecord record = null;
++            if (format.useRow(recordNumber + 1)) {
++                record = Uncheck.get(CSVParser.this::nextRecord);
++            }
++            return record;
+         }
+ 
+         @Override
+@@ -938,7 +942,7 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {
+      * @since 1.9.0
+      */
+     public Stream<CSVRecord> stream() {
+-        return format.limit(StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), Spliterator.ORDERED), false));
++        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), Spliterator.ORDERED), false);
+     }
+ 
+ }
+diff --git a/src/main/java/org/apache/commons/csv/CSVPrinter.java b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+index ec0b8f1d..24849fb3 100644
+--- a/src/main/java/org/apache/commons/csv/CSVPrinter.java
++++ b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+@@ -445,8 +445,7 @@ public final class CSVPrinter implements Flushable, Closeable {
+      */
+     public void printRecords(final ResultSet resultSet) throws SQLException, IOException {
+         final int columnCount = resultSet.getMetaData().getColumnCount();
+-        final long maxRows = format.getMaxRows();
+-        while (resultSet.next() && (maxRows < 1 || resultSet.getRow() <= maxRows)) {
++        while (resultSet.next() && format.useRow(resultSet.getRow())) {
+             for (int i = 1; i <= columnCount; i++) {
+                 final Object object = resultSet.getObject(i);
+                 if (object instanceof Clob) {
+diff --git a/src/test/java/org/apache/commons/csv/CSVParserTest.java b/src/test/java/org/apache/commons/csv/CSVParserTest.java
+index 50bf052b..e4fdb5d4 100644
+--- a/src/test/java/org/apache/commons/csv/CSVParserTest.java
++++ b/src/test/java/org/apache/commons/csv/CSVParserTest.java
+@@ -1164,6 +1164,34 @@ public class CSVParserTest {
+         }
+     }
+ 
++    @ParameterizedTest
++    @ValueSource(longs = { -1, 0, 1, 2, 3, 4, 5, Long.MAX_VALUE })
++    public void testIteratorMaxRows(final long maxRows) throws Exception {
++        final Reader in = new StringReader("a,b,c\n1,2,3\nx,y,z");
++        try (CSVParser parser = CSVFormat.DEFAULT.builder().setMaxRows(maxRows).get().parse(in)) {
++            final Iterator<CSVRecord> iterator = parser.iterator();
++            assertTrue(iterator.hasNext());
++            assertThrows(UnsupportedOperationException.class, iterator::remove);
++            assertArrayEquals(new String[] { "a", "b", "c" }, iterator.next().values());
++            final boolean noLimit = maxRows <= 0;
++            final int fixtureLen = 3;
++            final long expectedLen = noLimit ? fixtureLen : Math.min(fixtureLen, maxRows);
++            if (expectedLen > 1) {
++                assertTrue(iterator.hasNext());
++                assertArrayEquals(new String[] { "1", "2", "3" }, iterator.next().values());
++            }
++            assertEquals(expectedLen > 2, iterator.hasNext());
++            // again
++            assertEquals(expectedLen > 2, iterator.hasNext());
++            if (expectedLen == fixtureLen) {
++                assertTrue(iterator.hasNext());
++                assertArrayEquals(new String[] { "x", "y", "z" }, iterator.next().values());
++            }
++            assertFalse(iterator.hasNext());
++            assertThrows(NoSuchElementException.class, iterator::next);
++        }
++    }
++
+     @Test
+     public void testIteratorSequenceBreaking() throws IOException {
+         final String fiveRows = "1\n2\n3\n4\n5\n";

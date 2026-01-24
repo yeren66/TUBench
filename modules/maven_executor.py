@@ -40,9 +40,12 @@ class MavenExecutor:
         """执行Maven test"""
         return self._run_maven_command('test')
     
-    def test_with_jacoco(self):
+    def test_with_jacoco(self, selected_tests=None):
         """
         使用JaCoCo执行测试
+
+        Args:
+            selected_tests: 仅执行指定测试（列表或逗号分隔字符串）
         
         Returns:
             dict: {'success': bool, 'output': str, 'jacoco_report': str}
@@ -50,7 +53,10 @@ class MavenExecutor:
         result = {
             'success': False,
             'output': '',
-            'jacoco_report': None
+            'jacoco_report': None,
+            'stdout': '',
+            'stderr': '',
+            'return_code': -1
         }
         
         # 修改pom.xml添加JaCoCo
@@ -68,9 +74,20 @@ class MavenExecutor:
                 return result
             
             # 执行clean test
-            success, output = self._run_maven_command('clean test')
+            extra_args = []
+            if selected_tests:
+                if isinstance(selected_tests, (list, tuple)):
+                    test_value = ",".join([t for t in selected_tests if t])
+                else:
+                    test_value = str(selected_tests)
+                if test_value:
+                    extra_args.append(f"-Dtest={test_value}")
+
+            success, output = self._run_maven_command('clean test', extra_args=extra_args)
             result['success'] = success
             result['output'] = output
+            result['stdout'] = output
+            result['return_code'] = 0 if success else 1
             
             # 获取JaCoCo报告路径
             if success:
@@ -90,7 +107,7 @@ class MavenExecutor:
         
         return result
     
-    def _run_maven_command(self, goal):
+    def _run_maven_command(self, goal, extra_args=None):
         """
         执行Maven命令
         
@@ -103,7 +120,10 @@ class MavenExecutor:
         try:
             # Add Maven options to skip RAT check (license validation fails after POM modification)
             # and ignore test failures to allow processing to continue
-            cmd = [Config.MAVEN_CMD, '-Drat.skip=true', '-Dmaven.test.failure.ignore=true'] + goal.split()
+            cmd = [Config.MAVEN_CMD, '-Drat.skip=true', '-Dmaven.test.failure.ignore=true']
+            if extra_args:
+                cmd += list(extra_args)
+            cmd += goal.split()
             
             logger.debug(f"执行Maven命令: {' '.join(cmd)} @ {self.project_path}")
             

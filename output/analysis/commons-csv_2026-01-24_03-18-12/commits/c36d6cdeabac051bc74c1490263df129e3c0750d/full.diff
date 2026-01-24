@@ -1,0 +1,69 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 03dd0a98..69103432 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -48,6 +48,7 @@
+       <action type="fix" dev="ggregory" due-to="Gary Gregory">CSVParser.parse(String, CSVFormat) with a null CSVFormat maps to CSVFormat.DEFAULT (like CSVParser.parse(Reader, CSVFormat)).</action>
+       <action type="fix" dev="ggregory" due-to="Gary Gregory">CSVParser.parse(File, Charset, CSVFormat) with a null CSVFormat maps to CSVFormat.DEFAULT (like CSVParser.parse(Reader, CSVFormat)).</action>
+       <action type="fix" dev="ggregory" due-to="Gary Gregory">CSVParser.parse(Path, Charset, CSVFormat) with a null CSVFormat maps to CSVFormat.DEFAULT (like CSVParser.parse(Reader, CSVFormat)).</action>
++      <action type="fix" dev="ggregory" due-to="Gary Gregory">CSVParser.parse(InputStream, Charset, CSVFormat) with a null CSVFormat maps to CSVFormat.DEFAULT (like CSVParser.parse(Reader, CSVFormat)).</action>
+       <!-- ADD -->
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Define and use Maven property commons.jmh.version.</action> 
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Add CSVFormat.Builder.setMaxRows(long).</action> 
+diff --git a/src/main/java/org/apache/commons/csv/CSVParser.java b/src/main/java/org/apache/commons/csv/CSVParser.java
+index afda2e4f..8357813b 100644
+--- a/src/main/java/org/apache/commons/csv/CSVParser.java
++++ b/src/main/java/org/apache/commons/csv/CSVParser.java
+@@ -329,11 +329,11 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {
+      * </p>
+      *
+      * @param inputStream
+-     *            an InputStream containing CSV-formatted input. Must not be null.
++     *            an InputStream containing CSV-formatted input, {@code null} maps to {@link CSVFormat#DEFAULT}.
+      * @param charset
+      *            The Charset to decode the given file.
+      * @param format
+-     *            the CSVFormat used for CSV parsing. Must not be null.
++     *            the CSVFormat used for CSV parsing, {@code null} maps to {@link CSVFormat#DEFAULT}.
+      * @return a new CSVParser configured with the given reader and format.
+      * @throws IllegalArgumentException
+      *             If the parameters of the format are inconsistent or if either reader or format are null.
+@@ -342,10 +342,8 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {
+      * @throws CSVException Thrown on invalid input.
+      * @since 1.5
+      */
+-    @SuppressWarnings("resource")
+     public static CSVParser parse(final InputStream inputStream, final Charset charset, final CSVFormat format)
+             throws IOException {
+-        Objects.requireNonNull(inputStream, "inputStream");
+         return parse(new InputStreamReader(inputStream, charset), format);
+     }
+ 
+diff --git a/src/test/java/org/apache/commons/csv/CSVParserTest.java b/src/test/java/org/apache/commons/csv/CSVParserTest.java
+index 45287d35..31ede333 100644
+--- a/src/test/java/org/apache/commons/csv/CSVParserTest.java
++++ b/src/test/java/org/apache/commons/csv/CSVParserTest.java
+@@ -33,6 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
+ 
+ import java.io.File;
+ import java.io.IOException;
++import java.io.InputStream;
+ import java.io.InputStreamReader;
+ import java.io.PipedReader;
+ import java.io.PipedWriter;
+@@ -1432,6 +1433,15 @@ public class CSVParserTest {
+         }
+     }
+ 
++    @Test
++    public void testParseInputStreamCharsetNullFormat() throws IOException {
++        try (InputStream in = Files.newInputStream(Paths.get("src/test/resources/org/apache/commons/csv/CSVFileParser/test.csv"));
++                CSVParser parser = CSVParser.parse(in, Charset.defaultCharset(), null)) {
++            // null maps to DEFAULT.
++            parseFully(parser);
++        }
++    }
++
+     @Test
+     public void testParseNullFileFormat() {
+         assertThrows(NullPointerException.class, () -> CSVParser.parse((File) null, Charset.defaultCharset(), CSVFormat.DEFAULT));

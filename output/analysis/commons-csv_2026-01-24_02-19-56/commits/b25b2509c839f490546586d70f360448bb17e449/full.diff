@@ -1,0 +1,152 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 8632cf78..91fb9b41 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -48,7 +48,8 @@
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Define and use Maven property commons.jmh.version.</action> 
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Add CSVFormat.Builder.setMaxRows(long).</action> 
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Add CSVFormat.getMaxRows().</action> 
+-      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(ResultSet) knows how to use CSVFormat's maxRows.</action> 
++      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(ResultSet) knows how to use CSVFormat's maxRows.</action>
++      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(Iterable) knows how to use CSVFormat's maxRows.</action>
+       <!-- UPDATE -->
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump com.opencsv:opencsv from 5.9 to 5.10.</action>
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump commons-codec:commons-codec from 1.17.2 to 1.18.0 #522.</action>
+diff --git a/src/main/java/org/apache/commons/csv/CSVPrinter.java b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+index a09e0b63..d2f08b57 100644
+--- a/src/main/java/org/apache/commons/csv/CSVPrinter.java
++++ b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+@@ -383,7 +383,11 @@ public final class CSVPrinter implements Flushable, Closeable {
+      */
+     @SuppressWarnings("resource")
+     public void printRecords(final Iterable<?> values) throws IOException {
+-        IOStream.of(values).forEachOrdered(this::printRecordObject);
++        IOStream<?> stream = IOStream.of(values);
++        if (format.getMaxRows() > 0) {
++            stream = stream.limit(format.getMaxRows());
++        }
++        stream.forEachOrdered(this::printRecordObject);
+     }
+ 
+     /**
+diff --git a/src/test/java/org/apache/commons/csv/CSVParserTest.java b/src/test/java/org/apache/commons/csv/CSVParserTest.java
+index 38d442e5..59a1dd6e 100644
+--- a/src/test/java/org/apache/commons/csv/CSVParserTest.java
++++ b/src/test/java/org/apache/commons/csv/CSVParserTest.java
+@@ -169,7 +169,7 @@ public class CSVParserTest {
+         try (CSVParser parser = CSVParser.parse(code, format)) {
+             final List<CSVRecord> records = parser.getRecords();
+             assertFalse(records.isEmpty());
+-            Utils.compare("Records do not match expected result", res, records);
++            Utils.compare("Records do not match expected result", res, records, -1);
+         }
+     }
+ 
+@@ -192,7 +192,7 @@ public class CSVParserTest {
+         try (CSVParser parser = CSVParser.parse(code, format)) {
+             final List<CSVRecord> records = parser.getRecords();
+             assertFalse(records.isEmpty());
+-            Utils.compare("", res, records);
++            Utils.compare("", res, records, -1);
+         }
+     }
+ 
+@@ -428,12 +428,12 @@ public class CSVParserTest {
+         try (CSVParser parser = CSVParser.parse(code, format)) {
+             final List<CSVRecord> records = parser.getRecords();
+             assertFalse(records.isEmpty());
+-            Utils.compare("Failed to parse without comments", res, records);
++            Utils.compare("Failed to parse without comments", res, records, -1);
+             format = CSVFormat.DEFAULT.withCommentMarker('#');
+         }
+         try (CSVParser parser = CSVParser.parse(code, format)) {
+             final List<CSVRecord> records = parser.getRecords();
+-            Utils.compare("Failed to parse with comments", resComments, records);
++            Utils.compare("Failed to parse with comments", resComments, records, -1);
+         }
+     }
+ 
+diff --git a/src/test/java/org/apache/commons/csv/CSVPrinterTest.java b/src/test/java/org/apache/commons/csv/CSVPrinterTest.java
+index 9e865a1a..b1ac8053 100644
+--- a/src/test/java/org/apache/commons/csv/CSVPrinterTest.java
++++ b/src/test/java/org/apache/commons/csv/CSVPrinterTest.java
+@@ -146,7 +146,7 @@ public class CSVPrinterTest {
+             for (int i = 0; i < expected.length; i++) {
+                 expected[i] = expectNulls(expected[i], format);
+             }
+-            Utils.compare("Printer output :" + printable(result), expected, parseResult);
++            Utils.compare("Printer output :" + printable(result), expected, parseResult, -1);
+         }
+     }
+ 
+@@ -1470,7 +1470,7 @@ public class CSVPrinterTest {
+         try (CSVParser parser = CSVParser.parse(sw.toString(), format)) {
+             final List<CSVRecord> records = parser.getRecords();
+             assertFalse(records.isEmpty());
+-            Utils.compare("Fail", res, records);
++            Utils.compare("Fail", res, records, -1);
+         }
+     }
+ 
+@@ -1498,20 +1498,21 @@ public class CSVPrinterTest {
+         try (CSVParser parser = CSVParser.parse(sw.toString(), format)) {
+             final List<CSVRecord> records = parser.getRecords();
+             assertFalse(records.isEmpty());
+-            Utils.compare("Fail", res, records);
++            Utils.compare("Fail", res, records, -1);
+         }
+     }
+ 
+-    @Test
+-    public void testPrintCSVRecords() throws IOException {
++    @ParameterizedTest
++    @ValueSource(ints = { -1, 0, 3, 4, Integer.MAX_VALUE })
++    public void testPrintCSVRecords(final int maxRows) throws IOException {
+         // @formatter:off
+         final String code = "a1,b1\n" + // 1)
+                 "a2,b2\n" + // 2)
+                 "a3,b3\n" + // 3)
+                 "a4,b4\n";  // 4)
+         // @formatter:on
+-        final String[][] res = { { "a1", "b1" }, { "a2", "b2" }, { "a3", "b3" }, { "a4", "b4" } };
+-        final CSVFormat format = CSVFormat.DEFAULT;
++        final String[][] expected = { { "a1", "b1" }, { "a2", "b2" }, { "a3", "b3" }, { "a4", "b4" } };
++        final CSVFormat format = CSVFormat.DEFAULT.builder().setMaxRows(maxRows).get();
+         final StringWriter sw = new StringWriter();
+         try (CSVPrinter printer = format.print(sw);
+                 CSVParser parser = CSVParser.parse(code, format)) {
+@@ -1521,7 +1522,7 @@ public class CSVPrinterTest {
+         try (CSVParser parser = CSVParser.parse(sw.toString(), format)) {
+             final List<CSVRecord> records = parser.getRecords();
+             assertFalse(records.isEmpty());
+-            Utils.compare("Fail", res, records);
++            Utils.compare("Fail", expected, records, maxRows);
+         }
+     }
+ 
+@@ -1690,7 +1691,7 @@ public class CSVPrinterTest {
+         try (CSVParser parser = CSVParser.parse(sw.toString(), format)) {
+             final List<CSVRecord> records = parser.getRecords();
+             assertFalse(records.isEmpty());
+-            Utils.compare("Fail", res, records);
++            Utils.compare("Fail", res, records, -1);
+         }
+     }
+ 
+diff --git a/src/test/java/org/apache/commons/csv/Utils.java b/src/test/java/org/apache/commons/csv/Utils.java
+index c99b77ac..32a460b6 100644
+--- a/src/test/java/org/apache/commons/csv/Utils.java
++++ b/src/test/java/org/apache/commons/csv/Utils.java
+@@ -37,9 +37,10 @@ final class Utils {
+      * @param message  the message to be displayed
+      * @param expected the 2d array of expected results
+      * @param actual   the List of {@link CSVRecord} entries, each containing an array of values
++     * @param maxRows  the maximum number of rows expected, less than or equal to zero means no limit.
+      */
+-    public static void compare(final String message, final String[][] expected, final List<CSVRecord> actual) {
+-        final int expectedLength = expected.length;
++    public static void compare(final String message, final String[][] expected, final List<CSVRecord> actual, final int maxRows) {
++        final int expectedLength = maxRows > 0 ? Math.min(maxRows, expected.length) : expected.length;
+         assertEquals(expectedLength, actual.size(), message + "  - outer array size");
+         for (int i = 0; i < expectedLength; i++) {
+             assertArrayEquals(expected[i], actual.get(i).values(), message + " (entry " + i + ")");

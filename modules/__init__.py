@@ -11,6 +11,8 @@ from .commit_filter import CommitFilter
 from .dataset_generator import DatasetGenerator
 from .diff_filter import DiffFilter
 from .filtered_version_generator import FilteredVersionGenerator
+from .isolated_executor import IsolatedExecutor
+from .commit_classifier import CommitClassifier
 
 __all__ = [
     'GitAnalyzer',
@@ -21,5 +23,7 @@ __all__ = [
     'CommitFilter',
     'DatasetGenerator',
     'DiffFilter',
-    'FilteredVersionGenerator'
+    'FilteredVersionGenerator',
+    'IsolatedExecutor',
+    'CommitClassifier'
 ]

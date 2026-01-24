@@ -149,8 +149,14 @@ class DiffFilter:
             
             for file_diff, file_path in file_diffs:
                 # 统计添加和删除的行数
-                added = len([line for line in file_diff.split('\n') if line.startswith('+')])
-                removed = len([line for line in file_diff.split('\n') if line.startswith('-')])
+                added = len([
+                    line for line in file_diff.split('\n')
+                    if line.startswith('+') and not line.startswith('+++')
+                ])
+                removed = len([
+                    line for line in file_diff.split('\n')
+                    if line.startswith('-') and not line.startswith('---')
+                ])
                 
                 # 检测新文件和删除文件
                 is_new = 'new file mode' in file_diff

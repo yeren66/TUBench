@@ -5,6 +5,50 @@
 import os
 from datetime import datetime
 
+
+class AnalysisConfig:
+    """分析工具配置"""
+    
+    # ========== 分析输出配置 ==========
+    # 分析输出目录
+    ANALYSIS_OUTPUT_DIR = "./output/analysis"
+    
+    # 临时worktree目录
+    ANALYSIS_WORKTREE_DIR = "/tmp/tubench_analysis_worktrees"
+    
+    # ========== 并发配置 ==========
+    # 单项目内commit并发数
+    ANALYSIS_WORKERS = 4
+    
+    # 单个版本执行时，是否并行执行4个版本
+    PARALLEL_VERSION_EXECUTION = True
+    
+    # ========== 超时配置 ==========
+    # 单次编译超时（秒）
+    COMPILE_TIMEOUT = 300  # 5分钟
+    
+    # 单次测试超时（秒）
+    TEST_TIMEOUT = 900  # 15分钟
+    
+    # 单个commit总超时（秒）
+    COMMIT_TIMEOUT = 1800  # 30分钟
+    
+    # ========== 覆盖率配置 ==========
+    # 覆盖率下降阈值（低于此值判定为Type2）
+    COVERAGE_DECREASE_THRESHOLD = 0.02  # 2%
+    
+    # ========== 缓存配置 ==========
+    # 是否启用缓存
+    ENABLE_CACHE = True
+    
+    # 缓存目录
+    CACHE_DIR = "./cache/analysis"
+    
+    # ========== 日志配置 ==========
+    # 分析日志文件
+    ANALYSIS_LOG_FILE = "analysis.log"
+
+
 class Config:
     """全局配置"""
     

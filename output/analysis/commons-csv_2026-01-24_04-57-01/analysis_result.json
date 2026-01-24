@@ -1,0 +1,111 @@
+{
+  "project_info": {
+    "name": "commons-csv",
+    "path": "/work/defects4j-projects/commons-csv",
+    "default_branch": "master",
+    "total_commits": 3070,
+    "date_range": {
+      "earliest": "2005-12-17",
+      "latest": "2026-01-22",
+      "filter_since": null
+    }
+  },
+  "filter_funnel": {
+    "stage0_total": 0,
+    "stage1_after_date_filter": 376,
+    "stage2_has_test_and_source": 19,
+    "stage3_has_method_changes": 18,
+    "stage4_v1_build_success": 18,
+    "stage5_v0_build_success": 18,
+    "stage6_qualified": 18,
+    "filter_rates": {
+      "date_filter": "0.0%",
+      "file_change_filter": "5.1%",
+      "method_change_filter": "94.7%",
+      "v1_build_filter": "100.0%",
+      "v0_build_filter": "100.0%",
+      "overall": "0.0%"
+    }
+  },
+  "type_statistics": {
+    "type1_execution_error": {
+      "count": 2,
+      "percentage": "11.1%",
+      "subtypes": {
+        "compile_failure": 0,
+        "runtime_failure": 2
+      },
+      "examples": [
+        "0b0003e3b3cdad863092390b4d4ed5dbf78779a5",
+        "b40039bb8bade1c1d71bce6ecc46479e53eeb76c"
+      ]
+    },
+    "type2_coverage_decrease": {
+      "count": 2,
+      "percentage": "11.1%",
+      "avg_coverage_decrease": -0.11705,
+      "examples": [
+        "b25b2509c839f490546586d70f360448bb17e449",
+        "e24e3afd879d850abd96ff4e209c79902bb392be"
+      ]
+    },
+    "type3_adaptive_change": {
+      "count": 14,
+      "percentage": "77.8%",
+      "examples": [
+        "42ded1cf3a29f511264c76e5e3380006957f8921",
+        "410175c3d01403ad575cb9d23263dfc6f32f7c3f",
+        "61878d773d74b2e2ab1b2bb7ed3519bd47e1fc58"
+      ]
+    },
+    "scenario_distribution": {
+      "A": 1,
+      "B": 1,
+      "C": 1,
+      "D": 15
+    }
+  },
+  "execution_statistics": {
+    "v05_results": {
+      "compile_success": 18,
+      "compile_failed": 0,
+      "test_success": 16,
+      "test_failed": 2
+    },
+    "t05_results": {
+      "compile_success": 17,
+      "compile_failed": 1,
+      "test_success": 16,
+      "test_failed": 1
+    }
+  },
+  "qualified_commits": [
+    "42ded1cf3a29f511264c76e5e3380006957f8921",
+    "410175c3d01403ad575cb9d23263dfc6f32f7c3f",
+    "61878d773d74b2e2ab1b2bb7ed3519bd47e1fc58",
+    "d93c4940f2673a98033457705bc5bf0d989f7f62",
+    "c36d6cdeabac051bc74c1490263df129e3c0750d",
+    "088672f6f93dc5784e5e01478639706ac7ec41f9",
+    "931531bcd8e333372f05fc19f670dd5a9ecfd219",
+    "41362db16e59cf41c122d63337372657f4bde7b7",
+    "cf393fc6a2a46953fa02fe7453db4aa6c9c9fae0",
+    "b25b2509c839f490546586d70f360448bb17e449",
+    "7bfb0ceaf708a649becb319a06a2d7f8e5022e9b",
+    "e24e3afd879d850abd96ff4e209c79902bb392be",
+    "30f0e1d6cafb2f6bec24b82493d850e5ae787173",
+    "c75601d2a3426adf1671572766cc65906812fa73",
+    "0b0003e3b3cdad863092390b4d4ed5dbf78779a5",
+    "669023ac454642c34181d82b678539f2a020b3a0",
+    "76981db68af50e0475a2d5d0fcc6bdf87efb18f1",
+    "b40039bb8bade1c1d71bce6ecc46479e53eeb76c"
+  ],
+  "analysis_metadata": {
+    "analysis_start_time": "2026-01-24T04:57:01.669581",
+    "analysis_end_time": "2026-01-24T05:00:31.897981",
+    "total_duration_seconds": 210.2284,
+    "workers_used": 4,
+    "commits_analyzed": 18,
+    "commits_from_cache": 0,
+    "errors_count": 0
+  }
+}

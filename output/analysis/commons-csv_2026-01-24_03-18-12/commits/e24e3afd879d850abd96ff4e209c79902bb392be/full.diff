@@ -1,0 +1,136 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 91fb9b41..4898ae8e 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -50,6 +50,7 @@
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Add CSVFormat.getMaxRows().</action> 
+       <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(ResultSet) knows how to use CSVFormat's maxRows.</action>
+       <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(Iterable) knows how to use CSVFormat's maxRows.</action>
++      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(Stream) knows how to use CSVFormat's maxRows.</action>
+       <!-- UPDATE -->
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump com.opencsv:opencsv from 5.9 to 5.10.</action>
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump commons-codec:commons-codec from 1.17.2 to 1.18.0 #522.</action>
+diff --git a/src/main/java/org/apache/commons/csv/CSVPrinter.java b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+index d2f08b57..7c17d1e7 100644
+--- a/src/main/java/org/apache/commons/csv/CSVPrinter.java
++++ b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+@@ -343,6 +343,11 @@ public final class CSVPrinter implements Flushable, Closeable {
+         }
+     }
+ 
++    @SuppressWarnings("resource")
++    private void printRecords(final IOStream<?> stream) throws IOException {
++        (format.getMaxRows() > 0 ? stream.limit(format.getMaxRows()) : stream).forEachOrdered(this::printRecordObject);
++    }
++
+     /**
+      * Prints all the objects in the given {@link Iterable} handling nested collections/arrays as records.
+      *
+@@ -383,11 +388,7 @@ public final class CSVPrinter implements Flushable, Closeable {
+      */
+     @SuppressWarnings("resource")
+     public void printRecords(final Iterable<?> values) throws IOException {
+-        IOStream<?> stream = IOStream.of(values);
+-        if (format.getMaxRows() > 0) {
+-            stream = stream.limit(format.getMaxRows());
+-        }
+-        stream.forEachOrdered(this::printRecordObject);
++        printRecords(IOStream.of(values));
+     }
+ 
+     /**
+@@ -526,6 +527,6 @@ public final class CSVPrinter implements Flushable, Closeable {
+      */
+     @SuppressWarnings({ "resource" }) // Caller closes.
+     public void printRecords(final Stream<?> values) throws IOException {
+-        IOStream.adapt(values).forEachOrdered(this::printRecordObject);
++        printRecords(IOStream.adapt(values));
+     }
+ }
+diff --git a/src/test/java/org/apache/commons/csv/CSVPrinterTest.java b/src/test/java/org/apache/commons/csv/CSVPrinterTest.java
+index b1ac8053..36542b99 100644
+--- a/src/test/java/org/apache/commons/csv/CSVPrinterTest.java
++++ b/src/test/java/org/apache/commons/csv/CSVPrinterTest.java
+@@ -709,13 +709,19 @@ public class CSVPrinterTest {
+         }
+     }
+ 
+-    @Test
+-    public void testExcelPrintAllStreamOfArrays() throws IOException {
++    @ParameterizedTest
++    @ValueSource(longs = { -1, 0, 1, 2, Integer.MAX_VALUE })
++    public void testExcelPrintAllStreamOfArrays(final long maxRows) throws IOException {
+         final StringWriter sw = new StringWriter();
+-        try (CSVPrinter printer = new CSVPrinter(sw, CSVFormat.EXCEL)) {
++        final CSVFormat format = CSVFormat.EXCEL.builder().setMaxRows(maxRows).get();
++        try (CSVPrinter printer = new CSVPrinter(sw, format)) {
+             assertInitialState(printer);
+             printer.printRecords(Stream.of(new String[][] { { "r1c1", "r1c2" }, { "r2c1", "r2c2" } }));
+-            assertEquals("r1c1,r1c2" + RECORD_SEPARATOR + "r2c1,r2c2" + RECORD_SEPARATOR, sw.toString());
++            String expected = "r1c1,r1c2" + RECORD_SEPARATOR;
++            if (maxRows != 1) {
++                expected += "r2c1,r2c2" + RECORD_SEPARATOR;
++            }
++            assertEquals(expected, sw.toString());
+         }
+     }
+ 
+@@ -834,8 +840,8 @@ public class CSVPrinterTest {
+     }
+ 
+     @ParameterizedTest
+-    @ValueSource(ints = { -1, 0, 1, 2, 3, 4, Integer.MAX_VALUE })
+-    public void testJdbcPrinterWithResultSet(final int maxRows) throws IOException, ClassNotFoundException, SQLException {
++    @ValueSource(longs = { -1, 0, 1, 2, 3, 4, Integer.MAX_VALUE })
++    public void testJdbcPrinterWithResultSet(final long maxRows) throws IOException, ClassNotFoundException, SQLException {
+         final StringWriter sw = new StringWriter();
+         final CSVFormat format = CSVFormat.DEFAULT.builder().setMaxRows(maxRows).get();
+         try (Connection connection = getH2Connection()) {
+@@ -862,8 +868,8 @@ public class CSVPrinterTest {
+     }
+ 
+     @ParameterizedTest
+-    @ValueSource(ints = { -1, 0, 3, 4, Integer.MAX_VALUE })
+-    public void testJdbcPrinterWithResultSetHeader(final int maxRows) throws IOException, ClassNotFoundException, SQLException {
++    @ValueSource(longs = { -1, 0, 3, 4, Integer.MAX_VALUE })
++    public void testJdbcPrinterWithResultSetHeader(final long maxRows) throws IOException, ClassNotFoundException, SQLException {
+         final StringWriter sw = new StringWriter();
+         try (Connection connection = getH2Connection()) {
+             setUpTable(connection);
+@@ -887,8 +893,8 @@ public class CSVPrinterTest {
+     }
+ 
+     @ParameterizedTest
+-    @ValueSource(ints = { -1, 0, 3, 4, Integer.MAX_VALUE })
+-    public void testJdbcPrinterWithResultSetMetaData(final int maxRows) throws IOException, ClassNotFoundException, SQLException {
++    @ValueSource(longs = { -1, 0, 3, 4, Integer.MAX_VALUE })
++    public void testJdbcPrinterWithResultSetMetaData(final long maxRows) throws IOException, ClassNotFoundException, SQLException {
+         final StringWriter sw = new StringWriter();
+         try (Connection connection = getH2Connection()) {
+             setUpTable(connection);
+@@ -1503,8 +1509,8 @@ public class CSVPrinterTest {
+     }
+ 
+     @ParameterizedTest
+-    @ValueSource(ints = { -1, 0, 3, 4, Integer.MAX_VALUE })
+-    public void testPrintCSVRecords(final int maxRows) throws IOException {
++    @ValueSource(longs = { -1, 0, 3, 4, Integer.MAX_VALUE })
++    public void testPrintCSVRecords(final long maxRows) throws IOException {
+         // @formatter:off
+         final String code = "a1,b1\n" + // 1)
+                 "a2,b2\n" + // 2)
+diff --git a/src/test/java/org/apache/commons/csv/Utils.java b/src/test/java/org/apache/commons/csv/Utils.java
+index 32a460b6..5b5a05e0 100644
+--- a/src/test/java/org/apache/commons/csv/Utils.java
++++ b/src/test/java/org/apache/commons/csv/Utils.java
+@@ -39,8 +39,8 @@ final class Utils {
+      * @param actual   the List of {@link CSVRecord} entries, each containing an array of values
+      * @param maxRows  the maximum number of rows expected, less than or equal to zero means no limit.
+      */
+-    public static void compare(final String message, final String[][] expected, final List<CSVRecord> actual, final int maxRows) {
+-        final int expectedLength = maxRows > 0 ? Math.min(maxRows, expected.length) : expected.length;
++    public static void compare(final String message, final String[][] expected, final List<CSVRecord> actual, final long maxRows) {
++        final long expectedLength = maxRows > 0 ? Math.min(maxRows, expected.length) : expected.length;
+         assertEquals(expectedLength, actual.size(), message + "  - outer array size");
+         for (int i = 0; i < expectedLength; i++) {
+             assertArrayEquals(expected[i], actual.get(i).values(), message + " (entry " + i + ")");

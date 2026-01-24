@@ -1,0 +1,370 @@
+{
+  "commit_hash": "cf393fc6a2a46953fa02fe7453db4aa6c9c9fae0",
+  "parent_hash": "9b75f05c9934cad8cc0886a7215e5c936e92662d",
+  "basic_info": {
+    "project": "commons-csv",
+    "commit_hash": "cf393fc6a2a46953fa02fe7453db4aa6c9c9fae0",
+    "short_hash": "cf393fc6",
+    "parent_hash": "9b75f05c9934cad8cc0886a7215e5c936e92662d",
+    "parent_short_hash": "9b75f05c",
+    "author": "Gary Gregory",
+    "date": "2025-03-09 18:24:30",
+    "message": "CSVParser.iterator() knows how to use CSVFormat's maxRows",
+    "message_subject": "CSVParser.iterator() knows how to use CSVFormat's maxRows"
+  },
+  "file_changes": {
+    "source_files": [
+      {
+        "path": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+        "change_type": "modified",
+        "old_path": null,
+        "is_java": true
+      },
+      {
+        "path": "src/main/java/org/apache/commons/csv/CSVParser.java",
+        "change_type": "modified",
+        "old_path": null,
+        "is_java": true
+      },
+      {
+        "path": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+        "change_type": "modified",
+        "old_path": null,
+        "is_java": true
+      }
+    ],
+    "test_files": [
+      {
+        "path": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+        "change_type": "modified",
+        "old_path": null,
+        "is_java": true
+      }
+    ],
+    "other_files": [
+      {
+        "path": "src/changes/changes.xml",
+        "change_type": "modified",
+        "old_path": null,
+        "is_java": false
+      }
+    ],
+    "summary": {
+      "total_files": 5,
+      "source_count": 3,
+      "test_count": 1,
+      "other_count": 1
+    }
+  },
+  "method_changes": {
+    "source_methods": [
+      {
+        "class": "CSVFormat",
+        "method": "isQuoteCharacterSet",
+        "parameters": [],
+        "start_line": 2089,
+        "end_line": 2091,
+        "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+        "package": "org.apache.commons.csv"
+      },
+      {
+        "class": "CSVFormat",
+        "method": "limit",
+        "parameters": [
+          "IOStream"
+        ],
+        "start_line": 2093,
+        "end_line": 2095,
+        "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+        "package": "org.apache.commons.csv"
+      },
+      {
+        "class": "CSVFormat",
+        "method": "trim",
+        "parameters": [
+          "String"
+        ],
+        "start_line": 2581,
+        "end_line": 2583,
+        "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+        "package": "org.apache.commons.csv"
+      },
+      {
+        "class": "CSVFormat",
+        "method": "useMaxRows",
+        "parameters": [],
+        "start_line": 2585,
+        "end_line": 2587,
+        "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+        "package": "org.apache.commons.csv"
+      },
+      {
+        "class": "CSVFormat",
+        "method": "useRow",
+        "parameters": [
+          "long"
+        ],
+        "start_line": 2589,
+        "end_line": 2591,
+        "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
+        "package": "org.apache.commons.csv"
+      },
+      {
+        "class": "CSVRecordIterator",
+        "method": "getNextRecord",
+        "parameters": [],
+        "start_line": 230,
+        "end_line": 236,
+        "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
+        "package": "org.apache.commons.csv"
+      },
+      {
+        "class": "CSVRecordIterator",
+        "method": "hasNext",
+        "parameters": [],
+        "start_line": 239,
+        "end_line": 248,
+        "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
+        "package": "org.apache.commons.csv"
+      },
+      {
+        "class": "CSVParser",
+        "method": "stream",
+        "parameters": [],
+        "start_line": 944,
+        "end_line": 946,
+        "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
+        "package": "org.apache.commons.csv"
+      },
+      {
+        "class": "CSVPrinter",
+        "method": "printRecords",
+        "parameters": [
+          "ResultSet"
+        ],
+        "start_line": 446,
+        "end_line": 465,
+        "file": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
+        "package": "org.apache.commons.csv"
+      }
+    ],
+    "test_methods": [
+      {
+        "class": "CSVParserTest",
+        "method": "testIterator",
+        "parameters": [],
+        "start_line": 1150,
+        "end_line": 1165,
+        "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+        "package": "org.apache.commons.csv",
+        "is_test_method": false
+      },
+      {
+        "class": "CSVParserTest",
+        "method": "testIteratorMaxRows",
+        "parameters": [
+          "long"
+        ],
+        "start_line": 1169,
+        "end_line": 1193,
+        "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+        "package": "org.apache.commons.csv",
+        "is_test_method": false
+      },
+      {
+        "class": "CSVParserTest",
+        "method": "testIteratorSequenceBreaking",
+        "parameters": [],
+        "start_line": 1196,
+        "end_line": 1248,
+        "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+        "package": "org.apache.commons.csv",
+        "is_test_method": false
+      }
+    ],
+    "summary": {
+      "source_methods_count": 9,
+      "test_methods_count": 3
+    }
+  },
+  "diff_info": {
+    "full_diff": "diff --git a/src/changes/changes.xml b/src/changes/changes.xml\nindex 80a6edd6..a9382c3f 100644\n--- a/src/changes/changes.xml\n+++ b/src/changes/changes.xml\n@@ -53,6 +53,7 @@\n       <action type=\"add\" dev=\"ggregory\" due-to=\"Gary Gregory\">CSVPrinter.printRecords(Stream) knows how to use CSVFormat's maxRows.</action>\n       <action type=\"add\" dev=\"ggregory\" due-to=\"Gary Gregory\">CSVParser.stream() knows how to use CSVFormat's maxRows.</action>\n       <action type=\"add\" dev=\"ggregory\" due-to=\"Gary Gregory\">CSVParser.getRecords() knows how to use CSVFormat's maxRows.</action>\n+      <action type=\"add\" dev=\"ggregory\" due-to=\"Gary Gregory\">CSVParser.iterator() knows how to use CSVFormat's maxRows.</action>\n       <!-- UPDATE -->\n       <action type=\"update\" dev=\"ggregory\" due-to=\"Gary Gregory\">Bump com.opencsv:opencsv from 5.9 to 5.10.</action>\n       <action type=\"update\" dev=\"ggregory\" due-to=\"Gary Gregory\">Bump commons-codec:commons-codec from 1.17.2 to 1.18.0 #522.</action>\ndiff --git a/src/main/java/org/apache/commons/csv/CSVFormat.java b/src/main/java/org/apache/commons/csv/CSVFormat.java\nindex 5f8c76ea..b98893a9 100644\n--- a/src/main/java/org/apache/commons/csv/CSVFormat.java\n+++ b/src/main/java/org/apache/commons/csv/CSVFormat.java\n@@ -2091,11 +2091,11 @@ public final class CSVFormat implements Serializable {\n     }\n \n     <T> IOStream<T> limit(final IOStream<T> stream) {\n-        return getMaxRows() > 0 ? stream.limit(getMaxRows()) : stream;\n+        return useMaxRows() ? stream.limit(getMaxRows()) : stream;\n     }\n \n     <T> Stream<T> limit(final Stream<T> stream) {\n-        return getMaxRows() > 0 ? stream.limit(getMaxRows()) : stream;\n+        return useMaxRows() ? stream.limit(getMaxRows()) : stream;\n     }\n \n     /**\n@@ -2582,6 +2582,14 @@ public final class CSVFormat implements Serializable {\n         return getTrim() ? value.trim() : value;\n     }\n \n+    boolean useMaxRows() {\n+        return getMaxRows() > 0;\n+    }\n+\n+    boolean useRow(final long rowNum) {\n+        return !useMaxRows() || rowNum <= getMaxRows();\n+    }\n+\n     /**\n      * Verifies the validity and consistency of the attributes, and throws an {@link IllegalArgumentException} if necessary.\n      * <p>\ndiff --git a/src/main/java/org/apache/commons/csv/CSVParser.java b/src/main/java/org/apache/commons/csv/CSVParser.java\nindex 2e4c8133..409e40bf 100644\n--- a/src/main/java/org/apache/commons/csv/CSVParser.java\n+++ b/src/main/java/org/apache/commons/csv/CSVParser.java\n@@ -221,14 +221,18 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {\n         private CSVRecord current;\n \n         /**\n-         * Gets the next record.\n+         * Gets the next record or null at the end of stream or max rows read.\n          *\n          * @throws IOException  on parse error or input read-failure\n          * @throws CSVException on invalid input.\n          * @return the next record, or {@code null} if the end of the stream has been reached.\n          */\n         private CSVRecord getNextRecord() {\n-            return Uncheck.get(CSVParser.this::nextRecord);\n+            CSVRecord record = null;\n+            if (format.useRow(recordNumber + 1)) {\n+                record = Uncheck.get(CSVParser.this::nextRecord);\n+            }\n+            return record;\n         }\n \n         @Override\n@@ -938,7 +942,7 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {\n      * @since 1.9.0\n      */\n     public Stream<CSVRecord> stream() {\n-        return format.limit(StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), Spliterator.ORDERED), false));\n+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), Spliterator.ORDERED), false);\n     }\n \n }\ndiff --git a/src/main/java/org/apache/commons/csv/CSVPrinter.java b/src/main/java/org/apache/commons/csv/CSVPrinter.java\nindex ec0b8f1d..24849fb3 100644\n--- a/src/main/java/org/apache/commons/csv/CSVPrinter.java\n+++ b/src/main/java/org/apache/commons/csv/CSVPrinter.java\n@@ -445,8 +445,7 @@ public final class CSVPrinter implements Flushable, Closeable {\n      */\n     public void printRecords(final ResultSet resultSet) throws SQLException, IOException {\n         final int columnCount = resultSet.getMetaData().getColumnCount();\n-        final long maxRows = format.getMaxRows();\n-        while (resultSet.next() && (maxRows < 1 || resultSet.getRow() <= maxRows)) {\n+        while (resultSet.next() && format.useRow(resultSet.getRow())) {\n             for (int i = 1; i <= columnCount; i++) {\n                 final Object object = resultSet.getObject(i);\n                 if (object instanceof Clob) {\ndiff --git a/src/test/java/org/apache/commons/csv/CSVParserTest.java b/src/test/java/org/apache/commons/csv/CSVParserTest.java\nindex 50bf052b..e4fdb5d4 100644\n--- a/src/test/java/org/apache/commons/csv/CSVParserTest.java\n+++ b/src/test/java/org/apache/commons/csv/CSVParserTest.java\n@@ -1164,6 +1164,34 @@ public class CSVParserTest {\n         }\n     }\n \n+    @ParameterizedTest\n+    @ValueSource(longs = { -1, 0, 1, 2, 3, 4, 5, Long.MAX_VALUE })\n+    public void testIteratorMaxRows(final long maxRows) throws Exception {\n+        final Reader in = new StringReader(\"a,b,c\\n1,2,3\\nx,y,z\");\n+        try (CSVParser parser = CSVFormat.DEFAULT.builder().setMaxRows(maxRows).get().parse(in)) {\n+            final Iterator<CSVRecord> iterator = parser.iterator();\n+            assertTrue(iterator.hasNext());\n+            assertThrows(UnsupportedOperationException.class, iterator::remove);\n+            assertArrayEquals(new String[] { \"a\", \"b\", \"c\" }, iterator.next().values());\n+            final boolean noLimit = maxRows <= 0;\n+            final int fixtureLen = 3;\n+            final long expectedLen = noLimit ? fixtureLen : Math.min(fixtureLen, maxRows);\n+            if (expectedLen > 1) {\n+                assertTrue(iterator.hasNext());\n+                assertArrayEquals(new String[] { \"1\", \"2\", \"3\" }, iterator.next().values());\n+            }\n+            assertEquals(expectedLen > 2, iterator.hasNext());\n+            // again\n+            assertEquals(expectedLen > 2, iterator.hasNext());\n+            if (expectedLen == fixtureLen) {\n+                assertTrue(iterator.hasNext());\n+                assertArrayEquals(new String[] { \"x\", \"y\", \"z\" }, iterator.next().values());\n+            }\n+            assertFalse(iterator.hasNext());\n+            assertThrows(NoSuchElementException.class, iterator::next);\n+        }\n+    }\n+\n     @Test\n     public void testIteratorSequenceBreaking() throws IOException {\n         final String fiveRows = \"1\\n2\\n3\\n4\\n5\\n\";",
+    "source_only_diff": "diff --git a/src/changes/changes.xml b/src/changes/changes.xml\nindex 80a6edd6..a9382c3f 100644\n--- a/src/changes/changes.xml\n+++ b/src/changes/changes.xml\n@@ -53,6 +53,7 @@\n       <action type=\"add\" dev=\"ggregory\" due-to=\"Gary Gregory\">CSVPrinter.printRecords(Stream) knows how to use CSVFormat's maxRows.</action>\n       <action type=\"add\" dev=\"ggregory\" due-to=\"Gary Gregory\">CSVParser.stream() knows how to use CSVFormat's maxRows.</action>\n       <action type=\"add\" dev=\"ggregory\" due-to=\"Gary Gregory\">CSVParser.getRecords() knows how to use CSVFormat's maxRows.</action>\n+      <action type=\"add\" dev=\"ggregory\" due-to=\"Gary Gregory\">CSVParser.iterator() knows how to use CSVFormat's maxRows.</action>\n       <!-- UPDATE -->\n       <action type=\"update\" dev=\"ggregory\" due-to=\"Gary Gregory\">Bump com.opencsv:opencsv from 5.9 to 5.10.</action>\n       <action type=\"update\" dev=\"ggregory\" due-to=\"Gary Gregory\">Bump commons-codec:commons-codec from 1.17.2 to 1.18.0 #522.</action>\n\ndiff --git a/src/main/java/org/apache/commons/csv/CSVFormat.java b/src/main/java/org/apache/commons/csv/CSVFormat.java\nindex 5f8c76ea..b98893a9 100644\n--- a/src/main/java/org/apache/commons/csv/CSVFormat.java\n+++ b/src/main/java/org/apache/commons/csv/CSVFormat.java\n@@ -2091,11 +2091,11 @@ public final class CSVFormat implements Serializable {\n     }\n \n     <T> IOStream<T> limit(final IOStream<T> stream) {\n-        return getMaxRows() > 0 ? stream.limit(getMaxRows()) : stream;\n+        return useMaxRows() ? stream.limit(getMaxRows()) : stream;\n     }\n \n     <T> Stream<T> limit(final Stream<T> stream) {\n-        return getMaxRows() > 0 ? stream.limit(getMaxRows()) : stream;\n+        return useMaxRows() ? stream.limit(getMaxRows()) : stream;\n     }\n \n     /**\n@@ -2582,6 +2582,14 @@ public final class CSVFormat implements Serializable {\n         return getTrim() ? value.trim() : value;\n     }\n \n+    boolean useMaxRows() {\n+        return getMaxRows() > 0;\n+    }\n+\n+    boolean useRow(final long rowNum) {\n+        return !useMaxRows() || rowNum <= getMaxRows();\n+    }\n+\n     /**\n      * Verifies the validity and consistency of the attributes, and throws an {@link IllegalArgumentException} if necessary.\n      * <p>\n\ndiff --git a/src/main/java/org/apache/commons/csv/CSVParser.java b/src/main/java/org/apache/commons/csv/CSVParser.java\nindex 2e4c8133..409e40bf 100644\n--- a/src/main/java/org/apache/commons/csv/CSVParser.java\n+++ b/src/main/java/org/apache/commons/csv/CSVParser.java\n@@ -221,14 +221,18 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {\n         private CSVRecord current;\n \n         /**\n-         * Gets the next record.\n+         * Gets the next record or null at the end of stream or max rows read.\n          *\n          * @throws IOException  on parse error or input read-failure\n          * @throws CSVException on invalid input.\n          * @return the next record, or {@code null} if the end of the stream has been reached.\n          */\n         private CSVRecord getNextRecord() {\n-            return Uncheck.get(CSVParser.this::nextRecord);\n+            CSVRecord record = null;\n+            if (format.useRow(recordNumber + 1)) {\n+                record = Uncheck.get(CSVParser.this::nextRecord);\n+            }\n+            return record;\n         }\n \n         @Override\n@@ -938,7 +942,7 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {\n      * @since 1.9.0\n      */\n     public Stream<CSVRecord> stream() {\n-        return format.limit(StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), Spliterator.ORDERED), false));\n+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), Spliterator.ORDERED), false);\n     }\n \n }\n\ndiff --git a/src/main/java/org/apache/commons/csv/CSVPrinter.java b/src/main/java/org/apache/commons/csv/CSVPrinter.java\nindex ec0b8f1d..24849fb3 100644\n--- a/src/main/java/org/apache/commons/csv/CSVPrinter.java\n+++ b/src/main/java/org/apache/commons/csv/CSVPrinter.java\n@@ -445,8 +445,7 @@ public final class CSVPrinter implements Flushable, Closeable {\n      */\n     public void printRecords(final ResultSet resultSet) throws SQLException, IOException {\n         final int columnCount = resultSet.getMetaData().getColumnCount();\n-        final long maxRows = format.getMaxRows();\n-        while (resultSet.next() && (maxRows < 1 || resultSet.getRow() <= maxRows)) {\n+        while (resultSet.next() && format.useRow(resultSet.getRow())) {\n             for (int i = 1; i <= columnCount; i++) {\n                 final Object object = resultSet.getObject(i);\n                 if (object instanceof Clob) {\n",
+    "test_only_diff": "diff --git a/src/test/java/org/apache/commons/csv/CSVParserTest.java b/src/test/java/org/apache/commons/csv/CSVParserTest.java\nindex 50bf052b..e4fdb5d4 100644\n--- a/src/test/java/org/apache/commons/csv/CSVParserTest.java\n+++ b/src/test/java/org/apache/commons/csv/CSVParserTest.java\n@@ -1164,6 +1164,34 @@ public class CSVParserTest {\n         }\n     }\n \n+    @ParameterizedTest\n+    @ValueSource(longs = { -1, 0, 1, 2, 3, 4, 5, Long.MAX_VALUE })\n+    public void testIteratorMaxRows(final long maxRows) throws Exception {\n+        final Reader in = new StringReader(\"a,b,c\\n1,2,3\\nx,y,z\");\n+        try (CSVParser parser = CSVFormat.DEFAULT.builder().setMaxRows(maxRows).get().parse(in)) {\n+            final Iterator<CSVRecord> iterator = parser.iterator();\n+            assertTrue(iterator.hasNext());\n+            assertThrows(UnsupportedOperationException.class, iterator::remove);\n+            assertArrayEquals(new String[] { \"a\", \"b\", \"c\" }, iterator.next().values());\n+            final boolean noLimit = maxRows <= 0;\n+            final int fixtureLen = 3;\n+            final long expectedLen = noLimit ? fixtureLen : Math.min(fixtureLen, maxRows);\n+            if (expectedLen > 1) {\n+                assertTrue(iterator.hasNext());\n+                assertArrayEquals(new String[] { \"1\", \"2\", \"3\" }, iterator.next().values());\n+            }\n+            assertEquals(expectedLen > 2, iterator.hasNext());\n+            // again\n+            assertEquals(expectedLen > 2, iterator.hasNext());\n+            if (expectedLen == fixtureLen) {\n+                assertTrue(iterator.hasNext());\n+                assertArrayEquals(new String[] { \"x\", \"y\", \"z\" }, iterator.next().values());\n+            }\n+            assertFalse(iterator.hasNext());\n+            assertThrows(NoSuchElementException.class, iterator::next);\n+        }\n+    }\n+\n     @Test\n     public void testIteratorSequenceBreaking() throws IOException {\n         final String fiveRows = \"1\\n2\\n3\\n4\\n5\\n\";",
+    "stats": {
+      "source_files": 4,
+      "test_files": 1,
+      "filtered": true
+    }
+  },
+  "has_method_changes": true,
+  "v1_execution": {
+    "version": "v1",
+    "commit_used": "9b75f05c9934cad8cc0886a7215e5c936e92662d",
+    "build": {
+      "success": true,
+      "duration_seconds": 10.316695,
+      "command": "mvn compile -DskipTests",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "test": {
+      "success": true,
+      "duration_seconds": 38.064138,
+      "total_tests": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "failed_tests": [],
+      "error_tests": [],
+      "return_code": -1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "coverage": {
+      "available": true,
+      "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_343000/commons-csv_9b75f05c_v1_20260123_135830_370920/target/site/jacoco/jacoco.xml",
+      "line_coverage": 0.994238683127572,
+      "covered_lines": 1208,
+      "total_lines": 1215
+    },
+    "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_343000/commons-csv_9b75f05c_v1_20260123_135830_370920"
+  },
+  "v05_execution": {
+    "version": "v05",
+    "commit_used": "9b75f05c9934cad8cc0886a7215e5c936e92662d",
+    "build": {
+      "success": true,
+      "duration_seconds": 10.297296,
+      "command": "mvn compile -DskipTests",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "test": {
+      "success": true,
+      "duration_seconds": 37.456573,
+      "total_tests": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "failed_tests": [],
+      "error_tests": [],
+      "return_code": -1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "coverage": {
+      "available": true,
+      "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_343000/commons-csv_9b75f05c_v05_20260123_135830_371569/target/site/jacoco/jacoco.xml",
+      "line_coverage": 0.9934372436423298,
+      "covered_lines": 1211,
+      "total_lines": 1219
+    },
+    "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_343000/commons-csv_9b75f05c_v05_20260123_135830_371569",
+    "patch_applied": true
+  },
+  "t05_execution": {
+    "version": "t05",
+    "commit_used": "9b75f05c9934cad8cc0886a7215e5c936e92662d",
+    "build": {
+      "success": true,
+      "duration_seconds": 10.293911,
+      "command": "mvn compile -DskipTests",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "test": {
+      "success": true,
+      "duration_seconds": 37.773894,
+      "total_tests": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "failed_tests": [],
+      "error_tests": [],
+      "return_code": -1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "coverage": {
+      "available": true,
+      "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_343000/commons-csv_9b75f05c_t05_20260123_135830_373236/target/site/jacoco/jacoco.xml",
+      "line_coverage": 0.994238683127572,
+      "covered_lines": 1208,
+      "total_lines": 1215
+    },
+    "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_343000/commons-csv_9b75f05c_t05_20260123_135830_373236",
+    "patch_applied": true
+  },
+  "v0_execution": {
+    "version": "v0",
+    "commit_used": "cf393fc6a2a46953fa02fe7453db4aa6c9c9fae0",
+    "build": {
+      "success": true,
+      "duration_seconds": 10.348341,
+      "command": "mvn compile -DskipTests",
+      "return_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "test": {
+      "success": true,
+      "duration_seconds": 38.072674,
+      "total_tests": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "errors": 0,
+      "failed_tests": [],
+      "error_tests": [],
+      "return_code": -1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "coverage": {
+      "available": true,
+      "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_343000/commons-csv_cf393fc6_v0_20260123_135830_374097/target/site/jacoco/jacoco.xml",
+      "line_coverage": 0.9934372436423298,
+      "covered_lines": 1211,
+      "total_lines": 1219
+    },
+    "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_343000/commons-csv_cf393fc6_v0_20260123_135830_374097"
+  },
+  "classification": {
+    "scenario": "D",
+    "scenario_description": "V-0.5通过，T-0.5通过：小幅调整，可能是覆盖率变化或适应性修改",
+    "type1_execution_error": {
+      "detected": false,
+      "subtype": null,
+      "confidence": null,
+      "evidence": {}
+    },
+    "type2_coverage_decrease": {
+      "detected": false,
+      "confidence": null,
+      "evidence": {}
+    },
+    "type3_adaptive_change": {
+      "detected": true,
+      "confidence": "high",
+      "evidence": {
+        "reason": "不属于Type1（执行出错）且不属于Type2（覆盖率降低），归类为适应性调整",
+        "scenario": "D",
+        "scenario_meaning": "小幅适应性调整，新旧测试都能通过"
+      }
+    },
+    "all_types": [
+      "type3_adaptive_change"
+    ],
+    "primary_type": "type3_adaptive_change",
+    "types_count": 1
+  },
+  "qualified": true,
+  "analysis_timestamp": "2026-01-23T13:59:18.996960"
+}

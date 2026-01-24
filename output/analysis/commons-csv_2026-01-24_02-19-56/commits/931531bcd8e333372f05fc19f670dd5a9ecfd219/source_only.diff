@@ -1,0 +1,36 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 8b00e71c..bca27da3 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -44,7 +44,8 @@
+       <!-- FIX -->
+       <action type="fix" issue="CSV-317" dev="ggregory" due-to="Filipe Roque">Release history link changed from changes-report.html to changes.html #516.</action>
+       <action type="fix" dev="ggregory" due-to="Gary Gregory">Remove -nouses directive from maven-bundle-plugin. OSGi package imports now state 'uses' definitions for package imports, this doesn't affect JPMS (from org.apache.commons:commons-parent:80).</action>
+-      <action type="fix" issue="CSV-317" dev="ggregory" due-to="Gary Gregory">CSVParser.parse(URL, Charset, CSVFormat) with a null CSVFormat maps to CSVFormat.DEFAULT (like CSVParser.parse(Reader, CSVFormat)).</action>
++      <action type="fix" dev="ggregory" due-to="Gary Gregory">CSVParser.parse(URL, Charset, CSVFormat) with a null CSVFormat maps to CSVFormat.DEFAULT (like CSVParser.parse(Reader, CSVFormat)).</action>
++      <action type="fix" dev="ggregory" due-to="Gary Gregory">CSVParser.parse(String, CSVFormat) with a null CSVFormat maps to CSVFormat.DEFAULT (like CSVParser.parse(Reader, CSVFormat)).</action>
+       <!-- ADD -->
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Define and use Maven property commons.jmh.version.</action> 
+       <action type="add" dev="ggregory" due-to="Gary Gregory">Add CSVFormat.Builder.setMaxRows(long).</action> 
+
+diff --git a/src/main/java/org/apache/commons/csv/CSVParser.java b/src/main/java/org/apache/commons/csv/CSVParser.java
+index df25206e..42c44558 100644
+--- a/src/main/java/org/apache/commons/csv/CSVParser.java
++++ b/src/main/java/org/apache/commons/csv/CSVParser.java
+@@ -403,7 +403,7 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {
+      * @param string
+      *            a CSV string. Must not be null.
+      * @param format
+-     *            the CSVFormat used for CSV parsing. Must not be null.
++     *            the CSVFormat used for CSV parsing, {@code null} maps to {@link CSVFormat#DEFAULT}.
+      * @return a new parser
+      * @throws IllegalArgumentException
+      *             If the parameters of the format are inconsistent or if either string or format are null.
+@@ -413,7 +413,6 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {
+      */
+     public static CSVParser parse(final String string, final CSVFormat format) throws IOException {
+         Objects.requireNonNull(string, "string");
+-        Objects.requireNonNull(format, "format");
+         return parse(new StringReader(string), format);
+     }
+ 

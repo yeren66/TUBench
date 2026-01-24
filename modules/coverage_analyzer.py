@@ -35,7 +35,30 @@ class CoverageAnalyzer:
             tree = ET.parse(report_path)
             root = tree.getroot()
             
-            coverage_data = {'classes': {}}
+            coverage_data = {
+                'classes': {},
+                'summary': {}
+            }
+
+            # Overall coverage summary from report-level counters (preferred)
+            line_counter = None
+            for counter in root.findall('counter'):
+                if counter.get('type') == 'LINE':
+                    line_counter = counter
+                    break
+
+            if line_counter is not None:
+                try:
+                    missed = int(line_counter.get('missed', 0))
+                    covered = int(line_counter.get('covered', 0))
+                    coverage_data['summary']['line'] = {
+                        'missed': missed,
+                        'covered': covered,
+                        'total': missed + covered
+                    }
+                except Exception:
+                    # Keep summary empty if parsing fails
+                    pass
             
             # 遍历所有package
             for package in root.findall('.//package'):
@@ -49,14 +72,35 @@ class CoverageAnalyzer:
                     full_class_name = f"{package_name}.{class_simple_name}"
                     
                     covered_lines = set()
+                    line_status = {}
+                    branch_status = {}
+                    instrumented_lines = set()
                     for line in sourcefile.findall('line'):
-                        if int(line.get('ci', 0)) > 0:  # ci = covered instructions
-                            covered_lines.add(int(line.get('nr', 0)))
+                        nr = int(line.get('nr', 0))
+                        ci = int(line.get('ci', 0))
+                        mi = int(line.get('mi', 0))
+                        cb = int(line.get('cb', 0))
+                        mb = int(line.get('mb', 0))
+                        if ci + mi == 0:
+                            continue
+                        instrumented_lines.add(nr)
+                        is_covered = ci > 0
+                        line_status[nr] = is_covered
+                        if cb + mb > 0:
+                            branch_status[nr] = {
+                                'covered': cb,
+                                'total': cb + mb
+                            }
+                        if is_covered:
+                            covered_lines.add(nr)
                     
                     if covered_lines:
                         coverage_data['classes'][full_class_name] = {
                             'source_file': source_name,
-                            'covered_lines': covered_lines
+                            'covered_lines': covered_lines,
+                            'line_status': line_status,
+                            'branch_status': branch_status,
+                            'instrumented_lines': instrumented_lines
                         }
                         
                         # 同时也尝试匹配可能的内部类或其他类名
@@ -134,6 +178,145 @@ class CoverageAnalyzer:
         return {
             'total_methods': total_methods,
             'covered_methods': covered_count,
+            'coverage_ratio': coverage_ratio,
+            'details': details
+        }
+
+    def analyze_changed_methods_line_coverage(self, coverage_data, changed_source_methods):
+        """
+        计算变更方法的行覆盖率（覆盖行数 / 总行数）
+
+        Args:
+            coverage_data: 覆盖率数据
+            changed_source_methods: 变更的被测方法列表
+
+        Returns:
+            dict: 行覆盖率统计
+        """
+        if not coverage_data or not changed_source_methods:
+            return {
+                'total_methods': 0,
+                'methods_with_data': 0,
+                'covered_lines': 0,
+                'total_lines': 0,
+                'coverage_ratio': 0.0,
+                'details': []
+            }
+
+        total_lines = 0
+        covered_lines = 0
+        methods_with_data = 0
+        details = []
+
+        classes_coverage = coverage_data.get('classes', {})
+
+        for method in changed_source_methods:
+            full_class_name = f"{method.get('package', '')}.{method.get('class', '')}"
+            start_line = method.get('start_line', 0)
+            end_line = method.get('end_line', 0)
+
+            class_cov = classes_coverage.get(full_class_name)
+            if not class_cov:
+                class_cov = self._fuzzy_match_class(classes_coverage, method.get('class', ''), full_class_name)
+
+            method_total = 0
+            method_covered = 0
+
+            if class_cov:
+                line_status = class_cov.get('line_status', {})
+                if line_status:
+                    for line_num in range(start_line, end_line + 1):
+                        if line_num in line_status:
+                            method_total += 1
+                            if line_status.get(line_num):
+                                method_covered += 1
+
+            if method_total > 0:
+                methods_with_data += 1
+
+            total_lines += method_total
+            covered_lines += method_covered
+
+            details.append({
+                'method': f"{full_class_name}.{method.get('method', '')}",
+                'covered_lines': method_covered,
+                'total_lines': method_total,
+                'coverage_ratio': (method_covered / method_total) if method_total > 0 else 0.0
+            })
+
+        coverage_ratio = covered_lines / total_lines if total_lines > 0 else 0.0
+
+        return {
+            'total_methods': len(changed_source_methods),
+            'methods_with_data': methods_with_data,
+            'covered_lines': covered_lines,
+            'total_lines': total_lines,
+            'coverage_ratio': coverage_ratio,
+            'details': details
+        }
+
+    def analyze_changed_methods_branch_coverage(self, coverage_data, changed_source_methods):
+        """
+        计算变更方法的分支覆盖率（覆盖分支数 / 总分支数）
+        """
+        if not coverage_data or not changed_source_methods:
+            return {
+                'total_methods': 0,
+                'methods_with_data': 0,
+                'covered_branches': 0,
+                'total_branches': 0,
+                'coverage_ratio': 0.0,
+                'details': []
+            }
+
+        total_branches = 0
+        covered_branches = 0
+        methods_with_data = 0
+        details = []
+
+        classes_coverage = coverage_data.get('classes', {})
+
+        for method in changed_source_methods:
+            full_class_name = f"{method.get('package', '')}.{method.get('class', '')}"
+            start_line = method.get('start_line', 0)
+            end_line = method.get('end_line', 0)
+
+            class_cov = classes_coverage.get(full_class_name)
+            if not class_cov:
+                class_cov = self._fuzzy_match_class(classes_coverage, method.get('class', ''), full_class_name)
+
+            method_total = 0
+            method_covered = 0
+
+            if class_cov:
+                branch_status = class_cov.get('branch_status', {})
+                if branch_status:
+                    for line_num in range(start_line, end_line + 1):
+                        if line_num in branch_status:
+                            info = branch_status[line_num]
+                            method_total += info.get('total', 0)
+                            method_covered += info.get('covered', 0)
+
+            if method_total > 0:
+                methods_with_data += 1
+
+            total_branches += method_total
+            covered_branches += method_covered
+
+            details.append({
+                'method': f"{full_class_name}.{method.get('method', '')}",
+                'covered_branches': method_covered,
+                'total_branches': method_total,
+                'coverage_ratio': (method_covered / method_total) if method_total > 0 else 0.0
+            })
+
+        coverage_ratio = covered_branches / total_branches if total_branches > 0 else 0.0
+
+        return {
+            'total_methods': len(changed_source_methods),
+            'methods_with_data': methods_with_data,
+            'covered_branches': covered_branches,
+            'total_branches': total_branches,
             'coverage_ratio': coverage_ratio,
             'details': details
         }

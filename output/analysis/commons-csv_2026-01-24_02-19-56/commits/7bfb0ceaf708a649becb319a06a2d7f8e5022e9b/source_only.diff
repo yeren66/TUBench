@@ -1,0 +1,79 @@
+diff --git a/src/changes/changes.xml b/src/changes/changes.xml
+index 4898ae8e..80a6edd6 100644
+--- a/src/changes/changes.xml
++++ b/src/changes/changes.xml
+@@ -51,6 +51,8 @@
+       <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(ResultSet) knows how to use CSVFormat's maxRows.</action>
+       <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(Iterable) knows how to use CSVFormat's maxRows.</action>
+       <action type="add" dev="ggregory" due-to="Gary Gregory">CSVPrinter.printRecords(Stream) knows how to use CSVFormat's maxRows.</action>
++      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVParser.stream() knows how to use CSVFormat's maxRows.</action>
++      <action type="add" dev="ggregory" due-to="Gary Gregory">CSVParser.getRecords() knows how to use CSVFormat's maxRows.</action>
+       <!-- UPDATE -->
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump com.opencsv:opencsv from 5.9 to 5.10.</action>
+       <action type="update" dev="ggregory" due-to="Gary Gregory">Bump commons-codec:commons-codec from 1.17.2 to 1.18.0 #522.</action>
+
+diff --git a/src/main/java/org/apache/commons/csv/CSVFormat.java b/src/main/java/org/apache/commons/csv/CSVFormat.java
+index 1db9b595..5f8c76ea 100644
+--- a/src/main/java/org/apache/commons/csv/CSVFormat.java
++++ b/src/main/java/org/apache/commons/csv/CSVFormat.java
+@@ -40,9 +40,11 @@ import java.util.HashSet;
+ import java.util.Objects;
+ import java.util.Set;
+ import java.util.function.Supplier;
++import java.util.stream.Stream;
+ 
+ import org.apache.commons.codec.binary.Base64OutputStream;
+ import org.apache.commons.io.IOUtils;
++import org.apache.commons.io.function.IOStream;
+ import org.apache.commons.io.function.Uncheck;
+ import org.apache.commons.io.output.AppendableOutputStream;
+ 
+@@ -2088,6 +2090,14 @@ public final class CSVFormat implements Serializable {
+         return quoteCharacter != null;
+     }
+ 
++    <T> IOStream<T> limit(final IOStream<T> stream) {
++        return getMaxRows() > 0 ? stream.limit(getMaxRows()) : stream;
++    }
++
++    <T> Stream<T> limit(final Stream<T> stream) {
++        return getMaxRows() > 0 ? stream.limit(getMaxRows()) : stream;
++    }
++
+     /**
+      * Parses the specified content.
+      *
+@@ -3178,4 +3188,5 @@ public final class CSVFormat implements Serializable {
+     public CSVFormat withTrim(final boolean trim) {
+         return builder().setTrim(trim).get();
+     }
++
+ }
+
+diff --git a/src/main/java/org/apache/commons/csv/CSVParser.java b/src/main/java/org/apache/commons/csv/CSVParser.java
+index 1c88d9c7..0cd37c9a 100644
+--- a/src/main/java/org/apache/commons/csv/CSVParser.java
++++ b/src/main/java/org/apache/commons/csv/CSVParser.java
+@@ -938,7 +938,7 @@ public final class CSVParser implements Iterable<CSVRecord>, Closeable {
+      * @since 1.9.0
+      */
+     public Stream<CSVRecord> stream() {
+-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), Spliterator.ORDERED), false);
++        return format.limit(StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator(), Spliterator.ORDERED), false));
+     }
+ 
+ }
+
+diff --git a/src/main/java/org/apache/commons/csv/CSVPrinter.java b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+index 7c17d1e7..ec0b8f1d 100644
+--- a/src/main/java/org/apache/commons/csv/CSVPrinter.java
++++ b/src/main/java/org/apache/commons/csv/CSVPrinter.java
+@@ -345,7 +345,7 @@ public final class CSVPrinter implements Flushable, Closeable {
+ 
+     @SuppressWarnings("resource")
+     private void printRecords(final IOStream<?> stream) throws IOException {
+-        (format.getMaxRows() > 0 ? stream.limit(format.getMaxRows()) : stream).forEachOrdered(this::printRecordObject);
++        format.limit(stream).forEachOrdered(this::printRecordObject);
+     }
+ 
+     /**
