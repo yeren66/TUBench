@@ -327,8 +327,9 @@ class CoverageAnalyzer:
         
         策略：
         1. 查找以 .ClassName 结尾的 key
-        2. 查找包含 ClassName$ 的 key（内部类模式）
-        3. 查找源文件名匹配的 key
+        2. 查找以 $ClassName 结尾的 key（内部类，ClassName 作为内部类名）
+        3. 查找包含 ClassName$ 的 key（内部类模式，ClassName 作为外部类）
+        4. 查找源文件名匹配的 key
         
         Args:
             classes_coverage: 覆盖率数据字典
@@ -348,14 +349,21 @@ class CoverageAnalyzer:
                 logger.debug(f"模糊匹配成功: {full_class_name} -> {key}")
                 return value
         
-        # 策略2: 查找包含 ClassName$ 的 key（内部类）
+        # 策略2: 查找以 $ClassName 结尾的 key（内部类，ClassName 作为内部类名）
+        inner_suffix = f"${class_name}"
+        for key, value in classes_coverage.items():
+            if key.endswith(inner_suffix):
+                logger.debug(f"内部类后缀匹配: {full_class_name} -> {key}")
+                return value
+        
+        # 策略3: 查找包含 ClassName$ 的 key（内部类模式，ClassName 作为外部类）
         inner_class_pattern = f"{class_name}$"
         for key, value in classes_coverage.items():
             if inner_class_pattern in key:
                 logger.debug(f"内部类匹配: {full_class_name} -> {key}")
                 return value
         
-        # 策略3: 通过源文件名匹配
+        # 策略4: 通过源文件名匹配
         source_file = f"{class_name}.java"
         for key, value in classes_coverage.items():
             if value.get('source_file') == source_file:

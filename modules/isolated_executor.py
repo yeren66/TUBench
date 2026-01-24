@@ -7,6 +7,7 @@ import os
 import shutil
 import subprocess
 import tempfile
+import threading
 from datetime import datetime
 from typing import Optional, Dict, Any
 
@@ -32,19 +33,29 @@ class IsolatedExecutor:
             work_dir: 工作目录，默认为临时目录
         """
         self.repo_path = repo_path
-        self.repo = Repo(repo_path)
         self.project_name = os.path.basename(repo_path)
+        
+        # 线程本地存储，为每个线程创建独立的 Repo 实例
+        self._thread_local = threading.local()
         
         # Work directory (isolate by PID to avoid cross-process cleanup collisions)
         base_dir = work_dir or AnalysisConfig.ANALYSIS_WORKTREE_DIR
         self.work_dir = os.path.join(base_dir, f"{self.project_name}_{os.getpid()}")
         os.makedirs(self.work_dir, exist_ok=True)
         
-        # 记录创建的worktree，用于清理
+        # 记录创建的worktree，用于清理（需要线程安全）
         self._created_worktrees = []
+        self._worktrees_lock = threading.Lock()
         
         # 覆盖率分析器
         self.coverage_analyzer = CoverageAnalyzer()
+    
+    @property
+    def repo(self) -> Repo:
+        """获取当前线程的 Repo 实例（线程安全）"""
+        if not hasattr(self._thread_local, 'repo'):
+            self._thread_local.repo = Repo(self.repo_path)
+        return self._thread_local.repo
     
     def execute_version(self,
                        commit_hash: str,
@@ -139,7 +150,8 @@ class IsolatedExecutor:
             # 创建worktree
             self.repo.git.worktree('add', '--detach', worktree_path, commit_hash)
             
-            self._created_worktrees.append(worktree_path)
+            with self._worktrees_lock:
+                self._created_worktrees.append(worktree_path)
             logger.debug(f"创建worktree: {worktree_path}")
             return True
             
@@ -594,16 +606,19 @@ class IsolatedExecutor:
                 
                 logger.debug(f"清理worktree: {worktree_path}")
                 
-                if worktree_path in self._created_worktrees:
-                    self._created_worktrees.remove(worktree_path)
+                with self._worktrees_lock:
+                    if worktree_path in self._created_worktrees:
+                        self._created_worktrees.remove(worktree_path)
                     
         except Exception as e:
             logger.warning(f"清理worktree失败 {worktree_path}: {e}")
     
     def cleanup_all(self):
         """清理所有创建的worktree"""
-        # 清理记录的worktree
-        for worktree_path in list(self._created_worktrees):
+        # 清理记录的worktree（获取副本以避免并发修改）
+        with self._worktrees_lock:
+            worktrees_copy = list(self._created_worktrees)
+        for worktree_path in worktrees_copy:
             self._cleanup_worktree(worktree_path)
         
         # 清理可能遗留的worktree

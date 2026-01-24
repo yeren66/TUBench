@@ -32,8 +32,17 @@ class CodeAnalyzer:
             classes = []
             
             for path, node in tree.filter(javalang.tree.ClassDeclaration):
+                # 构建完整的类名（包括外部类）
+                # path 是从根到当前节点的路径，包含外部类信息
+                class_name_parts = []
+                for path_node in path:
+                    if isinstance(path_node, javalang.tree.ClassDeclaration):
+                        class_name_parts.append(path_node.name)
+                class_name_parts.append(node.name)
+                full_class_name = '.'.join(class_name_parts)
+                
                 class_info = {
-                    'name': node.name,
+                    'name': full_class_name,
                     'methods': []
                 }
                 

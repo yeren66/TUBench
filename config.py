@@ -81,7 +81,7 @@ class Config:
     MAVEN_CMD = "mvn"
     
     # Maven超时时间（秒）
-    MAVEN_TIMEOUT = 120
+    MAVEN_TIMEOUT = 300
     
     # Maven参数
     MAVEN_OPTS = "-DskipTests=false -Dmaven.test.failure.ignore=true"

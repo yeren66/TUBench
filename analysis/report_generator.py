@@ -80,24 +80,30 @@ class ReportGenerator:
         
         # 过滤漏斗
         lines.append("## 过滤漏斗\n")
-        lines.append("| 阶段 | 数量 | 通过率 |")
-        lines.append("|------|------|--------|")
+        lines.append("| 阶段 | 数量 | 阶段通过率 | 累计通过率 |")
+        lines.append("|------|------|------------|------------|")
         
-        funnel_stages = [
-            ('总Commits', 'stage0_total', None),
-            ('日期过滤后', 'stage1_after_date_filter', 'date_filter'),
-            ('同时修改测试和源代码', 'stage2_has_test_and_source', 'file_change_filter'),
-            ('有方法级变更', 'stage3_has_method_changes', 'method_change_filter'),
-            ('V-1构建成功', 'stage4_v1_build_success', 'v1_build_filter'),
-            ('V0构建成功', 'stage5_v0_build_success', 'v0_build_filter'),
-            ('**最终合格**', 'stage6_qualified', 'overall')
-        ]
+        # 获取各阶段数量
+        total = filter_funnel.get('stage0_total', 0)
+        after_date = filter_funnel.get('stage1_after_date_filter', 0)
+        has_test_src = filter_funnel.get('stage2_has_test_and_source', 0)
+        has_method = filter_funnel.get('stage3_has_method_changes', 0)
+        v1_build = filter_funnel.get('stage4_v1_build_success', 0)
+        v0_build = filter_funnel.get('stage5_v0_build_success', 0)
+        qualified = filter_funnel.get('stage6_qualified', 0)
         
-        rates = filter_funnel.get('filter_rates', {})
-        for label, key, rate_key in funnel_stages:
-            count = filter_funnel.get(key, 0)
-            rate = rates.get(rate_key, '-') if rate_key else '-'
-            lines.append(f"| {label} | {count} | {rate} |")
+        def pct(num, denom):
+            return f"{num/denom*100:.1f}%" if denom > 0 else "-"
+        
+        # 如果 total 为 0，则使用 after_date 作为基准
+        base_total = total if total > 0 else after_date
+        
+        lines.append(f"| 日期范围内Commits | {after_date} | - | - |")
+        lines.append(f"| 同时修改测试和源代码 | {has_test_src} | {pct(has_test_src, after_date)} | {pct(has_test_src, base_total)} |")
+        lines.append(f"| 有方法级变更 | {has_method} | {pct(has_method, has_test_src)} | {pct(has_method, base_total)} |")
+        lines.append(f"| V-1构建成功 | {v1_build} | {pct(v1_build, has_method)} | {pct(v1_build, base_total)} |")
+        lines.append(f"| V0构建成功 | {v0_build} | {pct(v0_build, v1_build)} | {pct(v0_build, base_total)} |")
+        lines.append(f"| **最终合格** | {qualified} | {pct(qualified, v0_build)} | {pct(qualified, base_total)} |")
         lines.append("")
         
         # 类型分布
@@ -121,14 +127,15 @@ class ReportGenerator:
         
         # 场景分布
         lines.append("## 场景分布\n")
-        lines.append("| 场景 | V-0.5 | T-0.5 | 数量 |")
-        lines.append("|------|-------|-------|------|")
+        lines.append("场景基于 V-0.5 和 T-0.5 的测试执行结果划分（V-1 和 V0 均已通过构建和测试）：\n")
+        lines.append("| 场景 | V-0.5 | T-0.5 | 数量 | 说明 |")
+        lines.append("|------|-------|-------|------|------|")
         
         scenarios = type_stats.get('scenario_distribution', {})
-        lines.append(f"| A | ❌失败 | ❌失败 | {scenarios.get('A', 0)} |")
-        lines.append(f"| B | ❌失败 | ✅通过 | {scenarios.get('B', 0)} |")
-        lines.append(f"| C | ✅通过 | ❌失败 | {scenarios.get('C', 0)} |")
-        lines.append(f"| D | ✅通过 | ✅通过 | {scenarios.get('D', 0)} |")
+        lines.append(f"| A | 失败 | 失败 | {scenarios.get('A', 0)} | 新旧测试都不兼容旧代码 |")
+        lines.append(f"| B | 失败 | 通过 | {scenarios.get('B', 0)} | 旧测试失败，新测试可在旧代码运行 |")
+        lines.append(f"| C | 通过 | 失败 | {scenarios.get('C', 0)} | 旧测试通过，新测试针对新功能 |")
+        lines.append(f"| D | 通过 | 通过 | {scenarios.get('D', 0)} | 新旧测试都能通过 |")
         lines.append("")
         
         # V-0.5和T-0.5执行统计
@@ -155,19 +162,22 @@ class ReportGenerator:
         if type1.get('examples'):
             lines.append("### Type1 示例 (执行出错)\n")
             for i, commit in enumerate(type1['examples'][:3], 1):
-                lines.append(f"{i}. `{commit[:8]}`")
+                short = commit[:8]
+                lines.append(f"{i}. [{short}](commits/{short}/summary.md)")
             lines.append("")
         
         if type2.get('examples'):
             lines.append("### Type2 示例 (覆盖率降低)\n")
             for i, commit in enumerate(type2['examples'][:3], 1):
-                lines.append(f"{i}. `{commit[:8]}`")
+                short = commit[:8]
+                lines.append(f"{i}. [{short}](commits/{short}/summary.md)")
             lines.append("")
         
         if type3.get('examples'):
             lines.append("### Type3 示例 (适应性调整)\n")
             for i, commit in enumerate(type3['examples'][:3], 1):
-                lines.append(f"{i}. `{commit[:8]}`")
+                short = commit[:8]
+                lines.append(f"{i}. [{short}](commits/{short}/summary.md)")
             lines.append("")
         
         # 合格Commits列表
@@ -176,12 +186,14 @@ class ReportGenerator:
         
         if len(qualified) <= 20:
             for commit in qualified:
-                lines.append(f"- `{commit[:8]}`")
+                short = commit[:8]
+                lines.append(f"- [{short}](commits/{short}/summary.md)")
         else:
             lines.append("<details>")
             lines.append(f"<summary>点击展开完整列表 ({len(qualified)}个)</summary>\n")
             for commit in qualified:
-                lines.append(f"- `{commit[:8]}`")
+                short = commit[:8]
+                lines.append(f"- [{short}](commits/{short}/summary.md)")
             lines.append("\n</details>")
         lines.append("")
         
@@ -255,6 +267,24 @@ class ReportGenerator:
             lines.append("| Version | Description | Compile | Execute | Changed-Line Coverage | Changed-Branch Coverage | Tests Run | Error |")
             lines.append("|---------|-------------|---------|---------|-----------------------|-------------------------|-----------|-------|")
 
+            def _count_selected_test_methods(selectors: list) -> int:
+                """从Surefire选择器列表中统计实际选定的测试方法数量
+                
+                选择器格式:
+                - "ClassName#method1+method2+method3" -> 3个方法
+                - "ClassName" (整个类) -> 算作1个选择器
+                """
+                count = 0
+                for selector in selectors:
+                    if '#' in selector:
+                        # 格式: ClassName#method1+method2+...
+                        methods_part = selector.split('#', 1)[1]
+                        count += len(methods_part.split('+'))
+                    else:
+                        # 整个类，算作1
+                        count += 1
+                return count
+
             def _row(label, data, desc):
                 build_ok = data.get('build', {}).get('success', False)
                 test_ok = data.get('test', {}).get('success', False)
@@ -262,7 +292,7 @@ class ReportGenerator:
                 cov = data.get('coverage', {})
                 total_tests = data.get('test', {}).get('total_tests', 0)
                 selected_tests = data.get('test', {}).get('selected_tests', []) or []
-                selected_count = len(selected_tests)
+                selected_count = _count_selected_test_methods(selected_tests)
                 tests_display = f"{selected_count}/{total_tests}"
                 if test_skipped:
                     tests_display = f"{selected_count}/{total_tests} (skipped)"

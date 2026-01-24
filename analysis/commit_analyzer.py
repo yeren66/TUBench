@@ -314,62 +314,31 @@ class CommitAnalyzer:
         }
     
     def _analyze_method_changes(self, commit_hash: str, file_changes: dict) -> dict:
-        """分析方法变更"""
+        """分析方法变更
+        
+        正确处理新增行和删除行的方法归属：
+        - 新增行 (+) 对应当前版本的行号，在当前版本的方法结构中查找
+        - 删除行 (-) 对应父版本的行号，在父版本的方法结构中查找
+        """
         commit = self.git_analyzer.repo.commit(commit_hash)
+        parent_hash = commit.parents[0].hexsha if commit.parents else None
         
         source_methods = []
         test_methods = []
         
         # 分析源文件中的方法变更
         for file_info in file_changes.get('source_files', []):
-            if not file_info.get('is_java'):
-                continue
-            
-            file_path = file_info['path']
-            try:
-                diff_text = self.git_analyzer.get_file_diff(commit, file_path)
-                file_content = self.git_analyzer.get_file_content(commit_hash, file_path)
-                
-                if file_content:
-                    methods = self.change_detector.detect_changed_methods(
-                        file_content, diff_text, self.code_analyzer
-                    )
-                    
-                    package = self.code_analyzer.get_package_name(file_content)
-                    
-                    for method in methods:
-                        method['file'] = file_path
-                        method['package'] = package
-                        source_methods.append(method)
-                        
-            except Exception as e:
-                logger.debug(f"分析源文件方法失败 {file_path}: {e}")
+            methods = self._analyze_single_file_methods(
+                commit_hash, parent_hash, commit, file_info, is_test=False
+            )
+            source_methods.extend(methods)
         
         # 分析测试文件中的方法变更
         for file_info in file_changes.get('test_files', []):
-            if not file_info.get('is_java'):
-                continue
-            
-            file_path = file_info['path']
-            try:
-                diff_text = self.git_analyzer.get_file_diff(commit, file_path)
-                file_content = self.git_analyzer.get_file_content(commit_hash, file_path)
-                
-                if file_content:
-                    methods = self.change_detector.detect_changed_methods(
-                        file_content, diff_text, self.code_analyzer
-                    )
-                    
-                    package = self.code_analyzer.get_package_name(file_content)
-                    
-                    for method in methods:
-                        method['file'] = file_path
-                        method['package'] = package
-                        method['is_test_method'] = self._is_test_method(method)
-                        test_methods.append(method)
-                        
-            except Exception as e:
-                logger.debug(f"分析测试文件方法失败 {file_path}: {e}")
+            methods = self._analyze_single_file_methods(
+                commit_hash, parent_hash, commit, file_info, is_test=True
+            )
+            test_methods.extend(methods)
         
         return {
             'source_methods': source_methods,
@@ -379,6 +348,166 @@ class CommitAnalyzer:
                 'test_methods_count': len(test_methods)
             }
         }
+    
+    def _analyze_single_file_methods(self, commit_hash: str, parent_hash: str, 
+                                      commit, file_info: dict, is_test: bool) -> list:
+        """分析单个文件的方法变更
+        
+        Args:
+            commit_hash: 当前commit hash
+            parent_hash: 父commit hash
+            commit: commit对象
+            file_info: 文件信息
+            is_test: 是否为测试文件
+            
+        Returns:
+            list: 变更的方法列表
+        """
+        file_path = file_info.get('path')
+        change_type = file_info.get('change_type')
+        
+        if not file_path or not file_path.endswith('.java'):
+            return []
+        
+        try:
+            diff_text = self.git_analyzer.get_file_diff(commit, file_path)
+            if not diff_text:
+                return []
+            
+            # 获取当前版本和父版本的文件内容
+            current_content = self.git_analyzer.get_file_content(commit_hash, file_path)
+            parent_content = self.git_analyzer.get_file_content(parent_hash, file_path) if parent_hash else None
+            
+            # 文件被删除的情况：只有父版本有内容
+            if change_type == 'deleted':
+                current_content = None
+            # 文件被新增的情况：只有当前版本有内容
+            elif change_type == 'added':
+                parent_content = None
+            
+            # 提取两个版本的方法结构
+            current_methods = self._extract_methods_from_content(current_content, file_path)
+            parent_methods = self._extract_methods_from_content(parent_content, file_path)
+            
+            # 解析diff获取变更行号
+            parsed_diff = self.change_detector.parse_diff(diff_text)
+            
+            # 收集变更的方法（使用set去重）
+            changed_method_keys = set()
+            changed_methods_map = {}
+            
+            for entry in parsed_diff:
+                for change in entry.get('changes', []):
+                    # 新增行 -> 在当前版本的方法中查找
+                    for line_no in change.get('added_lines', []):
+                        method = self._find_method_at_line(current_methods, line_no)
+                        if method:
+                            key = self._get_method_key(method)
+                            if key not in changed_method_keys:
+                                changed_method_keys.add(key)
+                                changed_methods_map[key] = method.copy()
+                    
+                    # 删除行 -> 在父版本的方法中查找
+                    for line_no in change.get('removed_lines', []):
+                        method = self._find_method_at_line(parent_methods, line_no)
+                        if method:
+                            key = self._get_method_key(method)
+                            if key not in changed_method_keys:
+                                changed_method_keys.add(key)
+                                # 对于删除的行，优先使用当前版本的方法信息（如果存在）
+                                current_method = self._find_method_by_key(current_methods, key)
+                                changed_methods_map[key] = (current_method or method).copy()
+            
+            # 转换为结果列表
+            result_methods = []
+            for method in changed_methods_map.values():
+                if is_test:
+                    method['is_test_method'] = self._is_test_method(method)
+                result_methods.append(method)
+            
+            return result_methods
+            
+        except Exception as e:
+            logger.debug(f"分析文件方法失败 {file_path}: {e}")
+            return []
+    
+    def _extract_methods_from_content(self, content: str, file_path: str) -> list:
+        """从文件内容中提取所有方法信息
+        
+        Args:
+            content: 文件内容
+            file_path: 文件路径
+            
+        Returns:
+            list: 方法信息列表
+        """
+        if not content:
+            return []
+        
+        methods = []
+        classes_info = self.code_analyzer.parse_java_file(content)
+        package = self.code_analyzer.get_package_name(content)
+        
+        for cls in classes_info.get('classes', []):
+            for m in cls.get('methods', []):
+                methods.append({
+                    'class': cls.get('name'),
+                    'method': m.get('name'),
+                    'parameters': m.get('parameters', []),
+                    'start_line': m.get('start_line', 0),
+                    'end_line': m.get('end_line', 0),
+                    'package': package,
+                    'file': file_path,
+                    'return_type': m.get('return_type'),
+                    'modifiers': m.get('modifiers', [])
+                })
+        return methods
+    
+    def _find_method_at_line(self, methods: list, line_no: int) -> Optional[dict]:
+        """根据行号找到对应的方法
+        
+        Args:
+            methods: 方法列表
+            line_no: 行号
+            
+        Returns:
+            dict or None: 找到的方法信息
+        """
+        for m in methods:
+            if m.get('start_line', 0) <= line_no <= m.get('end_line', 0):
+                return m
+        return None
+    
+    def _get_method_key(self, method: dict) -> tuple:
+        """生成方法的唯一标识key
+        
+        Args:
+            method: 方法信息
+            
+        Returns:
+            tuple: 方法的唯一标识
+        """
+        return (
+            method.get('package', ''),
+            method.get('class', ''),
+            method.get('method', ''),
+            tuple(method.get('parameters', []))
+        )
+    
+    def _find_method_by_key(self, methods: list, key: tuple) -> Optional[dict]:
+        """根据方法key在列表中查找方法
+        
+        Args:
+            methods: 方法列表
+            key: 方法的唯一标识
+            
+        Returns:
+            dict or None: 找到的方法信息
+        """
+        for m in methods:
+            if self._get_method_key(m) == key:
+                return m
+        return None
     
     def _is_test_method(self, method: dict) -> bool:
         """判断是否为测试方法"""

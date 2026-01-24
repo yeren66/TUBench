@@ -603,14 +603,17 @@ class ProjectAnalyzer:
     
     def _save_commit_result(self, commit_hash: str, result: dict):
         """保存单个commit的分析结果"""
-        output_path = os.path.join(self.output_dir, 'commits', f'{commit_hash}.json')
+        # 使用前8位作为目录名（足够唯一标识）
+        short_hash = commit_hash[:8]
+        commit_dir = os.path.join(self.output_dir, 'commits', short_hash)
+        os.makedirs(commit_dir, exist_ok=True)
+        
+        # JSON 文件放在 commit 目录下，命名为 detail.json
+        output_path = os.path.join(commit_dir, 'detail.json')
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
 
-        # 额外输出：按commit分目录保存diff与摘要
-        commit_dir = os.path.join(self.output_dir, 'commits', commit_hash)
-        os.makedirs(commit_dir, exist_ok=True)
-
+        # 保存 diff 文件
         diff_info = result.get('diff_info', {})
         self._write_diff_file(commit_dir, 'full.diff', diff_info.get('full_diff'))
         self._write_diff_file(commit_dir, 'source_only.diff', diff_info.get('source_only_diff'))

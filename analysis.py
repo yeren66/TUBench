@@ -68,7 +68,7 @@ def parse_args():
     
     # 过滤配置
     parser.add_argument('--since', type=str,
-                        default='2025-01-01',
+                        default='2016-01-01',
                         help='只分析此日期之后的commits (默认: 2016-01-01)')
     parser.add_argument('--sample', type=int,
                         help='采样数量，用于快速测试')
