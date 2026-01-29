@@ -47,6 +47,26 @@ class AnalysisConfig:
     # ========== 日志配置 ==========
     # 分析日志文件
     ANALYSIS_LOG_FILE = "analysis.log"
+    
+    # ========== 版本兼容性配置 ==========
+    # Java版本（设置JAVA_HOME环境变量路径，None表示使用系统默认）
+    # 示例: "/usr/lib/jvm/java-8-openjdk-amd64"
+    JAVA_HOME = None
+    
+    # Maven可执行文件路径（None表示使用PATH中的mvn）
+    # 示例: "/opt/maven-3.6.3/bin/mvn"
+    MAVEN_EXECUTABLE = None
+    
+    # 额外的Maven参数（用于解决兼容性问题）
+    # 示例: "-Dmaven.compiler.source=1.8 -Dmaven.compiler.target=1.8"
+    MAVEN_EXTRA_ARGS = ""
+    
+    # 是否在遇到兼容性问题时跳过commit（而不是标记为失败）
+    SKIP_INCOMPATIBLE_COMMITS = False
+    
+    # 是否尝试自动修复常见的兼容性问题
+    # 目前支持：自动调整source/target版本
+    AUTO_FIX_COMPATIBILITY = False
 
 
 class Config:

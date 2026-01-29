@@ -103,9 +103,15 @@ class CommitClassifier:
         - C: V-0.5通过，T-0.5失败
         - D: V-0.5通过，T-0.5通过
         """
-        v05_pass = self._is_version_pass(v05_result)
-        t05_pass = self._is_version_pass(t05_result)
-        
+        v05_state = self._get_version_state(v05_result)
+        t05_state = self._get_version_state(t05_result)
+
+        if v05_state == 'unknown' or t05_state == 'unknown':
+            return 'U'
+
+        v05_pass = v05_state == 'pass'
+        t05_pass = t05_state == 'pass'
+
         if not v05_pass and not t05_pass:
             return 'A'
         elif not v05_pass and t05_pass:
@@ -121,9 +127,39 @@ class CommitClassifier:
             return False
         
         build_success = result.get('build', {}).get('success', False)
-        test_success = result.get('test', {}).get('success', False)
+        test_status = self._get_test_status(result)
         
-        return build_success and test_success
+        return build_success and test_status == 'pass'
+
+    def _get_version_state(self, result: Dict) -> str:
+        """获取版本状态：pass / fail / unknown"""
+        if not result:
+            return 'unknown'
+
+        build_success = result.get('build', {}).get('success', False)
+        test_status = self._get_test_status(result)
+
+        if not build_success:
+            return 'fail'
+
+        if test_status == 'pass':
+            return 'pass'
+        if test_status == 'fail':
+            return 'fail'
+        return 'unknown'
+
+    def _get_test_status(self, result: Dict) -> str:
+        """提取测试状态：pass / fail / skip / error / unknown"""
+        test = result.get('test', {}) if result else {}
+        status = test.get('status')
+        if status:
+            return status
+        success = test.get('success')
+        if success is True:
+            return 'pass'
+        if success is False:
+            return 'fail'
+        return 'unknown'
     
     def _get_scenario_description(self, scenario: str) -> str:
         """获取场景描述"""
@@ -131,7 +167,8 @@ class CommitClassifier:
             'A': 'V-0.5失败，T-0.5失败：源代码行为变更，新旧测试都不适配',
             'B': 'V-0.5失败，T-0.5通过：旧测试失败，但新测试在旧代码上可工作',
             'C': 'V-0.5通过，T-0.5失败：旧测试能通过，新测试针对新增功能',
-            'D': 'V-0.5通过，T-0.5通过：小幅调整，可能是覆盖率变化或适应性修改'
+            'D': 'V-0.5通过，T-0.5通过：小幅调整，可能是覆盖率变化或适应性修改',
+            'U': 'V-0.5或T-0.5测试被跳过/结果未知：场景不确定'
         }
         return descriptions.get(scenario, 'Unknown scenario')
     
@@ -174,31 +211,36 @@ class CommitClassifier:
             return result
         
         # 情况2: V-0.5测试失败
-        v05_test_success = v05_test.get('success', True)
-        v0_test_success = v0_test.get('success', False)
+        v05_test_status = self._get_test_status(v05_result)
+        v0_test_status = self._get_test_status(v0_result)
         
-        if not v05_test_success:
+        if v05_test_status == 'fail':
             # 确认V0测试是通过的（排除测试本身有问题的情况）
-            if v0_test_success:
+            if v0_test_status == 'pass':
                 result['detected'] = True
                 result['subtype'] = 'runtime_failure'
                 
                 # 根据T-0.5结果调整置信度
-                t05_test_success = t05_test.get('success', True)
+                t05_test_status = self._get_test_status(t05_result)
                 
-                if not t05_test_success:
+                if t05_test_status == 'fail':
                     # 场景A: T-0.5也失败，高置信度
                     result['confidence'] = 'high'
                     result['evidence']['t05_analysis'] = 'T-0.5也失败，确认是源代码行为变更导致'
-                else:
+                elif t05_test_status == 'pass':
                     # 场景B: T-0.5通过，中等置信度
                     result['confidence'] = 'medium'
                     result['evidence']['t05_analysis'] = 'T-0.5通过，新测试在旧代码上可工作，可能涉及测试重构'
+                else:
+                    result['confidence'] = 'low'
+                    result['evidence']['t05_analysis'] = 'T-0.5测试被跳过或结果未知，置信度降低'
                 
-                result['evidence']['v05_test_success'] = False
-                result['evidence']['v0_test_success'] = True
+                result['evidence']['v05_test_status'] = v05_test_status
+                result['evidence']['v0_test_status'] = v0_test_status
                 result['evidence']['failed_tests_count'] = v05_test.get('failed', 0) + v05_test.get('errors', 0)
                 result['evidence']['failed_tests'] = v05_test.get('failed_tests', [])[:10]
+        elif v05_test_status in ('skip', 'error', 'unknown'):
+            result['evidence']['note'] = f"V-0.5测试状态为{v05_test_status}，无法判定Type1运行时失败"
         
         return result
     
@@ -218,9 +260,13 @@ class CommitClassifier:
             'evidence': {}
         }
         
-        # 如果V-0.5编译或测试失败，不能准确分析覆盖率
+        # 如果V-0.5编译失败或测试未通过，不能准确分析覆盖率
         if not v05_result.get('build', {}).get('success', False):
             result['evidence']['note'] = 'V-0.5编译失败，无法分析覆盖率'
+            return result
+        v05_test_status = self._get_test_status(v05_result)
+        if v05_test_status != 'pass':
+            result['evidence']['note'] = f'V-0.5测试状态为{v05_test_status}，无法分析覆盖率'
             return result
         
         # 获取覆盖率数据
@@ -279,12 +325,14 @@ class CommitClassifier:
         # 只有不属于Type1和Type2的才归为Type3
         if not is_type1 and not is_type2:
             result['detected'] = True
-            result['confidence'] = 'high'
+            result['confidence'] = 'low' if scenario == 'U' else 'high'
             result['evidence'] = {
                 'reason': '不属于Type1（执行出错）且不属于Type2（覆盖率降低），归类为适应性调整',
                 'scenario': scenario,
                 'scenario_meaning': self._get_type3_scenario_meaning(scenario)
             }
+            if scenario == 'U':
+                result['evidence']['note'] = 'V-0.5或T-0.5测试被跳过/结果未知，置信度降低'
         
         return result
     
@@ -292,6 +340,7 @@ class CommitClassifier:
         """获取Type3在不同场景下的含义"""
         meanings = {
             'C': '新测试针对新增功能，旧测试仍可通过',
-            'D': '小幅适应性调整，新旧测试都能通过'
+            'D': '小幅适应性调整，新旧测试都能通过',
+            'U': '执行信息不足，场景不确定'
         }
         return meanings.get(scenario, '适应性调整')

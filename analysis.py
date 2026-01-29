@@ -222,12 +222,12 @@ def main():
         # 生成全局汇总报告（如果有多个项目）
         if len(projects) > 1:
             logger.info("\n生成全局汇总报告...")
-            report_generator = ReportGenerator(args.output)
+            report_generator = ReportGenerator(base_output)
             successful_results = [r['result'] for r in all_results if r['success']]
             if successful_results:
                 report_generator.generate_global_summary(
                     successful_results,
-                    os.path.join(args.output, 'global_summary')
+                    os.path.join(base_output, 'global_summary')
                 )
         
         # 输出总结

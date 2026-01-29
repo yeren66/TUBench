@@ -115,6 +115,8 @@ class ProjectAnalyzer:
         try:
             # 收集项目信息
             result.project_info = self._collect_project_info(since_date)
+            if result.project_info.get('total_commits') is not None:
+                self._stats['total_commits'] = result.project_info.get('total_commits', 0)
             
             # Phase 1: 快速扫描
             logger.info("\n[Phase 1] 快速扫描...")
@@ -154,7 +156,7 @@ class ProjectAnalyzer:
             
             # Phase 5: 报告生成
             logger.info("\n[Phase 5] 生成报告...")
-            result = self._phase5_report_generation(classified_results, start_time)
+            result = self._phase5_report_generation(classified_results, start_time, since_date)
             
             return result
             
@@ -293,8 +295,15 @@ class ProjectAnalyzer:
                     self.project_name, commit_hash, 'execution'
                 )
                 if cached and cached.get('data'):
-                    results.append(cached['data'])
+                    cached_data = cached['data']
+                    results.append(cached_data)
                     self._stats['from_cache'] += 1
+                    if cached_data.get('v1_execution', {}).get('build', {}).get('success'):
+                        self._stats['v1_build_success'] += 1
+                    if cached_data.get('v0_execution', {}).get('build', {}).get('success'):
+                        self._stats['v0_build_success'] += 1
+                    # 确保输出目录存在对应的commit结果
+                    self._save_commit_result(commit_hash, cached_data)
                     continue
             
             to_process.append(info)
@@ -363,10 +372,17 @@ class ProjectAnalyzer:
         
         for result in execution_results:
             # 检查是否合格
+            def _test_pass(execution: dict) -> bool:
+                test_info = execution.get('test', {})
+                status = test_info.get('status')
+                if status:
+                    return status == 'pass'
+                return test_info.get('success', False)
+
             v1_ok = result.get('v1_execution', {}).get('build', {}).get('success', False) and \
-                    result.get('v1_execution', {}).get('test', {}).get('success', False)
+                    _test_pass(result.get('v1_execution', {}))
             v0_ok = result.get('v0_execution', {}).get('build', {}).get('success', False) and \
-                    result.get('v0_execution', {}).get('test', {}).get('success', False)
+                    _test_pass(result.get('v0_execution', {}))
             
             if not (v1_ok and v0_ok):
                 result['qualified'] = False
@@ -399,7 +415,8 @@ class ProjectAnalyzer:
         )
     
     def _phase5_report_generation(self, classified_results: List[dict], 
-                                  start_time: datetime) -> ProjectAnalysisResult:
+                                  start_time: datetime,
+                                  since_date: Optional[str] = None) -> ProjectAnalysisResult:
         """
         Phase 5: 生成报告
         """
@@ -409,7 +426,7 @@ class ProjectAnalyzer:
         result = ProjectAnalysisResult()
         
         # 项目信息
-        result.project_info = self._collect_project_info(None)
+        result.project_info = self._collect_project_info(since_date)
         
         # 过滤漏斗
         result.filter_funnel = self._build_filter_funnel()
@@ -420,8 +437,15 @@ class ProjectAnalyzer:
         # 执行统计
         result.execution_statistics = self._build_execution_statistics(classified_results)
         
-        # 合格commits列表
-        result.qualified_commits = [r['commit_hash'] for r in classified_results if r.get('qualified')]
+        # 合格commits列表（包含分类信息）
+        result.qualified_commits = []
+        for r in classified_results:
+            if r.get('qualified'):
+                primary_type = r.get('classification', {}).get('primary_type', '')
+                result.qualified_commits.append({
+                    'commit_hash': r['commit_hash'],
+                    'primary_type': primary_type
+                })
         
         # 元数据
         result.analysis_metadata = {
@@ -567,11 +591,11 @@ class ProjectAnalyzer:
             
             if v05.get('build', {}).get('success'):
                 v05_compile_success += 1
-            if v05.get('test', {}).get('success'):
+            if v05.get('test', {}).get('status') == 'pass' or v05.get('test', {}).get('success'):
                 v05_test_success += 1
             if t05.get('build', {}).get('success'):
                 t05_compile_success += 1
-            if t05.get('test', {}).get('success'):
+            if t05.get('test', {}).get('status') == 'pass' or t05.get('test', {}).get('success'):
                 t05_test_success += 1
         
         return {
@@ -603,9 +627,24 @@ class ProjectAnalyzer:
     
     def _save_commit_result(self, commit_hash: str, result: dict):
         """保存单个commit的分析结果"""
-        # 使用前8位作为目录名（足够唯一标识）
+        # 获取分类类型（用于目录名前缀）
+        classification = result.get('classification', {})
+        primary_type = classification.get('primary_type', '')
+        
+        # 提取类型编号 (type1_execution_error -> type1, type2_coverage_decrease -> type2, etc.)
+        type_prefix = ''
+        if primary_type:
+            if primary_type.startswith('type1'):
+                type_prefix = 'type1_'
+            elif primary_type.startswith('type2'):
+                type_prefix = 'type2_'
+            elif primary_type.startswith('type3'):
+                type_prefix = 'type3_'
+        
+        # 使用前8位作为目录名（足够唯一标识），加上类型前缀
         short_hash = commit_hash[:8]
-        commit_dir = os.path.join(self.output_dir, 'commits', short_hash)
+        dir_name = f"{type_prefix}{short_hash}" if type_prefix else short_hash
+        commit_dir = os.path.join(self.output_dir, 'commits', dir_name)
         os.makedirs(commit_dir, exist_ok=True)
         
         # JSON 文件放在 commit 目录下，命名为 detail.json

@@ -326,15 +326,16 @@ class CoverageAnalyzer:
         模糊匹配类名，处理内部类情况
         
         策略：
-        1. 查找以 .ClassName 结尾的 key
-        2. 查找以 $ClassName 结尾的 key（内部类，ClassName 作为内部类名）
-        3. 查找包含 ClassName$ 的 key（内部类模式，ClassName 作为外部类）
-        4. 查找源文件名匹配的 key
+        1. 精确匹配（将 . 转换为 $ 处理内部类）
+        2. 查找以 .ClassName 结尾的 key
+        3. 查找以 $ClassName 结尾的 key（内部类，ClassName 作为内部类名）
+        4. 查找包含 ClassName$ 的 key（内部类模式，ClassName 作为外部类）
+        5. 查找源文件名匹配的 key
         
         Args:
             classes_coverage: 覆盖率数据字典
-            class_name: 简单类名
-            full_class_name: 完整类名
+            class_name: 简单类名（可能包含 . 如 CSVParser.Builder）
+            full_class_name: 完整类名（如 org.apache.commons.csv.CSVParser.Builder）
             
         Returns:
             dict or None: 匹配的覆盖信息，未找到返回None
@@ -342,29 +343,46 @@ class CoverageAnalyzer:
         if not class_name:
             return None
         
-        # 策略1: 查找以 .ClassName 结尾的 key
-        suffix = f".{class_name}"
+        # 策略0: 如果类名包含 .（内部类），转换为 $ 格式尝试精确匹配
+        if '.' in class_name:
+            # full_class_name: org.apache.commons.csv.CSVParser.Builder
+            # 需要转换为: org.apache.commons.csv.CSVParser$Builder
+            parts = full_class_name.rsplit('.', 1)
+            if len(parts) == 2:
+                # 找到最后一个类名部分，检查它是否也在前面的部分中
+                # 例如 CSVParser.Builder -> 需要找 CSVParser$Builder
+                inner_class_name = class_name.replace('.', '$')
+                package = full_class_name[:full_class_name.rfind(class_name)].rstrip('.')
+                jacoco_class_name = f"{package}.{inner_class_name}" if package else inner_class_name
+                
+                if jacoco_class_name in classes_coverage:
+                    logger.debug(f"内部类转换匹配: {full_class_name} -> {jacoco_class_name}")
+                    return classes_coverage[jacoco_class_name]
+        
+        # 策略1: 查找以 .ClassName 结尾的 key（处理简单类名）
+        simple_class_name = class_name.split('.')[-1] if '.' in class_name else class_name
+        suffix = f".{simple_class_name}"
         for key, value in classes_coverage.items():
             if key.endswith(suffix):
                 logger.debug(f"模糊匹配成功: {full_class_name} -> {key}")
                 return value
         
         # 策略2: 查找以 $ClassName 结尾的 key（内部类，ClassName 作为内部类名）
-        inner_suffix = f"${class_name}"
+        inner_suffix = f"${simple_class_name}"
         for key, value in classes_coverage.items():
             if key.endswith(inner_suffix):
                 logger.debug(f"内部类后缀匹配: {full_class_name} -> {key}")
                 return value
         
         # 策略3: 查找包含 ClassName$ 的 key（内部类模式，ClassName 作为外部类）
-        inner_class_pattern = f"{class_name}$"
+        inner_class_pattern = f"{simple_class_name}$"
         for key, value in classes_coverage.items():
             if inner_class_pattern in key:
                 logger.debug(f"内部类匹配: {full_class_name} -> {key}")
                 return value
         
         # 策略4: 通过源文件名匹配
-        source_file = f"{class_name}.java"
+        source_file = f"{simple_class_name}.java"
         for key, value in classes_coverage.items():
             if value.get('source_file') == source_file:
                 logger.debug(f"源文件匹配: {full_class_name} -> {key}")

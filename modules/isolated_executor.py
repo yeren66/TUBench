@@ -168,12 +168,16 @@ class IsolatedExecutor:
             result['message'] = "Empty patch, nothing to apply"
             return result
         
+        patch_file = os.path.join(worktree_path, '.tubench_patch.diff')
+
         try:
             # 将patch写入临时文件
-            patch_file = os.path.join(worktree_path, '.tubench_patch.diff')
+            # Ensure patch ends with newline to avoid "corrupt patch" from git apply
+            if not patch_content.endswith('\n'):
+                patch_content = patch_content + '\n'
             with open(patch_file, 'w', encoding='utf-8') as f:
                 f.write(patch_content)
-            
+
             # 应用patch
             process = subprocess.run(
                 ['git', 'apply', '--verbose', patch_file],
@@ -182,35 +186,37 @@ class IsolatedExecutor:
                 text=True,
                 timeout=60
             )
-            
-            # 清理patch文件
-            os.remove(patch_file)
-            
+
             if process.returncode == 0:
                 result['success'] = True
                 result['output'] = process.stdout
             else:
                 # 尝试使用 --3way 选项
                 process2 = subprocess.run(
-                    ['git', 'apply', '--3way', patch_file] if os.path.exists(patch_file) else
-                    ['echo', patch_content, '|', 'git', 'apply', '--3way'],
+                    ['git', 'apply', '--3way', patch_file],
                     cwd=worktree_path,
                     capture_output=True,
                     text=True,
-                    shell=True,
                     timeout=60
                 )
-                
+
                 if process2.returncode == 0:
                     result['success'] = True
                 else:
                     result['error'] = process.stderr or process2.stderr
                     logger.debug(f"Patch应用失败: {result['error']}")
-            
+
         except subprocess.TimeoutExpired:
             result['error'] = "Patch application timed out"
         except Exception as e:
             result['error'] = str(e)
+        finally:
+            # 清理patch文件
+            if os.path.exists(patch_file):
+                try:
+                    os.remove(patch_file)
+                except Exception:
+                    pass
         
         return result
     
@@ -231,13 +237,29 @@ class IsolatedExecutor:
                 result['error_message'] = "pom.xml not found"
                 return result
             
+            # 构建Maven命令
+            maven_cmd = AnalysisConfig.MAVEN_EXECUTABLE or 'mvn'
+            cmd = [maven_cmd, 'compile', '-DskipTests', '-B', '-q']
+            
+            # 添加额外的Maven参数
+            if AnalysisConfig.MAVEN_EXTRA_ARGS:
+                extra_args = AnalysisConfig.MAVEN_EXTRA_ARGS.split()
+                cmd.extend(extra_args)
+            
+            # 构建环境变量
+            env = os.environ.copy()
+            if AnalysisConfig.JAVA_HOME:
+                env['JAVA_HOME'] = AnalysisConfig.JAVA_HOME
+                env['PATH'] = f"{AnalysisConfig.JAVA_HOME}/bin:{env.get('PATH', '')}"
+            
             # 执行编译
             process = subprocess.run(
-                ['mvn', 'compile', '-DskipTests', '-B', '-q'],
+                cmd,
                 cwd=worktree_path,
                 capture_output=True,
                 text=True,
-                timeout=AnalysisConfig.COMPILE_TIMEOUT
+                timeout=AnalysisConfig.COMPILE_TIMEOUT,
+                env=env
             )
             
             result['return_code'] = process.returncode
@@ -247,8 +269,16 @@ class IsolatedExecutor:
             if process.returncode == 0:
                 result['success'] = True
             else:
-                result['error_message'] = self._extract_compile_error(process.stderr or process.stdout)
-                result['compile_errors'] = self._parse_compile_errors(process.stderr or process.stdout)
+                error_output = process.stderr or process.stdout
+                result['error_message'] = self._extract_compile_error(error_output)
+                result['compile_errors'] = self._parse_compile_errors(error_output)
+                
+                # 检测是否是兼容性问题
+                compat_issues = self._detect_compatibility_issues(error_output)
+                if compat_issues:
+                    result['compatibility_issues'] = compat_issues
+                    if AnalysisConfig.SKIP_INCOMPATIBLE_COMMITS:
+                        result['skip_reason'] = "compatibility_issue"
                 
         except subprocess.TimeoutExpired:
             result['error_message'] = f"Compilation timed out after {AnalysisConfig.COMPILE_TIMEOUT}s"
@@ -280,34 +310,45 @@ class IsolatedExecutor:
             maven_executor = MavenExecutor(worktree_path)
             selected_tests = self._build_test_selectors(worktree_path, changed_test_methods)
             if changed_test_methods is not None and not selected_tests:
-                result['success'] = True
                 result['selection_skipped'] = True
+                result['status'] = 'skip'
                 result['error_message'] = "No changed tests identified"
                 result['selected_tests'] = []
+                result['success'] = False
                 return result
 
             test_result = maven_executor.test_with_jacoco(selected_tests=selected_tests)
             
-            result['success'] = test_result.get('success', False)
             result['return_code'] = test_result.get('return_code', -1)
             result['stdout'] = test_result.get('stdout', '')[-5000:]
             result['stderr'] = test_result.get('stderr', '')[-5000:]
             result['selected_tests'] = selected_tests
             
             # 解析测试结果
-            if test_result.get('success') or 'Tests run:' in str(test_result.get('stdout', '')):
-                test_summary = self._parse_test_summary(test_result.get('stdout', ''))
-                result.update(test_summary)
+            test_summary = self._parse_test_summary(test_result.get('stdout', ''))
+            if test_summary.get('total_tests', 0) == 0:
+                report_summary = self._parse_test_summary_from_reports(worktree_path)
+                if report_summary:
+                    test_summary = report_summary
+            result.update(test_summary)
             
             # 如果测试失败，解析失败的测试
-            if not result['success']:
+            if (result.get('failed', 0) > 0) or (result.get('errors', 0) > 0):
                 failed_tests = self._parse_failed_tests(worktree_path)
                 result['failed_tests'] = failed_tests
+
+            status, reason = self._derive_test_status(result)
+            result['status'] = status
+            result['success'] = status == 'pass'
+            if reason and not result.get('error_message'):
+                result['error_message'] = reason
                 
         except subprocess.TimeoutExpired:
             result['error_message'] = f"Test timed out after {AnalysisConfig.TEST_TIMEOUT}s"
+            result['status'] = 'error'
         except Exception as e:
             result['error_message'] = str(e)
+            result['status'] = 'error'
         
         result['duration_seconds'] = (datetime.now() - start_time).total_seconds()
         return result
@@ -491,8 +532,59 @@ class IsolatedExecutor:
                 error_lines.append(line.strip())
         
         if error_lines:
-            return '\n'.join(error_lines[:10])
+            # 检测版本兼容性问题并添加诊断信息
+            compat_issues = self._detect_compatibility_issues(output)
+            error_msg = '\n'.join(error_lines[:10])
+            if compat_issues:
+                error_msg = f"[COMPATIBILITY ISSUES DETECTED]\n{compat_issues}\n\n{error_msg}"
+            return error_msg
         return "Compilation failed"
+    
+    def _detect_compatibility_issues(self, output: str) -> str:
+        """检测版本兼容性问题"""
+        issues = []
+        
+        # Java 版本问题
+        if 'Source option' in output and 'is no longer supported' in output:
+            issues.append("⚠️  Java版本不兼容: 源代码版本过低，当前JDK不支持")
+        if 'Target option' in output and 'is no longer supported' in output:
+            issues.append("⚠️  Java版本不兼容: 目标字节码版本过低")
+        if 'has been removed' in output.lower() and 'release' in output.lower():
+            issues.append("⚠️  Java版本不兼容: 请求的Java release版本已被移除")
+        if 'invalid target release' in output.lower():
+            issues.append("⚠️  Java版本不兼容: 无效的目标release版本")
+        if 'class file has wrong version' in output.lower():
+            issues.append("⚠️  Java版本不兼容: class文件版本与当前JDK不匹配")
+        
+        # Maven 插件问题
+        if 'Could not find artifact' in output and 'plugin' in output.lower():
+            issues.append("⚠️  Maven插件不可用: 所需插件无法从仓库获取")
+        if 'Plugin' in output and 'not found' in output:
+            issues.append("⚠️  Maven插件缺失: 项目依赖的插件不存在")
+        if 'Unsupported major.minor version' in output:
+            issues.append("⚠️  插件版本不兼容: 插件需要更高版本的Java")
+        
+        # 依赖问题
+        if 'Could not resolve dependencies' in output:
+            issues.append("⚠️  依赖解析失败: 无法解析项目依赖")
+        if 'Could not find artifact' in output and 'plugin' not in output.lower():
+            issues.append("⚠️  依赖不可用: 所需依赖无法从仓库获取")
+        if 'Repository' in output and ('refused' in output or 'blocked' in output):
+            issues.append("⚠️  仓库访问被拒: Maven仓库可能需要HTTPS或已停用")
+        if 'PKIX path building failed' in output or 'SSL' in output:
+            issues.append("⚠️  SSL证书问题: 仓库SSL证书验证失败")
+        if 'Connection refused' in output or 'Connection timed out' in output:
+            issues.append("⚠️  网络问题: 无法连接到Maven仓库")
+        
+        # 构建工具问题
+        if 'Unrecognised tag' in output or 'Malformed POM' in output:
+            issues.append("⚠️  POM格式问题: pom.xml格式与当前Maven版本不兼容")
+        if 'Non-parseable POM' in output:
+            issues.append("⚠️  POM解析失败: pom.xml无法被当前Maven解析")
+        
+        if issues:
+            return '\n'.join(issues)
+        return ""
     
     def _parse_compile_errors(self, output: str) -> list:
         """解析编译错误详情"""
@@ -589,6 +681,72 @@ class IsolatedExecutor:
                         logger.debug(f"解析测试报告失败 {filename}: {e}")
         
         return failed_tests[:50]  # 最多返回50个
+
+    def _parse_test_summary_from_reports(self, worktree_path: str) -> Optional[dict]:
+        """从Surefire XML报告汇总测试结果"""
+        surefire_dir = os.path.join(worktree_path, 'target', 'surefire-reports')
+        if not os.path.exists(surefire_dir):
+            return None
+
+        totals = {
+            'total_tests': 0,
+            'passed': 0,
+            'failed': 0,
+            'skipped': 0,
+            'errors': 0
+        }
+        parsed_any = False
+
+        import xml.etree.ElementTree as ET
+
+        for filename in os.listdir(surefire_dir):
+            if not (filename.startswith('TEST-') and filename.endswith('.xml')):
+                continue
+            filepath = os.path.join(surefire_dir, filename)
+            try:
+                tree = ET.parse(filepath)
+                root = tree.getroot()
+                tests = int(root.get('tests', 0))
+                failures = int(root.get('failures', 0))
+                errors = int(root.get('errors', 0))
+                skipped = int(root.get('skipped', 0))
+
+                totals['total_tests'] += tests
+                totals['failed'] += failures
+                totals['errors'] += errors
+                totals['skipped'] += skipped
+                parsed_any = True
+            except Exception:
+                continue
+
+        if not parsed_any:
+            return None
+
+        totals['passed'] = totals['total_tests'] - totals['failed'] - totals['errors'] - totals['skipped']
+        return totals
+
+    def _derive_test_status(self, result: Dict[str, Any]) -> tuple:
+        """基于测试结果导出明确状态"""
+        if result.get('selection_skipped'):
+            return 'skip', "No changed tests identified"
+
+        failed = result.get('failed', 0)
+        errors = result.get('errors', 0)
+        total = result.get('total_tests', 0)
+        return_code = result.get('return_code', 0)
+
+        if failed > 0 or errors > 0:
+            return 'fail', None
+
+        if total == 0:
+            if return_code not in (0, None, -1):
+                return 'error', "Test execution failed"
+            return 'skip', "No tests run"
+
+        if return_code not in (0, None, -1):
+            return 'error', "Test execution failed"
+
+        return 'pass', None
     
     def _cleanup_worktree(self, worktree_path: str):
         """清理worktree"""

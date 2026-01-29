@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_61878d773d74b2e2ab1b2bb7ed3519bd47e1fc58_method",
-  "cached_at": "2026-01-24T04:57:03.130798",
+  "cached_at": "2026-01-25T17:58:30.055302",
   "project": "commons-csv",
   "commit_hash": "61878d773d74b2e2ab1b2bb7ed3519bd47e1fc58",
   "phase": "method",
@@ -51,29 +51,23 @@
           "parameters": [],
           "start_line": 2604,
           "end_line": 2638,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
-        {
-          "class": "CSVFormatTest",
-          "method": "testBuildVsGet",
-          "parameters": [],
-          "start_line": 86,
-          "end_line": 89,
-          "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
-          "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
         {
           "class": "CSVFormatTest",
           "method": "testDelimiterCharLineBreakCrThrowsException1",
           "parameters": [],
           "start_line": 92,
           "end_line": 94,
-          "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -82,28 +76,10 @@
           "parameters": [],
           "start_line": 97,
           "end_line": 99,
-          "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
           "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
-        {
-          "class": "CSVFormatTest",
-          "method": "testDelimiterEmptyStringThrowsException1",
-          "parameters": [],
-          "start_line": 102,
-          "end_line": 104,
           "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
-          "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
-        {
-          "class": "CSVFormatTest",
-          "method": "testDelimiterSameAsRecordSeparatorThrowsException",
-          "parameters": [],
-          "start_line": 129,
-          "end_line": 131,
-          "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
-          "package": "org.apache.commons.csv",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -112,8 +88,10 @@
           "parameters": [],
           "start_line": 134,
           "end_line": 136,
-          "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -122,24 +100,16 @@
           "parameters": [],
           "start_line": 139,
           "end_line": 141,
-          "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
           "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
-        {
-          "class": "CSVFormatTest",
-          "method": "testDuplicateHeaderElements",
-          "parameters": [],
-          "start_line": 144,
-          "end_line": 149,
           "file": "src/test/java/org/apache/commons/csv/CSVFormatTest.java",
-          "package": "org.apache.commons.csv",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         }
       ],
       "summary": {
         "source_methods_count": 1,
-        "test_methods_count": 8
+        "test_methods_count": 4
       }
     },
     "diff_info": {

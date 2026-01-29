@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_b40039bb8bade1c1d71bce6ecc46479e53eeb76c_method",
-  "cached_at": "2026-01-24T04:57:10.315528",
+  "cached_at": "2026-01-25T17:58:43.055372",
   "project": "commons-csv",
   "commit_hash": "b40039bb8bade1c1d71bce6ecc46479e53eeb76c",
   "phase": "method",
@@ -95,35 +95,28 @@
     "method_changes": {
       "source_methods": [
         {
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "get",
           "parameters": [],
           "start_line": 169,
           "end_line": 171,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
-          "class": "Builder",
-          "method": "setRecordNumber",
-          "parameters": [
-            "long"
-          ],
-          "start_line": 201,
-          "end_line": 204,
-          "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "setEnableByteTracking",
           "parameters": [
             "boolean"
           ],
           "start_line": 213,
           "end_line": 216,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "CSVParser",
@@ -131,17 +124,10 @@
           "parameters": [],
           "start_line": 884,
           "end_line": 930,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "CSVRecord",
-          "method": "getCharacterPosition",
-          "parameters": [],
-          "start_line": 150,
-          "end_line": 152,
-          "file": "src/main/java/org/apache/commons/csv/CSVRecord.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "CSVRecord",
@@ -149,8 +135,10 @@
           "parameters": [],
           "start_line": 160,
           "end_line": 162,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVRecord.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "ExtendedBufferedReader",
@@ -160,8 +148,10 @@
           ],
           "start_line": 136,
           "end_line": 142,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "ExtendedBufferedReader",
@@ -169,8 +159,10 @@
           "parameters": [],
           "start_line": 145,
           "end_line": 157,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "ExtendedBufferedReader",
@@ -180,8 +172,10 @@
           ],
           "start_line": 185,
           "end_line": 202,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "ExtendedBufferedReader",
@@ -189,8 +183,10 @@
           "parameters": [],
           "start_line": 264,
           "end_line": 270,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "ExtendedBufferedReader",
@@ -198,17 +194,10 @@
           "parameters": [],
           "start_line": 277,
           "end_line": 279,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "Lexer",
-          "method": "getCharacterPosition",
-          "parameters": [],
-          "start_line": 104,
-          "end_line": 106,
-          "file": "src/main/java/org/apache/commons/csv/Lexer.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "Lexer",
@@ -216,29 +205,23 @@
           "parameters": [],
           "start_line": 113,
           "end_line": 115,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/Lexer.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
-        {
-          "class": "CSVParserTest",
-          "method": "testGetHeaderComment_NoComment3",
-          "parameters": [],
-          "start_line": 697,
-          "end_line": 704,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
-          "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
         {
           "class": "CSVParserTest",
           "method": "testGetRecordThreeBytesRead",
           "parameters": [],
           "start_line": 707,
           "end_line": 740,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -247,18 +230,10 @@
           "parameters": [],
           "start_line": 743,
           "end_line": 774,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
-        {
-          "class": "CSVParserTest",
-          "method": "testGetHeaderMap",
-          "parameters": [],
-          "start_line": 777,
-          "end_line": 798,
           "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
-          "package": "org.apache.commons.csv",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -267,8 +242,10 @@
           "parameters": [],
           "start_line": 88,
           "end_line": 94,
-          "file": "src/test/java/org/apache/commons/csv/CSVRecordTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVRecordTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -277,8 +254,10 @@
           "parameters": [],
           "start_line": 33,
           "end_line": 50,
-          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": false
         },
         {
@@ -287,8 +266,10 @@
           "parameters": [],
           "start_line": 54,
           "end_line": 71,
-          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": false
         },
         {
@@ -299,14 +280,16 @@
           ],
           "start_line": 73,
           "end_line": 76,
-          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": false
         }
       ],
       "summary": {
-        "source_methods_count": 13,
-        "test_methods_count": 8
+        "source_methods_count": 10,
+        "test_methods_count": 6
       }
     },
     "diff_info": {
@@ -483,7 +466,7 @@
       "source": [
         {
           "package": "org.apache.commons.csv",
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "get",
           "parameters": [],
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
@@ -493,7 +476,7 @@
         },
         {
           "package": "org.apache.commons.csv",
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "setEnableByteTracking",
           "parameters": [
             "boolean"

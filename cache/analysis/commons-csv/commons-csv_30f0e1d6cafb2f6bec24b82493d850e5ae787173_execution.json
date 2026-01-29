@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_30f0e1d6cafb2f6bec24b82493d850e5ae787173_execution",
-  "cached_at": "2026-01-24T05:00:02.409328",
+  "cached_at": "2026-01-25T18:02:19.589813",
   "project": "commons-csv",
   "commit_hash": "30f0e1d6cafb2f6bec24b82493d850e5ae787173",
   "phase": "execution",
@@ -59,58 +59,17 @@
     "method_changes": {
       "source_methods": [
         {
-          "class": "Builder",
-          "method": "setLenientEof",
-          "parameters": [
-            "boolean"
-          ],
-          "start_line": 740,
-          "end_line": 743,
-          "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "Builder",
+          "class": "CSVFormat.Builder",
           "method": "setMaxRows",
           "parameters": [
             "long"
           ],
           "start_line": 752,
           "end_line": 755,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "Builder",
-          "method": "setTrailingDelimiter",
-          "parameters": [
-            "boolean"
-          ],
-          "start_line": 871,
-          "end_line": 874,
-          "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "CSVFormat",
-          "method": "append",
-          "parameters": [
-            "char",
-            "Appendable"
-          ],
-          "start_line": 1629,
-          "end_line": 1635,
-          "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "CSVFormat",
-          "method": "getLenientEof",
-          "parameters": [],
-          "start_line": 1918,
-          "end_line": 1920,
-          "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "CSVFormat",
@@ -118,8 +77,10 @@
           "parameters": [],
           "start_line": 1928,
           "end_line": 1930,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "CSVFormat",
@@ -127,8 +88,10 @@
           "parameters": [],
           "start_line": 2011,
           "end_line": 2019,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVFormat.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
           "class": "CSVPrinter",
@@ -138,43 +101,23 @@
           ],
           "start_line": 441,
           "end_line": 461,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
-        {
-          "class": "CSVPrinterTest",
-          "method": "printable",
-          "parameters": [
-            "String"
-          ],
-          "start_line": 88,
-          "end_line": 99,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
-          "package": "org.apache.commons.csv",
-          "is_test_method": false
-        },
-        {
-          "class": "CSVPrinterTest",
-          "method": "assertInitialState",
-          "parameters": [
-            "CSVPrinter"
-          ],
-          "start_line": 103,
-          "end_line": 105,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
-          "package": "org.apache.commons.csv",
-          "is_test_method": false
-        },
         {
           "class": "CSVPrinterTest",
           "method": "testCRComment",
           "parameters": [],
           "start_line": 331,
           "end_line": 343,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -183,8 +126,10 @@
           "parameters": [],
           "start_line": 471,
           "end_line": 478,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -193,8 +138,10 @@
           "parameters": [],
           "start_line": 623,
           "end_line": 630,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -203,8 +150,10 @@
           "parameters": [],
           "start_line": 633,
           "end_line": 640,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -213,8 +162,10 @@
           "parameters": [],
           "start_line": 643,
           "end_line": 650,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -223,8 +174,10 @@
           "parameters": [],
           "start_line": 653,
           "end_line": 660,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -233,8 +186,10 @@
           "parameters": [],
           "start_line": 663,
           "end_line": 670,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -243,8 +198,10 @@
           "parameters": [],
           "start_line": 673,
           "end_line": 680,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -253,8 +210,10 @@
           "parameters": [],
           "start_line": 683,
           "end_line": 690,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -263,8 +222,10 @@
           "parameters": [],
           "start_line": 693,
           "end_line": 700,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -273,8 +234,10 @@
           "parameters": [],
           "start_line": 703,
           "end_line": 710,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -283,8 +246,10 @@
           "parameters": [],
           "start_line": 713,
           "end_line": 720,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -293,8 +258,10 @@
           "parameters": [],
           "start_line": 723,
           "end_line": 730,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -303,8 +270,10 @@
           "parameters": [],
           "start_line": 733,
           "end_line": 740,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -313,8 +282,10 @@
           "parameters": [],
           "start_line": 790,
           "end_line": 821,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -323,8 +294,10 @@
           "parameters": [],
           "start_line": 824,
           "end_line": 834,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -335,8 +308,22 @@
           ],
           "start_line": 838,
           "end_line": 862,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
+          "is_test_method": true
+        },
+        {
+          "class": "CSVPrinterTest",
+          "method": "testJdbcPrinterWithResultSet",
+          "parameters": [],
+          "start_line": 836,
+          "end_line": 851,
+          "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -347,8 +334,10 @@
           ],
           "start_line": 866,
           "end_line": 887,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -359,8 +348,34 @@
           ],
           "start_line": 891,
           "end_line": 908,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
+          "is_test_method": true
+        },
+        {
+          "class": "CSVPrinterTest",
+          "method": "testJdbcPrinterWithResultSetHeader",
+          "parameters": [],
+          "start_line": 854,
+          "end_line": 875,
+          "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
+          "is_test_method": true
+        },
+        {
+          "class": "CSVPrinterTest",
+          "method": "testJdbcPrinterWithResultSetMetaData",
+          "parameters": [],
+          "start_line": 878,
+          "end_line": 895,
+          "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -369,8 +384,10 @@
           "parameters": [],
           "start_line": 975,
           "end_line": 982,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -379,8 +396,10 @@
           "parameters": [],
           "start_line": 985,
           "end_line": 992,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -389,8 +408,10 @@
           "parameters": [],
           "start_line": 995,
           "end_line": 1002,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -399,8 +420,10 @@
           "parameters": [],
           "start_line": 1005,
           "end_line": 1012,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -409,8 +432,10 @@
           "parameters": [],
           "start_line": 1015,
           "end_line": 1022,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -419,8 +444,10 @@
           "parameters": [],
           "start_line": 1025,
           "end_line": 1032,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -429,8 +456,10 @@
           "parameters": [],
           "start_line": 1035,
           "end_line": 1041,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -439,8 +468,10 @@
           "parameters": [],
           "start_line": 1044,
           "end_line": 1051,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -449,8 +480,10 @@
           "parameters": [],
           "start_line": 1171,
           "end_line": 1178,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -459,8 +492,10 @@
           "parameters": [],
           "start_line": 1181,
           "end_line": 1197,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -469,8 +504,10 @@
           "parameters": [],
           "start_line": 1445,
           "end_line": 1452,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -479,8 +516,10 @@
           "parameters": [],
           "start_line": 1529,
           "end_line": 1536,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -489,8 +528,10 @@
           "parameters": [],
           "start_line": 1539,
           "end_line": 1547,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -499,8 +540,10 @@
           "parameters": [],
           "start_line": 1550,
           "end_line": 1557,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -509,8 +552,10 @@
           "parameters": [],
           "start_line": 1560,
           "end_line": 1567,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -519,8 +564,10 @@
           "parameters": [],
           "start_line": 1570,
           "end_line": 1577,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -529,8 +576,10 @@
           "parameters": [],
           "start_line": 1580,
           "end_line": 1587,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -539,8 +588,10 @@
           "parameters": [],
           "start_line": 1590,
           "end_line": 1597,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -549,8 +600,10 @@
           "parameters": [],
           "start_line": 1600,
           "end_line": 1607,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -559,8 +612,10 @@
           "parameters": [],
           "start_line": 1610,
           "end_line": 1617,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -569,8 +624,10 @@
           "parameters": [],
           "start_line": 1759,
           "end_line": 1765,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -579,8 +636,10 @@
           "parameters": [],
           "start_line": 1768,
           "end_line": 1774,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -589,8 +648,10 @@
           "parameters": [],
           "start_line": 1777,
           "end_line": 1783,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -599,8 +660,10 @@
           "parameters": [],
           "start_line": 1786,
           "end_line": 1792,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -609,8 +672,10 @@
           "parameters": [],
           "start_line": 1795,
           "end_line": 1801,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -619,8 +684,10 @@
           "parameters": [],
           "start_line": 1804,
           "end_line": 1810,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -629,14 +696,16 @@
           "parameters": [],
           "start_line": 1861,
           "end_line": 1868,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         }
       ],
       "summary": {
-        "source_methods_count": 8,
-        "test_methods_count": 48
+        "source_methods_count": 4,
+        "test_methods_count": 49
       }
     },
     "diff_info": {
@@ -729,7 +798,7 @@
       "source": [
         {
           "package": "org.apache.commons.csv",
-          "class": "Builder",
+          "class": "CSVFormat.Builder",
           "method": "setMaxRows",
           "parameters": [
             "long"
@@ -1277,7 +1346,7 @@
       "commit_used": "c62d12a8ec5f987c3107674c03c8577fbbb70033",
       "build": {
         "success": true,
-        "duration_seconds": 13.285886,
+        "duration_seconds": 11.491505,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
@@ -1285,7 +1354,7 @@
       },
       "test": {
         "success": true,
-        "duration_seconds": 29.939127,
+        "duration_seconds": 27.336196,
         "total_tests": 46,
         "passed": 46,
         "failed": 0,
@@ -1295,36 +1364,21 @@
         "error_tests": [],
         "selection_skipped": false,
         "return_code": 0,
-        "stdout": "/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632' && 'git' 'symbolic-ref' 'HEAD'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug release 8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug release 8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m46\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.194 s -- in org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 46, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  26.548 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T05:00:01Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "stdout": "4824\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug target 1.8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug target 1.8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32manimal-sniffer-maven-plugin:1.24:check\u001b[m \u001b[1m(checkAPIcompatibility)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m46\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.284 s -- in org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 46, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  23.246 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:02:17Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
         "stderr": "",
         "selected_tests": [
           "org.apache.commons.csv.CSVPrinterTest#testCRComment+testDontQuoteEuroFirstChar+testExcelPrintAllArrayOfArrays+testExcelPrintAllArrayOfArraysWithFirstEmptyValue2+testExcelPrintAllArrayOfArraysWithFirstSpaceValue1+testExcelPrintAllArrayOfArraysWithFirstTabValue1+testExcelPrintAllArrayOfLists+testExcelPrintAllArrayOfListsWithFirstEmptyValue2+testExcelPrintAllIterableOfArrays+testExcelPrintAllIterableOfArraysWithFirstEmptyValue2+testExcelPrintAllIterableOfLists+testExcelPrintAllStreamOfArrays+testExcelPrinter1+testExcelPrinter2+testJdbcPrinter+testJdbcPrinterWithFirstEmptyValue2+testJdbcPrinterWithResultSet+testJdbcPrinterWithResultSetHeader+testJdbcPrinterWithResultSetMetaData+testMongoDbCsvBasic+testMongoDbCsvCommaInValue+testMongoDbCsvDoubleQuoteInValue+testMongoDbCsvTabInValue+testMongoDbTsvBasic+testMongoDbTsvCommaInValue+testMongoDbTsvTabInValue+testMultiLineComment+testNotFlushable+testParseCustomNullValues+testPrint+testPrintCustomNullValues+testPrintNullValues+testPrintToFileWithCharsetUtf16Be+testPrintToFileWithDefaultCharset+testPrintToPathWithDefaultCharset+testPrinter1+testPrinter2+testPrinter3+testPrinter4+testPrinter5+testPrinter6+testPrinter7+testQuoteAll+testQuoteCommaFirstChar+testQuoteNonNumeric+testSingleLineComment"
-        ]
+        ],
+        "status": "pass"
       },
       "coverage": {
         "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632/target/site/jacoco/jacoco.xml",
+        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824/target/site/jacoco/jacoco.xml",
         "method_coverage": {
-          "total_methods": 6,
-          "covered_methods": 3,
+          "total_methods": 2,
+          "covered_methods": 1,
           "coverage_ratio": 0.5,
           "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered": true
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered": true
-            },
             {
               "method": "org.apache.commons.csv.CSVFormat.hashCode",
               "covered": false
@@ -1336,36 +1390,12 @@
           ]
         },
         "method_line_coverage": {
-          "total_methods": 6,
-          "methods_with_data": 4,
-          "covered_lines": 16,
-          "total_lines": 24,
-          "coverage_ratio": 0.6666666666666666,
+          "total_methods": 2,
+          "methods_with_data": 2,
+          "covered_lines": 15,
+          "total_lines": 23,
+          "coverage_ratio": 0.6521739130434783,
           "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered_lines": 2,
-              "total_lines": 2,
-              "coverage_ratio": 1.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered_lines": 1,
-              "total_lines": 1,
-              "coverage_ratio": 1.0
-            },
             {
               "method": "org.apache.commons.csv.CSVFormat.hashCode",
               "covered_lines": 0,
@@ -1374,43 +1404,19 @@
             },
             {
               "method": "org.apache.commons.csv.CSVPrinter.printRecords",
-              "covered_lines": 13,
-              "total_lines": 13,
+              "covered_lines": 15,
+              "total_lines": 15,
               "coverage_ratio": 1.0
             }
           ]
         },
         "method_branch_coverage": {
-          "total_methods": 6,
+          "total_methods": 2,
           "methods_with_data": 1,
           "covered_branches": 8,
           "total_branches": 8,
           "coverage_ratio": 1.0,
           "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
             {
               "method": "org.apache.commons.csv.CSVFormat.hashCode",
               "covered_branches": 0,
@@ -1426,14 +1432,14 @@
           ]
         }
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v1_20260124_045918_640632"
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v1_20260125_180138_444824"
     },
     "v05_execution": {
       "version": "v05",
       "commit_used": "c62d12a8ec5f987c3107674c03c8577fbbb70033",
       "build": {
         "success": true,
-        "duration_seconds": 12.975422,
+        "duration_seconds": 11.162073,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
@@ -1441,7 +1447,7 @@
       },
       "test": {
         "success": true,
-        "duration_seconds": 29.637915,
+        "duration_seconds": 27.84241,
         "total_tests": 46,
         "passed": 46,
         "failed": 0,
@@ -1451,39 +1457,24 @@
         "error_tests": [],
         "selection_skipped": false,
         "return_code": 0,
-        "stdout": "nalysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401' && 'git' 'symbolic-ref' 'HEAD'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug release 8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug release 8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m46\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.678 s -- in org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 46, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  26.534 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T05:00:01Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "stdout": "1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug target 1.8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug target 1.8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32manimal-sniffer-maven-plugin:1.24:check\u001b[m \u001b[1m(checkAPIcompatibility)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m46\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.200 s -- in org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 46, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  24.697 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:02:17Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
         "stderr": "",
         "selected_tests": [
           "org.apache.commons.csv.CSVPrinterTest#testCRComment+testDontQuoteEuroFirstChar+testExcelPrintAllArrayOfArrays+testExcelPrintAllArrayOfArraysWithFirstEmptyValue2+testExcelPrintAllArrayOfArraysWithFirstSpaceValue1+testExcelPrintAllArrayOfArraysWithFirstTabValue1+testExcelPrintAllArrayOfLists+testExcelPrintAllArrayOfListsWithFirstEmptyValue2+testExcelPrintAllIterableOfArrays+testExcelPrintAllIterableOfArraysWithFirstEmptyValue2+testExcelPrintAllIterableOfLists+testExcelPrintAllStreamOfArrays+testExcelPrinter1+testExcelPrinter2+testJdbcPrinter+testJdbcPrinterWithFirstEmptyValue2+testJdbcPrinterWithResultSet+testJdbcPrinterWithResultSetHeader+testJdbcPrinterWithResultSetMetaData+testMongoDbCsvBasic+testMongoDbCsvCommaInValue+testMongoDbCsvDoubleQuoteInValue+testMongoDbCsvTabInValue+testMongoDbTsvBasic+testMongoDbTsvCommaInValue+testMongoDbTsvTabInValue+testMultiLineComment+testNotFlushable+testParseCustomNullValues+testPrint+testPrintCustomNullValues+testPrintNullValues+testPrintToFileWithCharsetUtf16Be+testPrintToFileWithDefaultCharset+testPrintToPathWithDefaultCharset+testPrinter1+testPrinter2+testPrinter3+testPrinter4+testPrinter5+testPrinter6+testPrinter7+testQuoteAll+testQuoteCommaFirstChar+testQuoteNonNumeric+testSingleLineComment"
-        ]
+        ],
+        "status": "pass"
       },
       "coverage": {
         "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401/target/site/jacoco/jacoco.xml",
+        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999/target/site/jacoco/jacoco.xml",
         "method_coverage": {
-          "total_methods": 8,
-          "covered_methods": 4,
+          "total_methods": 4,
+          "covered_methods": 2,
           "coverage_ratio": 0.5,
           "details": [
             {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
+              "method": "org.apache.commons.csv.CSVFormat.Builder.setMaxRows",
               "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setMaxRows",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered": true
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered": true
             },
             {
               "method": "org.apache.commons.csv.CSVFormat.getMaxRows",
@@ -1500,41 +1491,17 @@
           ]
         },
         "method_line_coverage": {
-          "total_methods": 8,
-          "methods_with_data": 5,
-          "covered_lines": 18,
-          "total_lines": 25,
-          "coverage_ratio": 0.72,
+          "total_methods": 4,
+          "methods_with_data": 3,
+          "covered_lines": 17,
+          "total_lines": 24,
+          "coverage_ratio": 0.7083333333333334,
           "details": [
             {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
+              "method": "org.apache.commons.csv.CSVFormat.Builder.setMaxRows",
               "covered_lines": 0,
               "total_lines": 0,
               "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setMaxRows",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered_lines": 2,
-              "total_lines": 2,
-              "coverage_ratio": 1.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered_lines": 1,
-              "total_lines": 1,
-              "coverage_ratio": 1.0
             },
             {
               "method": "org.apache.commons.csv.CSVFormat.getMaxRows",
@@ -1550,45 +1517,21 @@
             },
             {
               "method": "org.apache.commons.csv.CSVPrinter.printRecords",
-              "covered_lines": 14,
-              "total_lines": 14,
+              "covered_lines": 16,
+              "total_lines": 16,
               "coverage_ratio": 1.0
             }
           ]
         },
         "method_branch_coverage": {
-          "total_methods": 8,
+          "total_methods": 4,
           "methods_with_data": 1,
           "covered_branches": 9,
           "total_branches": 12,
           "coverage_ratio": 0.75,
           "details": [
             {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setMaxRows",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
+              "method": "org.apache.commons.csv.CSVFormat.Builder.setMaxRows",
               "covered_branches": 0,
               "total_branches": 0,
               "coverage_ratio": 0.0
@@ -1614,7 +1557,7 @@
           ]
         }
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_v05_20260124_045918_645401",
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_v05_20260125_180138_450999",
       "patch_applied": true
     },
     "t05_execution": {
@@ -1622,156 +1565,36 @@
       "commit_used": "c62d12a8ec5f987c3107674c03c8577fbbb70033",
       "build": {
         "success": true,
-        "duration_seconds": 12.73361,
+        "duration_seconds": 11.370792,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
         "stderr": ""
       },
       "test": {
-        "success": true,
-        "duration_seconds": 29.001184,
-        "total_tests": 46,
-        "passed": 46,
+        "success": false,
+        "duration_seconds": 16.393819,
+        "total_tests": 0,
+        "passed": 0,
         "failed": 0,
         "skipped": 0,
         "errors": 0,
         "failed_tests": [],
         "error_tests": [],
         "selection_skipped": false,
-        "return_code": 0,
-        "stdout": "nalysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671' && 'git' 'symbolic-ref' 'HEAD'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug release 8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug release 8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m46\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.448 s -- in org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 46, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  25.775 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T05:00:00Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "return_code": 1,
+        "stdout": " \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug target 1.8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug target 1.8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;31mERROR\u001b[m] COMPILATION ERROR : \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837/src/test/java/org/apache/commons/csv/CSVPrinterTest.java:[840,61] cannot find symbol\n  symbol:   method setMaxRows(int)\n  location: class org.apache.commons.csv.CSVFormat.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837/src/test/java/org/apache/commons/csv/CSVPrinterTest.java:[870,65] cannot find symbol\n  symbol:   method setMaxRows(int)\n  location: class org.apache.commons.csv.CSVFormat.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837/src/test/java/org/apache/commons/csv/CSVPrinterTest.java:[895,65] cannot find symbol\n  symbol:   method setMaxRows(int)\n  location: class org.apache.commons.csv.CSVFormat.Builder\n[\u001b[1;34mINFO\u001b[m] 3 errors \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;31mBUILD FAILURE\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  12.691 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:02:06Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;31mERROR\u001b[m] Failed to execute goal \u001b[32morg.apache.maven.plugins:maven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m on project \u001b[36mcommons-csv\u001b[m: \u001b[1;31mCompilation failure\u001b[m: Compilation failure: \n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837/src/test/java/org/apache/commons/csv/CSVPrinterTest.java:[840,61] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setMaxRows(int)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVFormat.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837/src/test/java/org/apache/commons/csv/CSVPrinterTest.java:[870,65] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setMaxRows(int)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVFormat.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837/src/test/java/org/apache/commons/csv/CSVPrinterTest.java:[895,65] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setMaxRows(int)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVFormat.Builder\n[\u001b[1;31mERROR\u001b[m] -> \u001b[1m[Help 1]\u001b[m\n[\u001b[1;31mERROR\u001b[m] \n[\u001b[1;31mERROR\u001b[m] To see the full stack trace of the errors, re-run Maven with the \u001b[1m-e\u001b[m switch.\n[\u001b[1;31mERROR\u001b[m] Re-run Maven using the \u001b[1m-X\u001b[m switch to enable full debug logging.\n[\u001b[1;31mERROR\u001b[m] \n[\u001b[1;31mERROR\u001b[m] For more information about the errors and possible solutions, please read the following articles:\n[\u001b[1;31mERROR\u001b[m] \u001b[1m[Help 1]\u001b[m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException\n",
         "stderr": "",
         "selected_tests": [
           "org.apache.commons.csv.CSVPrinterTest#testCRComment+testDontQuoteEuroFirstChar+testExcelPrintAllArrayOfArrays+testExcelPrintAllArrayOfArraysWithFirstEmptyValue2+testExcelPrintAllArrayOfArraysWithFirstSpaceValue1+testExcelPrintAllArrayOfArraysWithFirstTabValue1+testExcelPrintAllArrayOfLists+testExcelPrintAllArrayOfListsWithFirstEmptyValue2+testExcelPrintAllIterableOfArrays+testExcelPrintAllIterableOfArraysWithFirstEmptyValue2+testExcelPrintAllIterableOfLists+testExcelPrintAllStreamOfArrays+testExcelPrinter1+testExcelPrinter2+testJdbcPrinter+testJdbcPrinterWithFirstEmptyValue2+testJdbcPrinterWithResultSet+testJdbcPrinterWithResultSetHeader+testJdbcPrinterWithResultSetMetaData+testMongoDbCsvBasic+testMongoDbCsvCommaInValue+testMongoDbCsvDoubleQuoteInValue+testMongoDbCsvTabInValue+testMongoDbTsvBasic+testMongoDbTsvCommaInValue+testMongoDbTsvTabInValue+testMultiLineComment+testNotFlushable+testParseCustomNullValues+testPrint+testPrintCustomNullValues+testPrintNullValues+testPrintToFileWithCharsetUtf16Be+testPrintToFileWithDefaultCharset+testPrintToPathWithDefaultCharset+testPrinter1+testPrinter2+testPrinter3+testPrinter4+testPrinter5+testPrinter6+testPrinter7+testQuoteAll+testQuoteCommaFirstChar+testQuoteNonNumeric+testSingleLineComment"
-        ]
+        ],
+        "status": "error",
+        "error_message": "Test execution failed"
       },
       "coverage": {
-        "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671/target/site/jacoco/jacoco.xml",
-        "method_coverage": {
-          "total_methods": 6,
-          "covered_methods": 3,
-          "coverage_ratio": 0.5,
-          "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered": true
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered": true
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.hashCode",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.CSVPrinter.printRecords",
-              "covered": true
-            }
-          ]
-        },
-        "method_line_coverage": {
-          "total_methods": 6,
-          "methods_with_data": 4,
-          "covered_lines": 16,
-          "total_lines": 24,
-          "coverage_ratio": 0.6666666666666666,
-          "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered_lines": 2,
-              "total_lines": 2,
-              "coverage_ratio": 1.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered_lines": 1,
-              "total_lines": 1,
-              "coverage_ratio": 1.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.hashCode",
-              "covered_lines": 0,
-              "total_lines": 8,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVPrinter.printRecords",
-              "covered_lines": 13,
-              "total_lines": 13,
-              "coverage_ratio": 1.0
-            }
-          ]
-        },
-        "method_branch_coverage": {
-          "total_methods": 6,
-          "methods_with_data": 1,
-          "covered_branches": 8,
-          "total_branches": 8,
-          "coverage_ratio": 1.0,
-          "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.hashCode",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVPrinter.printRecords",
-              "covered_branches": 8,
-              "total_branches": 8,
-              "coverage_ratio": 1.0
-            }
-          ]
-        }
+        "available": false
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_c62d12a8_t05_20260124_045918_646671",
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_c62d12a8_t05_20260125_180138_452837",
       "patch_applied": true
     },
     "v0_execution": {
@@ -1779,7 +1602,7 @@
       "commit_used": "30f0e1d6cafb2f6bec24b82493d850e5ae787173",
       "build": {
         "success": true,
-        "duration_seconds": 13.355134,
+        "duration_seconds": 11.895302,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
@@ -1787,7 +1610,7 @@
       },
       "test": {
         "success": true,
-        "duration_seconds": 29.377626,
+        "duration_seconds": 28.659064,
         "total_tests": 60,
         "passed": 60,
         "failed": 0,
@@ -1797,39 +1620,24 @@
         "error_tests": [],
         "selection_skipped": false,
         "return_code": 0,
-        "stdout": "/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966' && 'git' 'symbolic-ref' 'HEAD'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug release 8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug release 8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m60\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.815 s -- in org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 60, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  26.108 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T05:00:01Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "stdout": "5489\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug target 1.8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug target 1.8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32manimal-sniffer-maven-plugin:1.24:check\u001b[m \u001b[1m(checkAPIcompatibility)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m60\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.907 s -- in org.apache.commons.csv.\u001b[1mCSVPrinterTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 60, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  25.229 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:02:19Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
         "stderr": "",
         "selected_tests": [
           "org.apache.commons.csv.CSVPrinterTest#testCRComment+testDontQuoteEuroFirstChar+testExcelPrintAllArrayOfArrays+testExcelPrintAllArrayOfArraysWithFirstEmptyValue2+testExcelPrintAllArrayOfArraysWithFirstSpaceValue1+testExcelPrintAllArrayOfArraysWithFirstTabValue1+testExcelPrintAllArrayOfLists+testExcelPrintAllArrayOfListsWithFirstEmptyValue2+testExcelPrintAllIterableOfArrays+testExcelPrintAllIterableOfArraysWithFirstEmptyValue2+testExcelPrintAllIterableOfLists+testExcelPrintAllStreamOfArrays+testExcelPrinter1+testExcelPrinter2+testJdbcPrinter+testJdbcPrinterWithFirstEmptyValue2+testJdbcPrinterWithResultSet+testJdbcPrinterWithResultSetHeader+testJdbcPrinterWithResultSetMetaData+testMongoDbCsvBasic+testMongoDbCsvCommaInValue+testMongoDbCsvDoubleQuoteInValue+testMongoDbCsvTabInValue+testMongoDbTsvBasic+testMongoDbTsvCommaInValue+testMongoDbTsvTabInValue+testMultiLineComment+testNotFlushable+testParseCustomNullValues+testPrint+testPrintCustomNullValues+testPrintNullValues+testPrintToFileWithCharsetUtf16Be+testPrintToFileWithDefaultCharset+testPrintToPathWithDefaultCharset+testPrinter1+testPrinter2+testPrinter3+testPrinter4+testPrinter5+testPrinter6+testPrinter7+testQuoteAll+testQuoteCommaFirstChar+testQuoteNonNumeric+testSingleLineComment"
-        ]
+        ],
+        "status": "pass"
       },
       "coverage": {
         "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966/target/site/jacoco/jacoco.xml",
+        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489/target/site/jacoco/jacoco.xml",
         "method_coverage": {
-          "total_methods": 8,
-          "covered_methods": 4,
+          "total_methods": 4,
+          "covered_methods": 2,
           "coverage_ratio": 0.5,
           "details": [
             {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
+              "method": "org.apache.commons.csv.CSVFormat.Builder.setMaxRows",
               "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setMaxRows",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered": true
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered": true
             },
             {
               "method": "org.apache.commons.csv.CSVFormat.getMaxRows",
@@ -1846,41 +1654,17 @@
           ]
         },
         "method_line_coverage": {
-          "total_methods": 8,
-          "methods_with_data": 5,
-          "covered_lines": 18,
-          "total_lines": 25,
-          "coverage_ratio": 0.72,
+          "total_methods": 4,
+          "methods_with_data": 3,
+          "covered_lines": 17,
+          "total_lines": 24,
+          "coverage_ratio": 0.7083333333333334,
           "details": [
             {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
+              "method": "org.apache.commons.csv.CSVFormat.Builder.setMaxRows",
               "covered_lines": 0,
               "total_lines": 0,
               "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setMaxRows",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered_lines": 2,
-              "total_lines": 2,
-              "coverage_ratio": 1.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
-              "covered_lines": 1,
-              "total_lines": 1,
-              "coverage_ratio": 1.0
             },
             {
               "method": "org.apache.commons.csv.CSVFormat.getMaxRows",
@@ -1896,45 +1680,21 @@
             },
             {
               "method": "org.apache.commons.csv.CSVPrinter.printRecords",
-              "covered_lines": 14,
-              "total_lines": 14,
+              "covered_lines": 16,
+              "total_lines": 16,
               "coverage_ratio": 1.0
             }
           ]
         },
         "method_branch_coverage": {
-          "total_methods": 8,
+          "total_methods": 4,
           "methods_with_data": 1,
           "covered_branches": 12,
           "total_branches": 12,
           "coverage_ratio": 1.0,
           "details": [
             {
-              "method": "org.apache.commons.csv.Builder.setLenientEof",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setMaxRows",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrailingDelimiter",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.append",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.CSVFormat.getLenientEof",
+              "method": "org.apache.commons.csv.CSVFormat.Builder.setMaxRows",
               "covered_branches": 0,
               "total_branches": 0,
               "coverage_ratio": 0.0
@@ -1960,11 +1720,11 @@
           ]
         }
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987502/commons-csv_30f0e1d6_v0_20260124_045918_646966"
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242699/commons-csv_30f0e1d6_v0_20260125_180138_455489"
     },
     "classification": {
-      "scenario": "D",
-      "scenario_description": "V-0.5通过，T-0.5通过：小幅调整，可能是覆盖率变化或适应性修改",
+      "scenario": "U",
+      "scenario_description": "V-0.5或T-0.5测试被跳过/结果未知：场景不确定",
       "type1_execution_error": {
         "detected": false,
         "subtype": null,
@@ -1978,11 +1738,12 @@
       },
       "type3_adaptive_change": {
         "detected": true,
-        "confidence": "high",
+        "confidence": "low",
         "evidence": {
           "reason": "不属于Type1（执行出错）且不属于Type2（覆盖率降低），归类为适应性调整",
-          "scenario": "D",
-          "scenario_meaning": "小幅适应性调整，新旧测试都能通过"
+          "scenario": "U",
+          "scenario_meaning": "执行信息不足，场景不确定",
+          "note": "V-0.5或T-0.5测试被跳过/结果未知，置信度降低"
         }
       },
       "all_types": [
@@ -1992,6 +1753,6 @@
       "types_count": 1
     },
     "qualified": true,
-    "analysis_timestamp": "2026-01-24T05:00:02.406064"
+    "analysis_timestamp": "2026-01-25T18:02:19.586129"
   }
 }

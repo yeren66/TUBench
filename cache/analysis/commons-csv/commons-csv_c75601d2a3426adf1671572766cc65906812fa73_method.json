@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_c75601d2a3426adf1671572766cc65906812fa73_method",
-  "cached_at": "2026-01-24T04:57:09.378665",
+  "cached_at": "2026-01-25T17:58:41.809628",
   "project": "commons-csv",
   "commit_hash": "c75601d2a3426adf1671572766cc65906812fa73",
   "phase": "method",
@@ -53,8 +53,10 @@
           ],
           "start_line": 136,
           "end_line": 152,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
@@ -66,8 +68,10 @@
           ],
           "start_line": 32,
           "end_line": 34,
-          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": false
         }
       ],

@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_d93c4940f2673a98033457705bc5bf0d989f7f62_method",
-  "cached_at": "2026-01-24T04:57:03.527205",
+  "cached_at": "2026-01-25T17:58:30.627128",
   "project": "commons-csv",
   "commit_hash": "d93c4940f2673a98033457705bc5bf0d989f7f62",
   "phase": "method",
@@ -56,23 +56,16 @@
           "class": "CSVParser",
           "method": "parse",
           "parameters": [
-            "File",
+            "InputStream",
             "Charset",
             "CSVFormat"
           ],
-          "start_line": 320,
-          "end_line": 323,
+          "start_line": 347,
+          "end_line": 350,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "CSVParser",
-          "method": "nextRecord",
-          "parameters": [],
-          "start_line": 884,
-          "end_line": 930,
-          "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
@@ -82,18 +75,10 @@
           "parameters": [],
           "start_line": 1360,
           "end_line": 1424,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
-        {
-          "class": "CSVParserTest",
-          "method": "testParsePathCharsetNullFormat",
-          "parameters": [],
-          "start_line": 1465,
-          "end_line": 1471,
           "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
-          "package": "org.apache.commons.csv",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -102,18 +87,10 @@
           "parameters": [],
           "start_line": 1474,
           "end_line": 1480,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
-        {
-          "class": "CSVParserTest",
-          "method": "testParseStringNullFormat",
-          "parameters": [],
-          "start_line": 1483,
-          "end_line": 1494,
           "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
-          "package": "org.apache.commons.csv",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -122,14 +99,16 @@
           "parameters": [],
           "start_line": 1497,
           "end_line": 1503,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         }
       ],
       "summary": {
-        "source_methods_count": 2,
-        "test_methods_count": 5
+        "source_methods_count": 1,
+        "test_methods_count": 3
       }
     },
     "diff_info": {

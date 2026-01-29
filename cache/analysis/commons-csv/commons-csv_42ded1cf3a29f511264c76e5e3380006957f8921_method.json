@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_42ded1cf3a29f511264c76e5e3380006957f8921_method",
-  "cached_at": "2026-01-24T04:57:03.155378",
+  "cached_at": "2026-01-25T17:58:30.083994",
   "project": "commons-csv",
   "commit_hash": "42ded1cf3a29f511264c76e5e3380006957f8921",
   "phase": "method",
@@ -54,21 +54,14 @@
       "source_methods": [
         {
           "class": "Token",
-          "method": "reset",
-          "parameters": [],
-          "start_line": 63,
-          "end_line": 68,
-          "file": "src/main/java/org/apache/commons/csv/Token.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "Token",
           "method": "toString",
           "parameters": [],
           "start_line": 76,
           "end_line": 78,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/Token.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
@@ -80,13 +73,15 @@
           ],
           "start_line": 35,
           "end_line": 49,
-          "file": "src/test/java/org/apache/commons/csv/TokenTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/TokenTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         }
       ],
       "summary": {
-        "source_methods_count": 2,
+        "source_methods_count": 1,
         "test_methods_count": 1
       }
     },

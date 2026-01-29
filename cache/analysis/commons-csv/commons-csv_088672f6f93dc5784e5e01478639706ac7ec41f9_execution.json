@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_088672f6f93dc5784e5e01478639706ac7ec41f9_execution",
-  "cached_at": "2026-01-24T04:58:35.127629",
+  "cached_at": "2026-01-25T18:01:01.654497",
   "project": "commons-csv",
   "commit_hash": "088672f6f93dc5784e5e01478639706ac7ec41f9",
   "phase": "execution",
@@ -62,49 +62,35 @@
           ],
           "start_line": 370,
           "end_line": 373,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
-        {
-          "class": "CSVParserTest",
-          "method": "testParse",
-          "parameters": [],
-          "start_line": 1359,
-          "end_line": 1424,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
-          "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
         {
           "class": "CSVParserTest",
           "method": "testParseFileCharsetNullFormat",
           "parameters": [],
           "start_line": 1427,
           "end_line": 1433,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
           "class": "CSVParserTest",
-          "method": "testParseNullFileFormat",
+          "method": "testParseFileNullFormat",
           "parameters": [],
-          "start_line": 1436,
-          "end_line": 1438,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "start_line": 1427,
+          "end_line": 1429,
           "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
-        {
-          "class": "CSVParserTest",
-          "method": "testParseNullUrlCharsetFormat",
-          "parameters": [],
-          "start_line": 1451,
-          "end_line": 1453,
           "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
-          "package": "org.apache.commons.csv",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -113,18 +99,10 @@
           "parameters": [],
           "start_line": 1456,
           "end_line": 1462,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
-          "is_test_method": true
-        },
-        {
-          "class": "CSVParserTest",
-          "method": "testParserUrlNullCharsetFormat",
-          "parameters": [],
-          "start_line": 1465,
-          "end_line": 1467,
           "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
-          "package": "org.apache.commons.csv",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -133,8 +111,10 @@
           "parameters": [],
           "start_line": 1484,
           "end_line": 1491,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -143,8 +123,10 @@
           "parameters": [],
           "start_line": 1582,
           "end_line": 1599,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -153,14 +135,16 @@
           "parameters": [],
           "start_line": 1602,
           "end_line": 1619,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         }
       ],
       "summary": {
         "source_methods_count": 1,
-        "test_methods_count": 9
+        "test_methods_count": 6
       }
     },
     "diff_info": {
@@ -321,7 +305,7 @@
       "commit_used": "931531bcd8e333372f05fc19f670dd5a9ecfd219",
       "build": {
         "success": true,
-        "duration_seconds": 14.279262,
+        "duration_seconds": 12.652398,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
@@ -329,9 +313,9 @@
       },
       "test": {
         "success": true,
-        "duration_seconds": 31.188671,
-        "total_tests": 7,
-        "passed": 7,
+        "duration_seconds": 27.321477,
+        "total_tests": 4,
+        "passed": 4,
         "failed": 0,
         "skipped": 0,
         "errors": 0,
@@ -339,15 +323,16 @@
         "error_tests": [],
         "selection_skipped": false,
         "return_code": 0,
-        "stdout": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414' && 'git' 'symbolic-ref' 'HEAD'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug release 8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug release 8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m7\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.613 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 7, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  28.932 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T04:58:33Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "stdout": "1_199460\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug target 1.8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug target 1.8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32manimal-sniffer-maven-plugin:1.24:check\u001b[m \u001b[1m(checkAPIcompatibility)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m4\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.355 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 4, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  24.782 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:01:01Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
         "stderr": "",
         "selected_tests": [
-          "org.apache.commons.csv.CSVParserTest#testParse+testParseNullFileFormat+testParseNullUrlCharsetFormat+testParseUrlCharsetNullFormat+testParserUrlNullCharsetFormat+testProvidedHeader+testProvidedHeaderAuto"
-        ]
+          "org.apache.commons.csv.CSVParserTest#testParseFileNullFormat+testParseUrlCharsetNullFormat+testProvidedHeader+testProvidedHeaderAuto"
+        ],
+        "status": "pass"
       },
       "coverage": {
         "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414/target/site/jacoco/jacoco.xml",
+        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460/target/site/jacoco/jacoco.xml",
         "method_coverage": {
           "total_methods": 1,
           "covered_methods": 1,
@@ -362,15 +347,15 @@
         "method_line_coverage": {
           "total_methods": 1,
           "methods_with_data": 1,
-          "covered_lines": 3,
+          "covered_lines": 1,
           "total_lines": 3,
-          "coverage_ratio": 1.0,
+          "coverage_ratio": 0.3333333333333333,
           "details": [
             {
               "method": "org.apache.commons.csv.CSVParser.parse",
-              "covered_lines": 3,
+              "covered_lines": 1,
               "total_lines": 3,
-              "coverage_ratio": 1.0
+              "coverage_ratio": 0.3333333333333333
             }
           ]
         },
@@ -390,40 +375,50 @@
           ]
         }
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v1_20260124_045748_401414"
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v1_20260125_180021_199460"
     },
     "v05_execution": {
       "version": "v05",
       "commit_used": "931531bcd8e333372f05fc19f670dd5a9ecfd219",
       "build": {
         "success": true,
-        "duration_seconds": 14.160735,
+        "duration_seconds": 13.199385,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
         "stderr": ""
       },
       "test": {
-        "success": true,
-        "duration_seconds": 30.512196,
-        "total_tests": 7,
-        "passed": 7,
-        "failed": 0,
+        "success": false,
+        "duration_seconds": 26.879291,
+        "total_tests": 4,
+        "passed": 3,
+        "failed": 1,
         "skipped": 0,
         "errors": 0,
-        "failed_tests": [],
+        "failed_tests": [
+          {
+            "class": "org.apache.commons.csv.CSVParserTest",
+            "method": "testParseFileNullFormat",
+            "full_name": "org.apache.commons.csv.CSVParserTest.testParseFileNullFormat",
+            "failure_type": "org.opentest4j.AssertionFailedError",
+            "message": "Unexpected exception type thrown, expected: <java.lang.NullPointerException> but was: <java.nio.file.NoSuchFileException>",
+            "stack_trace": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.NullPointerException> but was: <java.nio.file.NoSuchFileException>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)\n\tat org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)\n\tat org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)\n\tat org.apache.commons.csv.CSVParserTest.testParseFileNullFormat(CSVParserTest.java:1428)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\nCaused by: java.nio.file.NoSuchFileException: CSVFileParser/test.csv\n\tat sun.nio.fs.UnixException.translateToIOException(UnixException.java:86)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException."
+          }
+        ],
         "error_tests": [],
         "selection_skipped": false,
         "return_code": 0,
-        "stdout": "ch_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774' && 'git' 'symbolic-ref' 'HEAD'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug release 8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug release 8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m7\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.072 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 7, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  28.138 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T04:58:33Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "stdout": "_20260125_180021_200183/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v05_20260125_180021_200183/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32manimal-sniffer-maven-plugin:1.24:check\u001b[m \u001b[1m(checkAPIcompatibility)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v05_20260125_180021_200183/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests \u001b[0;1mrun: \u001b[0;1m4\u001b[m, \u001b[1;31mFailures: \u001b[0;1;31m1\u001b[m, Errors: 0, Skipped: 0, Time elapsed: 0.460 s\u001b[1;31m <<< FAILURE!\u001b[m -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.CSVParserTest.testParseFileNullFormat -- Time elapsed: 0.031 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.NullPointerException> but was: <java.nio.file.NoSuchFileException>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)\n\tat org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)\n\tat org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)\n\tat org.apache.commons.csv.CSVParserTest.testParseFileNullFormat(CSVParserTest.java:1428)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\nCaused by: java.nio.file.NoSuchFileException: CSVFileParser/test.csv\n\tat sun.nio.fs.UnixException.translateToIOException(UnixException.java:86)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)\n\tat sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214)\n\tat java.nio.file.Files.newByteChannel(Files.java:361)\n\tat java.nio.file.Files.newByteChannel(Files.java:407)\n\tat java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384)\n\tat java.nio.file.Files.newInputStream(Files.java:152)\n\tat org.apache.commons.csv.CSVParser.parse(CSVParser.java:372)\n\tat org.apache.commons.csv.CSVParser.parse(CSVParser.java:320)\n\tat org.apache.commons.csv.CSVParserTest.lambda$testParseFileNullFormat$14(CSVParserTest.java:1428)\n\tat org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)\n\t... 6 more\n\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mFailures: \u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  CSVParserTest.testParseFileNullFormat:1428 Unexpected exception type thrown, expected: <java.lang.NullPointerException> but was: <java.nio.file.NoSuchFileException>\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests run: 4, Failures: 1, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] There are test failures.\n\nSee /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v05_20260125_180021_200183/target/surefire-reports for the individual test results.\nSee dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v05_20260125_180021_200183/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  24.509 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:01:01Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
         "stderr": "",
         "selected_tests": [
-          "org.apache.commons.csv.CSVParserTest#testParse+testParseNullFileFormat+testParseNullUrlCharsetFormat+testParseUrlCharsetNullFormat+testParserUrlNullCharsetFormat+testProvidedHeader+testProvidedHeaderAuto"
-        ]
+          "org.apache.commons.csv.CSVParserTest#testParseFileNullFormat+testParseUrlCharsetNullFormat+testProvidedHeader+testProvidedHeaderAuto"
+        ],
+        "status": "fail"
       },
       "coverage": {
         "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774/target/site/jacoco/jacoco.xml",
+        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v05_20260125_180021_200183/target/site/jacoco/jacoco.xml",
         "method_coverage": {
           "total_methods": 1,
           "covered_methods": 1,
@@ -438,15 +433,15 @@
         "method_line_coverage": {
           "total_methods": 1,
           "methods_with_data": 1,
-          "covered_lines": 2,
+          "covered_lines": 1,
           "total_lines": 2,
-          "coverage_ratio": 1.0,
+          "coverage_ratio": 0.5,
           "details": [
             {
               "method": "org.apache.commons.csv.CSVParser.parse",
-              "covered_lines": 2,
+              "covered_lines": 1,
               "total_lines": 2,
-              "coverage_ratio": 1.0
+              "coverage_ratio": 0.5
             }
           ]
         },
@@ -466,7 +461,7 @@
           ]
         }
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_v05_20260124_045748_401774",
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_v05_20260125_180021_200183",
       "patch_applied": true
     },
     "t05_execution": {
@@ -474,33 +469,51 @@
       "commit_used": "931531bcd8e333372f05fc19f670dd5a9ecfd219",
       "build": {
         "success": true,
-        "duration_seconds": 15.030774,
+        "duration_seconds": 12.944724,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
         "stderr": ""
       },
       "test": {
-        "success": true,
-        "duration_seconds": 31.495407,
-        "total_tests": 7,
-        "passed": 7,
+        "success": false,
+        "duration_seconds": 27.228862,
+        "total_tests": 5,
+        "passed": 3,
         "failed": 0,
         "skipped": 0,
-        "errors": 0,
-        "failed_tests": [],
+        "errors": 2,
+        "failed_tests": [
+          {
+            "class": "org.apache.commons.csv.CSVParserTest",
+            "method": "testParsePathCharsetNullFormat",
+            "full_name": "org.apache.commons.csv.CSVParserTest.testParsePathCharsetNullFormat",
+            "failure_type": "java.lang.NullPointerException",
+            "message": "format",
+            "stack_trace": "java.lang.NullPointerException: format\n\tat java.util.Objects.requireNonNull(Objects.java:228)\n\tat org.apache.commons.csv.CSVParser.parse(CSVParser.java:372)\n\tat org.apache.commons.csv.CSVParserTest.testParsePathCharsetNullFormat(CSVParserTest.java:1458)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n"
+          },
+          {
+            "class": "org.apache.commons.csv.CSVParserTest",
+            "method": "testParseFileCharsetNullFormat",
+            "full_name": "org.apache.commons.csv.CSVParserTest.testParseFileCharsetNullFormat",
+            "failure_type": "java.lang.NullPointerException",
+            "message": "format",
+            "stack_trace": "java.lang.NullPointerException: format\n\tat java.util.Objects.requireNonNull(Objects.java:228)\n\tat org.apache.commons.csv.CSVParser.parse(CSVParser.java:372)\n\tat org.apache.commons.csv.CSVParser.parse(CSVParser.java:320)\n\tat org.apache.commons.csv.CSVParserTest.testParseFileCharsetNullFormat(CSVParserTest.java:1429)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n"
+          }
+        ],
         "error_tests": [],
         "selection_skipped": false,
         "return_code": 0,
-        "stdout": "ch_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283' && 'git' 'symbolic-ref' 'HEAD'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug release 8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug release 8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m7\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.145 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 7, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  29.458 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T04:58:35Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "stdout": "stResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug target 1.8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_t05_20260125_180021_200708/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_t05_20260125_180021_200708/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32manimal-sniffer-maven-plugin:1.24:check\u001b[m \u001b[1m(checkAPIcompatibility)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_t05_20260125_180021_200708/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests \u001b[0;1mrun: \u001b[0;1m5\u001b[m, Failures: 0, \u001b[1;31mErrors: \u001b[0;1;31m2\u001b[m, Skipped: 0, Time elapsed: 0.620 s\u001b[1;31m <<< FAILURE!\u001b[m -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.CSVParserTest.testParsePathCharsetNullFormat -- Time elapsed: 0.139 s <<< ERROR!\njava.lang.NullPointerException: format\n\tat java.util.Objects.requireNonNull(Objects.java:228)\n\tat org.apache.commons.csv.CSVParser.parse(CSVParser.java:372)\n\tat org.apache.commons.csv.CSVParserTest.testParsePathCharsetNullFormat(CSVParserTest.java:1458)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.CSVParserTest.testParseFileCharsetNullFormat -- Time elapsed: 0.013 s <<< ERROR!\njava.lang.NullPointerException: format\n\tat java.util.Objects.requireNonNull(Objects.java:228)\n\tat org.apache.commons.csv.CSVParser.parse(CSVParser.java:372)\n\tat org.apache.commons.csv.CSVParser.parse(CSVParser.java:320)\n\tat org.apache.commons.csv.CSVParserTest.testParseFileCharsetNullFormat(CSVParserTest.java:1429)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mErrors: \u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  CSVParserTest.testParseFileCharsetNullFormat:1429 ? NullPointer format\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  CSVParserTest.testParsePathCharsetNullFormat:1458 ? NullPointer format\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests run: 5, Failures: 0, Errors: 2, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \n\nSee /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_t05_20260125_180021_200708/target/surefire-reports for the individual test results.\nSee dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_t05_20260125_180021_200708/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  24.749 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:01:01Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
         "stderr": "",
         "selected_tests": [
-          "org.apache.commons.csv.CSVParserTest#testParse+testParseNullFileFormat+testParseNullUrlCharsetFormat+testParseUrlCharsetNullFormat+testParserUrlNullCharsetFormat+testProvidedHeader+testProvidedHeaderAuto"
-        ]
+          "org.apache.commons.csv.CSVParserTest#testParseFileCharsetNullFormat+testParsePathCharsetNullFormat+testParseUrlCharsetNullFormat+testProvidedHeader+testProvidedHeaderAuto"
+        ],
+        "status": "fail"
       },
       "coverage": {
         "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283/target/site/jacoco/jacoco.xml",
+        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_t05_20260125_180021_200708/target/site/jacoco/jacoco.xml",
         "method_coverage": {
           "total_methods": 1,
           "covered_methods": 1,
@@ -515,15 +528,15 @@
         "method_line_coverage": {
           "total_methods": 1,
           "methods_with_data": 1,
-          "covered_lines": 3,
+          "covered_lines": 1,
           "total_lines": 3,
-          "coverage_ratio": 1.0,
+          "coverage_ratio": 0.3333333333333333,
           "details": [
             {
               "method": "org.apache.commons.csv.CSVParser.parse",
-              "covered_lines": 3,
+              "covered_lines": 1,
               "total_lines": 3,
-              "coverage_ratio": 1.0
+              "coverage_ratio": 0.3333333333333333
             }
           ]
         },
@@ -543,7 +556,7 @@
           ]
         }
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_931531bc_t05_20260124_045748_402283",
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_931531bc_t05_20260125_180021_200708",
       "patch_applied": true
     },
     "v0_execution": {
@@ -551,7 +564,7 @@
       "commit_used": "088672f6f93dc5784e5e01478639706ac7ec41f9",
       "build": {
         "success": true,
-        "duration_seconds": 14.952523,
+        "duration_seconds": 12.786978,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
@@ -559,9 +572,9 @@
       },
       "test": {
         "success": true,
-        "duration_seconds": 30.973363,
-        "total_tests": 9,
-        "passed": 9,
+        "duration_seconds": 26.844902,
+        "total_tests": 5,
+        "passed": 5,
         "failed": 0,
         "skipped": 0,
         "errors": 0,
@@ -569,15 +582,16 @@
         "error_tests": [],
         "selection_skipped": false,
         "return_code": 0,
-        "stdout": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943' && 'git' 'symbolic-ref' 'HEAD'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug release 8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug release 8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m9\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.627 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 9, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  28.842 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T04:58:34Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "stdout": "1_209906\n[\u001b[1;33mWARNING\u001b[m] Cannot get the branch information from the git repository: \nDetecting the current branch failed: fatal: ref HEAD is not a symbolic ref\n\n[\u001b[1;34mINFO\u001b[m] Executing: /bin/sh -c cd '/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'\n[\u001b[1;34mINFO\u001b[m] Working directory: /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906\n[\u001b[1;34mINFO\u001b[m] Storing scmBranch: UNKNOWN\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:resources\u001b[m \u001b[1m(default-resources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] skip non existing resourceDirectory /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906/src/main/resources\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:compile\u001b[m \u001b[1m(default-compile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged source code\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 12 source files with javac [debug target 1.8] to target/classes\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-bundle-plugin:5.1.9:manifest\u001b[m \u001b[1m(bundle-manifest)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] No MANIFEST.MF file found, generating manifest.\n[\u001b[1;34mINFO\u001b[m] Writing manifest: /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906/target/osgi/MANIFEST.MF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-resources-plugin:3.3.1:testResources\u001b[m \u001b[1m(default-testResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 36 source files with javac [debug target 1.8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32manimal-sniffer-maven-plugin:1.24:check\u001b[m \u001b[1m(checkAPIcompatibility)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.2:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m5\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.345 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: 5, Failures: 0, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  24.229 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:01:00Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
         "stderr": "",
         "selected_tests": [
-          "org.apache.commons.csv.CSVParserTest#testParse+testParseFileCharsetNullFormat+testParseNullFileFormat+testParseNullUrlCharsetFormat+testParsePathCharsetNullFormat+testParseUrlCharsetNullFormat+testParserUrlNullCharsetFormat+testProvidedHeader+testProvidedHeaderAuto"
-        ]
+          "org.apache.commons.csv.CSVParserTest#testParseFileCharsetNullFormat+testParsePathCharsetNullFormat+testParseUrlCharsetNullFormat+testProvidedHeader+testProvidedHeaderAuto"
+        ],
+        "status": "pass"
       },
       "coverage": {
         "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943/target/site/jacoco/jacoco.xml",
+        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906/target/site/jacoco/jacoco.xml",
         "method_coverage": {
           "total_methods": 1,
           "covered_methods": 1,
@@ -620,38 +634,51 @@
           ]
         }
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_088672f6_v0_20260124_045748_402943"
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_088672f6_v0_20260125_180021_209906"
     },
     "classification": {
-      "scenario": "D",
-      "scenario_description": "V-0.5通过，T-0.5通过：小幅调整，可能是覆盖率变化或适应性修改",
+      "scenario": "A",
+      "scenario_description": "V-0.5失败，T-0.5失败：源代码行为变更，新旧测试都不适配",
       "type1_execution_error": {
-        "detected": false,
-        "subtype": null,
-        "confidence": null,
-        "evidence": {}
+        "detected": true,
+        "subtype": "runtime_failure",
+        "confidence": "high",
+        "evidence": {
+          "t05_analysis": "T-0.5也失败，确认是源代码行为变更导致",
+          "v05_test_status": "fail",
+          "v0_test_status": "pass",
+          "failed_tests_count": 1,
+          "failed_tests": [
+            {
+              "class": "org.apache.commons.csv.CSVParserTest",
+              "method": "testParseFileNullFormat",
+              "full_name": "org.apache.commons.csv.CSVParserTest.testParseFileNullFormat",
+              "failure_type": "org.opentest4j.AssertionFailedError",
+              "message": "Unexpected exception type thrown, expected: <java.lang.NullPointerException> but was: <java.nio.file.NoSuchFileException>",
+              "stack_trace": "org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.NullPointerException> but was: <java.nio.file.NoSuchFileException>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)\n\tat org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)\n\tat org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)\n\tat org.apache.commons.csv.CSVParserTest.testParseFileNullFormat(CSVParserTest.java:1428)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\nCaused by: java.nio.file.NoSuchFileException: CSVFileParser/test.csv\n\tat sun.nio.fs.UnixException.translateToIOException(UnixException.java:86)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException."
+            }
+          ]
+        }
       },
       "type2_coverage_decrease": {
         "detected": false,
         "confidence": null,
-        "evidence": {}
-      },
-      "type3_adaptive_change": {
-        "detected": true,
-        "confidence": "high",
         "evidence": {
-          "reason": "不属于Type1（执行出错）且不属于Type2（覆盖率降低），归类为适应性调整",
-          "scenario": "D",
-          "scenario_meaning": "小幅适应性调整，新旧测试都能通过"
+          "note": "V-0.5测试状态为fail，无法分析覆盖率"
         }
       },
+      "type3_adaptive_change": {
+        "detected": false,
+        "confidence": null,
+        "evidence": {}
+      },
       "all_types": [
-        "type3_adaptive_change"
+        "type1_execution_error"
       ],
-      "primary_type": "type3_adaptive_change",
+      "primary_type": "type1_execution_error",
       "types_count": 1
     },
     "qualified": true,
-    "analysis_timestamp": "2026-01-24T04:58:35.126271"
+    "analysis_timestamp": "2026-01-25T18:01:01.649948"
   }
 }

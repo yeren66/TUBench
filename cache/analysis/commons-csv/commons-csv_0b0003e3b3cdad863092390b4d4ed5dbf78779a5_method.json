@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_0b0003e3b3cdad863092390b4d4ed5dbf78779a5_method",
-  "cached_at": "2026-01-24T04:57:09.333569",
+  "cached_at": "2026-01-25T17:58:41.754016",
   "project": "commons-csv",
   "commit_hash": "0b0003e3b3cdad863092390b4d4ed5dbf78779a5",
   "phase": "method",
@@ -58,46 +58,41 @@
     "method_changes": {
       "source_methods": [
         {
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "get",
           "parameters": [],
           "start_line": 169,
           "end_line": 171,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
-          "class": "Builder",
-          "method": "setCharacterOffset",
+          "class": "CSVParser.Builder",
+          "method": "setEnableByteTracking",
           "parameters": [
-            "long"
+            "boolean"
           ],
-          "start_line": 179,
-          "end_line": 182,
+          "start_line": 191,
+          "end_line": 194,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
-          "class": "Builder",
-          "method": "setRecordNumber",
-          "parameters": [
-            "long"
-          ],
-          "start_line": 201,
-          "end_line": 204,
-          "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "setTrackBytes",
           "parameters": [
             "boolean"
           ],
           "start_line": 213,
           "end_line": 216,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
@@ -107,8 +102,10 @@
           "parameters": [],
           "start_line": 812,
           "end_line": 843,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -117,8 +114,10 @@
           "parameters": [],
           "start_line": 891,
           "end_line": 924,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -127,8 +126,10 @@
           "parameters": [],
           "start_line": 37,
           "end_line": 47,
-          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -137,13 +138,15 @@
           "parameters": [],
           "start_line": 50,
           "end_line": 60,
-          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         }
       ],
       "summary": {
-        "source_methods_count": 4,
+        "source_methods_count": 3,
         "test_methods_count": 4
       }
     },
@@ -237,7 +240,7 @@
       "source": [
         {
           "package": "org.apache.commons.csv",
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "get",
           "parameters": [],
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
@@ -247,7 +250,7 @@
         },
         {
           "package": "org.apache.commons.csv",
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "setEnableByteTracking",
           "parameters": [
             "boolean"
@@ -259,7 +262,7 @@
         },
         {
           "package": "org.apache.commons.csv",
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "setTrackBytes",
           "parameters": [
             "boolean"

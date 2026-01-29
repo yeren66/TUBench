@@ -4,7 +4,7 @@ Maven执行模块 - 负责Maven构建、测试执行和JaCoCo集成
 
 import os
 import subprocess
-from config import Config
+from config import Config, AnalysisConfig
 from utils.logger import get_logger
 from utils.pom_modifier import PomModifier
 
@@ -118,21 +118,36 @@ class MavenExecutor:
             tuple: (success: bool, output: str)
         """
         try:
+            # 使用配置的Maven可执行文件
+            maven_cmd = AnalysisConfig.MAVEN_EXECUTABLE or Config.MAVEN_CMD
+            
             # Add Maven options to skip RAT check (license validation fails after POM modification)
             # and ignore test failures to allow processing to continue
-            cmd = [Config.MAVEN_CMD, '-Drat.skip=true', '-Dmaven.test.failure.ignore=true']
+            cmd = [maven_cmd, '-Drat.skip=true', '-Dmaven.test.failure.ignore=true']
+            
+            # 添加额外的兼容性参数
+            if AnalysisConfig.MAVEN_EXTRA_ARGS:
+                cmd += AnalysisConfig.MAVEN_EXTRA_ARGS.split()
+            
             if extra_args:
                 cmd += list(extra_args)
             cmd += goal.split()
             
             logger.debug(f"执行Maven命令: {' '.join(cmd)} @ {self.project_path}")
             
+            # 构建环境变量
+            env = os.environ.copy()
+            if AnalysisConfig.JAVA_HOME:
+                env['JAVA_HOME'] = AnalysisConfig.JAVA_HOME
+                env['PATH'] = f"{AnalysisConfig.JAVA_HOME}/bin:{env.get('PATH', '')}"
+            
             process = subprocess.Popen(
                 cmd,
                 cwd=self.project_path,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                text=True
+                text=True,
+                env=env
             )
             
             # 设置超时

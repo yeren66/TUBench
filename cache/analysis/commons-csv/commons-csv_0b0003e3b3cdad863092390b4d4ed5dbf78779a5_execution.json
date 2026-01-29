@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_0b0003e3b3cdad863092390b4d4ed5dbf78779a5_execution",
-  "cached_at": "2026-01-24T05:00:07.430097",
+  "cached_at": "2026-01-25T18:02:21.371731",
   "project": "commons-csv",
   "commit_hash": "0b0003e3b3cdad863092390b4d4ed5dbf78779a5",
   "phase": "execution",
@@ -58,46 +58,41 @@
     "method_changes": {
       "source_methods": [
         {
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "get",
           "parameters": [],
           "start_line": 169,
           "end_line": 171,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
-          "class": "Builder",
-          "method": "setCharacterOffset",
+          "class": "CSVParser.Builder",
+          "method": "setEnableByteTracking",
           "parameters": [
-            "long"
+            "boolean"
           ],
-          "start_line": 179,
-          "end_line": 182,
+          "start_line": 191,
+          "end_line": 194,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         },
         {
-          "class": "Builder",
-          "method": "setRecordNumber",
-          "parameters": [
-            "long"
-          ],
-          "start_line": 201,
-          "end_line": 204,
-          "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
-        },
-        {
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "setTrackBytes",
           "parameters": [
             "boolean"
           ],
           "start_line": 213,
           "end_line": 216,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
@@ -107,8 +102,10 @@
           "parameters": [],
           "start_line": 812,
           "end_line": 843,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -117,8 +114,10 @@
           "parameters": [],
           "start_line": 891,
           "end_line": 924,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -127,8 +126,10 @@
           "parameters": [],
           "start_line": 37,
           "end_line": 47,
-          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -137,13 +138,15 @@
           "parameters": [],
           "start_line": 50,
           "end_line": 60,
-          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/JiraCsv196Test.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         }
       ],
       "summary": {
-        "source_methods_count": 4,
+        "source_methods_count": 3,
         "test_methods_count": 4
       }
     },
@@ -237,7 +240,7 @@
       "source": [
         {
           "package": "org.apache.commons.csv",
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "get",
           "parameters": [],
           "file": "src/main/java/org/apache/commons/csv/CSVParser.java",
@@ -247,7 +250,7 @@
         },
         {
           "package": "org.apache.commons.csv",
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "setEnableByteTracking",
           "parameters": [
             "boolean"
@@ -259,7 +262,7 @@
         },
         {
           "package": "org.apache.commons.csv",
-          "class": "Builder",
+          "class": "CSVParser.Builder",
           "method": "setTrackBytes",
           "parameters": [
             "boolean"
@@ -319,116 +322,7 @@
       "commit_used": "c75601d2a3426adf1671572766cc65906812fa73",
       "build": {
         "success": true,
-        "duration_seconds": 13.205104,
-        "command": "mvn compile -DskipTests",
-        "return_code": 0,
-        "stdout": "",
-        "stderr": ""
-      },
-      "test": {
-        "success": true,
-        "duration_seconds": 28.936512,
-        "total_tests": 4,
-        "passed": 2,
-        "failed": 2,
-        "skipped": 0,
-        "errors": 0,
-        "failed_tests": [],
-        "error_tests": [],
-        "selection_skipped": false,
-        "return_code": 0,
-        "stdout": "4_045924_419948/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v1_20260124_045924_419948/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v1_20260124_045924_419948/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.1:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests \u001b[0;1mrun: \u001b[0;1m2\u001b[m, \u001b[1;31mFailures: \u001b[0;1;31m2\u001b[m, Errors: 0, Skipped: 0, Time elapsed: 0.448 s\u001b[1;31m <<< FAILURE!\u001b[m -- in org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseFourBytes -- Time elapsed: 0.230 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <701> but was: <1901>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseFourBytes(JiraCsv196Test.java:44)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes -- Time elapsed: 0.015 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <242> but was: <398>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes(JiraCsv196Test.java:57)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m2\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mFailures: \u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseFourBytes:44 index 3 ==> expected: <701> but was: <1901>\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseThreeBytes:57 index 3 ==> expected: <242> but was: <398>\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests run: 4, Failures: 2, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] There are test failures.\n\nPlease refer to /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v1_20260124_045924_419948/target/surefire-reports for the individual test results.\nPlease refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v1_20260124_045924_419948/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  26.517 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T05:00:06Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
-        "stderr": "",
-        "selected_tests": [
-          "org.apache.commons.csv.CSVParserTest#testGetRecordFourBytesRead+testGetRecordThreeBytesRead",
-          "org.apache.commons.csv.JiraCsv196Test#testParseFourBytes+testParseThreeBytes"
-        ]
-      },
-      "coverage": {
-        "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v1_20260124_045924_419948/target/site/jacoco/jacoco.xml",
-        "method_coverage": {
-          "total_methods": 3,
-          "covered_methods": 0,
-          "coverage_ratio": 0.0,
-          "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.get",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setCharacterOffset",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setRecordNumber",
-              "covered": false
-            }
-          ]
-        },
-        "method_line_coverage": {
-          "total_methods": 3,
-          "methods_with_data": 0,
-          "covered_lines": 0,
-          "total_lines": 0,
-          "coverage_ratio": 0.0,
-          "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.get",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setCharacterOffset",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setRecordNumber",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            }
-          ]
-        },
-        "method_branch_coverage": {
-          "total_methods": 3,
-          "methods_with_data": 0,
-          "covered_branches": 0,
-          "total_branches": 0,
-          "coverage_ratio": 0.0,
-          "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.get",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setCharacterOffset",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setRecordNumber",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            }
-          ]
-        }
-      },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v1_20260124_045924_419948"
-    },
-    "v05_execution": {
-      "version": "v05",
-      "commit_used": "c75601d2a3426adf1671572766cc65906812fa73",
-      "build": {
-        "success": true,
-        "duration_seconds": 13.323389,
+        "duration_seconds": 12.217774,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
@@ -436,7 +330,118 @@
       },
       "test": {
         "success": false,
-        "duration_seconds": 23.874929,
+        "duration_seconds": 24.751469,
+        "total_tests": 4,
+        "passed": 2,
+        "failed": 2,
+        "skipped": 0,
+        "errors": 0,
+        "failed_tests": [
+          {
+            "class": "org.apache.commons.csv.JiraCsv196Test",
+            "method": "testParseFourBytes",
+            "full_name": "org.apache.commons.csv.JiraCsv196Test.testParseFourBytes",
+            "failure_type": "org.opentest4j.AssertionFailedError",
+            "message": "index 3 ==> expected: <701> but was: <1901>",
+            "stack_trace": "org.opentest4j.AssertionFailedError: index 3 ==> expected: <701> but was: <1901>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseFourBytes(JiraCsv196Test.java:44)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n"
+          },
+          {
+            "class": "org.apache.commons.csv.JiraCsv196Test",
+            "method": "testParseThreeBytes",
+            "full_name": "org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes",
+            "failure_type": "org.opentest4j.AssertionFailedError",
+            "message": "index 3 ==> expected: <242> but was: <398>",
+            "stack_trace": "org.opentest4j.AssertionFailedError: index 3 ==> expected: <242> but was: <398>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes(JiraCsv196Test.java:57)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n"
+          }
+        ],
+        "error_tests": [],
+        "selection_skipped": false,
+        "return_code": 0,
+        "stdout": "1242701/commons-csv_c75601d2_v1_20260125_180144_152331/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32manimal-sniffer-maven-plugin:1.24:check\u001b[m \u001b[1m(checkAPIcompatibility)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v1_20260125_180144_152331/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.1:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests \u001b[0;1mrun: \u001b[0;1m2\u001b[m, \u001b[1;31mFailures: \u001b[0;1;31m2\u001b[m, Errors: 0, Skipped: 0, Time elapsed: 0.416 s\u001b[1;31m <<< FAILURE!\u001b[m -- in org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseFourBytes -- Time elapsed: 0.292 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <701> but was: <1901>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseFourBytes(JiraCsv196Test.java:44)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes -- Time elapsed: 0.006 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <242> but was: <398>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes(JiraCsv196Test.java:57)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m2\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mFailures: \u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseFourBytes:44 index 3 ==> expected: <701> but was: <1901>\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseThreeBytes:57 index 3 ==> expected: <242> but was: <398>\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests run: 4, Failures: 2, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] There are test failures.\n\nPlease refer to /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v1_20260125_180144_152331/target/surefire-reports for the individual test results.\nPlease refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v1_20260125_180144_152331/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  22.395 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:02:21Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "stderr": "",
+        "selected_tests": [
+          "org.apache.commons.csv.CSVParserTest#testGetRecordFourBytesRead+testGetRecordThreeBytesRead",
+          "org.apache.commons.csv.JiraCsv196Test#testParseFourBytes+testParseThreeBytes"
+        ],
+        "status": "fail"
+      },
+      "coverage": {
+        "available": true,
+        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v1_20260125_180144_152331/target/site/jacoco/jacoco.xml",
+        "method_coverage": {
+          "total_methods": 2,
+          "covered_methods": 0,
+          "coverage_ratio": 0.0,
+          "details": [
+            {
+              "method": "org.apache.commons.csv.CSVParser.Builder.get",
+              "covered": false
+            },
+            {
+              "method": "org.apache.commons.csv.CSVParser.Builder.setEnableByteTracking",
+              "covered": false
+            }
+          ]
+        },
+        "method_line_coverage": {
+          "total_methods": 2,
+          "methods_with_data": 0,
+          "covered_lines": 0,
+          "total_lines": 0,
+          "coverage_ratio": 0.0,
+          "details": [
+            {
+              "method": "org.apache.commons.csv.CSVParser.Builder.get",
+              "covered_lines": 0,
+              "total_lines": 0,
+              "coverage_ratio": 0.0
+            },
+            {
+              "method": "org.apache.commons.csv.CSVParser.Builder.setEnableByteTracking",
+              "covered_lines": 0,
+              "total_lines": 0,
+              "coverage_ratio": 0.0
+            }
+          ]
+        },
+        "method_branch_coverage": {
+          "total_methods": 2,
+          "methods_with_data": 0,
+          "covered_branches": 0,
+          "total_branches": 0,
+          "coverage_ratio": 0.0,
+          "details": [
+            {
+              "method": "org.apache.commons.csv.CSVParser.Builder.get",
+              "covered_branches": 0,
+              "total_branches": 0,
+              "coverage_ratio": 0.0
+            },
+            {
+              "method": "org.apache.commons.csv.CSVParser.Builder.setEnableByteTracking",
+              "covered_branches": 0,
+              "total_branches": 0,
+              "coverage_ratio": 0.0
+            }
+          ]
+        }
+      },
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v1_20260125_180144_152331"
+    },
+    "v05_execution": {
+      "version": "v05",
+      "commit_used": "c75601d2a3426adf1671572766cc65906812fa73",
+      "build": {
+        "success": true,
+        "duration_seconds": 12.72531,
+        "command": "mvn compile -DskipTests",
+        "return_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "test": {
+        "success": false,
+        "duration_seconds": 18.139466,
         "total_tests": 0,
         "passed": 0,
         "failed": 0,
@@ -446,17 +451,19 @@
         "error_tests": [],
         "selection_skipped": false,
         "return_code": 1,
-        "stdout": "4mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 37 source files with javac [debug release 8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;31mERROR\u001b[m] COMPILATION ERROR : \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/CSVParserTest.java:[821,122] cannot find symbol\n  symbol:   method setEnableByteTracking(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/CSVParserTest.java:[900,122] cannot find symbol\n  symbol:   method setEnableByteTracking(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[40,52] cannot find symbol\n  symbol:   method setEnableByteTracking(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[53,52] cannot find symbol\n  symbol:   method setEnableByteTracking(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;34mINFO\u001b[m] 4 errors \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;31mBUILD FAILURE\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  21.118 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T05:00:01Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;31mERROR\u001b[m] Failed to execute goal \u001b[32morg.apache.maven.plugins:maven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m on project \u001b[36mcommons-csv\u001b[m: \u001b[1;31mCompilation failure\u001b[m: Compilation failure: \n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/CSVParserTest.java:[821,122] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setEnableByteTracking(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/CSVParserTest.java:[900,122] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setEnableByteTracking(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[40,52] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setEnableByteTracking(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[53,52] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setEnableByteTracking(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] -> \u001b[1m[Help 1]\u001b[m\n[\u001b[1;31mERROR\u001b[m] \n[\u001b[1;31mERROR\u001b[m] To see the full stack trace of the errors, re-run Maven with the \u001b[1m-e\u001b[m switch.\n[\u001b[1;31mERROR\u001b[m] Re-run Maven using the \u001b[1m-X\u001b[m switch to enable full debug logging.\n[\u001b[1;31mERROR\u001b[m] \n[\u001b[1;31mERROR\u001b[m] For more information about the errors and possible solutions, please read the following articles:\n[\u001b[1;31mERROR\u001b[m] \u001b[1m[Help 1]\u001b[m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException\n",
+        "stdout": "Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 37 source files with javac [debug target 1.8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;31mERROR\u001b[m] COMPILATION ERROR : \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/CSVParserTest.java:[821,122] cannot find symbol\n  symbol:   method setEnableByteTracking(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/CSVParserTest.java:[900,122] cannot find symbol\n  symbol:   method setEnableByteTracking(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[40,52] cannot find symbol\n  symbol:   method setEnableByteTracking(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[53,52] cannot find symbol\n  symbol:   method setEnableByteTracking(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;34mINFO\u001b[m] 4 errors \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;31mBUILD FAILURE\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  15.585 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:02:14Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;31mERROR\u001b[m] Failed to execute goal \u001b[32morg.apache.maven.plugins:maven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m on project \u001b[36mcommons-csv\u001b[m: \u001b[1;31mCompilation failure\u001b[m: Compilation failure: \n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/CSVParserTest.java:[821,122] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setEnableByteTracking(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/CSVParserTest.java:[900,122] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setEnableByteTracking(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[40,52] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setEnableByteTracking(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[53,52] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setEnableByteTracking(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] -> \u001b[1m[Help 1]\u001b[m\n[\u001b[1;31mERROR\u001b[m] \n[\u001b[1;31mERROR\u001b[m] To see the full stack trace of the errors, re-run Maven with the \u001b[1m-e\u001b[m switch.\n[\u001b[1;31mERROR\u001b[m] Re-run Maven using the \u001b[1m-X\u001b[m switch to enable full debug logging.\n[\u001b[1;31mERROR\u001b[m] \n[\u001b[1;31mERROR\u001b[m] For more information about the errors and possible solutions, please read the following articles:\n[\u001b[1;31mERROR\u001b[m] \u001b[1m[Help 1]\u001b[m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException\n",
         "stderr": "",
         "selected_tests": [
           "org.apache.commons.csv.CSVParserTest#testGetRecordFourBytesRead+testGetRecordThreeBytesRead",
           "org.apache.commons.csv.JiraCsv196Test#testParseFourBytes+testParseThreeBytes"
-        ]
+        ],
+        "status": "error",
+        "error_message": "Test execution failed"
       },
       "coverage": {
         "available": false
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_v05_20260124_045924_420232",
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_v05_20260125_180144_155057",
       "patch_applied": true
     },
     "t05_execution": {
@@ -464,109 +471,37 @@
       "commit_used": "c75601d2a3426adf1671572766cc65906812fa73",
       "build": {
         "success": true,
-        "duration_seconds": 13.538198,
+        "duration_seconds": 12.673375,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
         "stderr": ""
       },
       "test": {
-        "success": true,
-        "duration_seconds": 28.379887,
-        "total_tests": 4,
-        "passed": 2,
-        "failed": 2,
+        "success": false,
+        "duration_seconds": 18.634606,
+        "total_tests": 0,
+        "passed": 0,
+        "failed": 0,
         "skipped": 0,
         "errors": 0,
         "failed_tests": [],
         "error_tests": [],
         "selection_skipped": false,
-        "return_code": 0,
-        "stdout": "5924_421153/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_t05_20260124_045924_421153/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_t05_20260124_045924_421153/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.1:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests \u001b[0;1mrun: \u001b[0;1m2\u001b[m, \u001b[1;31mFailures: \u001b[0;1;31m2\u001b[m, Errors: 0, Skipped: 0, Time elapsed: 0.359 s\u001b[1;31m <<< FAILURE!\u001b[m -- in org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseFourBytes -- Time elapsed: 0.253 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <701> but was: <1901>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseFourBytes(JiraCsv196Test.java:44)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes -- Time elapsed: 0.013 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <242> but was: <398>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes(JiraCsv196Test.java:57)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m2\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mFailures: \u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseFourBytes:44 index 3 ==> expected: <701> but was: <1901>\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseThreeBytes:57 index 3 ==> expected: <242> but was: <398>\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests run: 4, Failures: 2, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] There are test failures.\n\nPlease refer to /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_t05_20260124_045924_421153/target/surefire-reports for the individual test results.\nPlease refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_t05_20260124_045924_421153/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  25.612 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T05:00:06Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "return_code": 1,
+        "stdout": "tResources)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Copying 24 resources from src/test/resources to target/test-classes\n[\u001b[1;34mINFO\u001b[m] Copying 2 resources from  to target/test-classes/META-INF\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Recompiling the module because of \u001b[1mchanged dependency\u001b[m.\n[\u001b[1;34mINFO\u001b[m] Compiling 37 source files with javac [debug target 1.8] to target/test-classes\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;31mERROR\u001b[m] COMPILATION ERROR : \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/CSVParserTest.java:[821,122] cannot find symbol\n  symbol:   method setTrackBytes(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/CSVParserTest.java:[900,122] cannot find symbol\n  symbol:   method setTrackBytes(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[40,52] cannot find symbol\n  symbol:   method setTrackBytes(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[53,52] cannot find symbol\n  symbol:   method setTrackBytes(boolean)\n  location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;34mINFO\u001b[m] 4 errors \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;31mBUILD FAILURE\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  16.268 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:02:15Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;31mERROR\u001b[m] Failed to execute goal \u001b[32morg.apache.maven.plugins:maven-compiler-plugin:3.13.0:testCompile\u001b[m \u001b[1m(default-testCompile)\u001b[m on project \u001b[36mcommons-csv\u001b[m: \u001b[1;31mCompilation failure\u001b[m: Compilation failure: \n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/CSVParserTest.java:[821,122] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setTrackBytes(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/CSVParserTest.java:[900,122] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setTrackBytes(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[40,52] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setTrackBytes(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981/src/test/java/org/apache/commons/csv/JiraCsv196Test.java:[53,52] cannot find symbol\n[\u001b[1;31mERROR\u001b[m]   symbol:   method setTrackBytes(boolean)\n[\u001b[1;31mERROR\u001b[m]   location: class org.apache.commons.csv.CSVParser.Builder\n[\u001b[1;31mERROR\u001b[m] -> \u001b[1m[Help 1]\u001b[m\n[\u001b[1;31mERROR\u001b[m] \n[\u001b[1;31mERROR\u001b[m] To see the full stack trace of the errors, re-run Maven with the \u001b[1m-e\u001b[m switch.\n[\u001b[1;31mERROR\u001b[m] Re-run Maven using the \u001b[1m-X\u001b[m switch to enable full debug logging.\n[\u001b[1;31mERROR\u001b[m] \n[\u001b[1;31mERROR\u001b[m] For more information about the errors and possible solutions, please read the following articles:\n[\u001b[1;31mERROR\u001b[m] \u001b[1m[Help 1]\u001b[m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException\n",
         "stderr": "",
         "selected_tests": [
           "org.apache.commons.csv.CSVParserTest#testGetRecordFourBytesRead+testGetRecordThreeBytesRead",
           "org.apache.commons.csv.JiraCsv196Test#testParseFourBytes+testParseThreeBytes"
-        ]
+        ],
+        "status": "error",
+        "error_message": "Test execution failed"
       },
       "coverage": {
-        "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_t05_20260124_045924_421153/target/site/jacoco/jacoco.xml",
-        "method_coverage": {
-          "total_methods": 3,
-          "covered_methods": 0,
-          "coverage_ratio": 0.0,
-          "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.get",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setCharacterOffset",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setRecordNumber",
-              "covered": false
-            }
-          ]
-        },
-        "method_line_coverage": {
-          "total_methods": 3,
-          "methods_with_data": 0,
-          "covered_lines": 0,
-          "total_lines": 0,
-          "coverage_ratio": 0.0,
-          "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.get",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setCharacterOffset",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setRecordNumber",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            }
-          ]
-        },
-        "method_branch_coverage": {
-          "total_methods": 3,
-          "methods_with_data": 0,
-          "covered_branches": 0,
-          "total_branches": 0,
-          "coverage_ratio": 0.0,
-          "details": [
-            {
-              "method": "org.apache.commons.csv.Builder.get",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setCharacterOffset",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setRecordNumber",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            }
-          ]
-        }
+        "available": false
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_c75601d2_t05_20260124_045924_421153",
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_c75601d2_t05_20260125_180144_158981",
       "patch_applied": true
     },
     "v0_execution": {
@@ -574,84 +509,82 @@
       "commit_used": "0b0003e3b3cdad863092390b4d4ed5dbf78779a5",
       "build": {
         "success": true,
-        "duration_seconds": 13.734614,
+        "duration_seconds": 11.856771,
         "command": "mvn compile -DskipTests",
         "return_code": 0,
         "stdout": "",
         "stderr": ""
       },
       "test": {
-        "success": true,
-        "duration_seconds": 29.026576,
+        "success": false,
+        "duration_seconds": 24.104741,
         "total_tests": 4,
         "passed": 2,
         "failed": 2,
         "skipped": 0,
         "errors": 0,
-        "failed_tests": [],
+        "failed_tests": [
+          {
+            "class": "org.apache.commons.csv.JiraCsv196Test",
+            "method": "testParseFourBytes",
+            "full_name": "org.apache.commons.csv.JiraCsv196Test.testParseFourBytes",
+            "failure_type": "org.opentest4j.AssertionFailedError",
+            "message": "index 3 ==> expected: <701> but was: <1901>",
+            "stack_trace": "org.opentest4j.AssertionFailedError: index 3 ==> expected: <701> but was: <1901>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseFourBytes(JiraCsv196Test.java:44)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n"
+          },
+          {
+            "class": "org.apache.commons.csv.JiraCsv196Test",
+            "method": "testParseThreeBytes",
+            "full_name": "org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes",
+            "failure_type": "org.opentest4j.AssertionFailedError",
+            "message": "index 3 ==> expected: <242> but was: <398>",
+            "stack_trace": "org.opentest4j.AssertionFailedError: index 3 ==> expected: <242> but was: <398>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes(JiraCsv196Test.java:57)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n"
+          }
+        ],
         "error_tests": [],
         "selection_skipped": false,
         "return_code": 0,
-        "stdout": "4_045924_421654/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Some input files use or override a deprecated API.\n[\u001b[1;34mINFO\u001b[m] /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_0b0003e3_v0_20260124_045924_421654/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_0b0003e3_v0_20260124_045924_421654/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.1:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests \u001b[0;1mrun: \u001b[0;1m2\u001b[m, \u001b[1;31mFailures: \u001b[0;1;31m2\u001b[m, Errors: 0, Skipped: 0, Time elapsed: 0.347 s\u001b[1;31m <<< FAILURE!\u001b[m -- in org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseFourBytes -- Time elapsed: 0.192 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <701> but was: <1901>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseFourBytes(JiraCsv196Test.java:44)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes -- Time elapsed: 0.015 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <242> but was: <398>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes(JiraCsv196Test.java:57)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:569)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\tat java.base/java.util.ArrayList.forEach(ArrayList.java:1511)\n\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m2\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mFailures: \u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseFourBytes:44 index 3 ==> expected: <701> but was: <1901>\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseThreeBytes:57 index 3 ==> expected: <242> but was: <398>\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests run: 4, Failures: 2, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] There are test failures.\n\nPlease refer to /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_0b0003e3_v0_20260124_045924_421654/target/surefire-reports for the individual test results.\nPlease refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_0b0003e3_v0_20260124_045924_421654/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  26.495 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-24T05:00:07Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
+        "stdout": "1242701/commons-csv_0b0003e3_v0_20260125_180144_164165/src/test/java/org/apache/commons/csv/CSVFileParserTest.java: Recompile with -Xlint:deprecation for details.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32manimal-sniffer-maven-plugin:1.24:check\u001b[m \u001b[1m(checkAPIcompatibility)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Checking unresolved references to org.codehaus.mojo.signature:java18:1.0\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:prepare-agent\u001b[m \u001b[1m(prepare-agent)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_0b0003e3_v0_20260125_180144_164165/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mmaven-surefire-plugin:3.5.1:test\u001b[m \u001b[1m(default-test)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m]  T E S T S\n[\u001b[1;34mINFO\u001b[m] -------------------------------------------------------\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests \u001b[0;1mrun: \u001b[0;1m2\u001b[m, \u001b[1;31mFailures: \u001b[0;1;31m2\u001b[m, Errors: 0, Skipped: 0, Time elapsed: 0.344 s\u001b[1;31m <<< FAILURE!\u001b[m -- in org.apache.commons.csv.\u001b[1mJiraCsv196Test\u001b[m\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseFourBytes -- Time elapsed: 0.276 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <701> but was: <1901>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseFourBytes(JiraCsv196Test.java:44)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\n[\u001b[1;31mERROR\u001b[m] org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes -- Time elapsed: 0.003 s <<< FAILURE!\norg.opentest4j.AssertionFailedError: index 3 ==> expected: <242> but was: <398>\n\tat org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)\n\tat org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)\n\tat org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)\n\tat org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)\n\tat org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)\n\tat org.apache.commons.csv.JiraCsv196Test.testParseThreeBytes(JiraCsv196Test.java:57)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\tat java.util.ArrayList.forEach(ArrayList.java:1259)\n\n[\u001b[1;34mINFO\u001b[m] Running org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mTests run: \u001b[0;1;32m2\u001b[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in org.apache.commons.csv.\u001b[1mCSVParserTest\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] Results:\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mFailures: \u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseFourBytes:44 index 3 ==> expected: <701> but was: <1901>\u001b[m\n[\u001b[1;31mERROR\u001b[m] \u001b[1;31m  JiraCsv196Test.testParseThreeBytes:57 index 3 ==> expected: <242> but was: <398>\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] \u001b[1;31mTests run: 4, Failures: 2, Errors: 0, Skipped: 0\u001b[m\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;31mERROR\u001b[m] There are test failures.\n\nPlease refer to /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_0b0003e3_v0_20260125_180144_164165/target/surefire-reports for the individual test results.\nPlease refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.\n[\u001b[1;34mINFO\u001b[m] \n[\u001b[1;34mINFO\u001b[m] \u001b[1m--- \u001b[0;32mjacoco-maven-plugin:0.8.11:report\u001b[m \u001b[1m(report)\u001b[m @ \u001b[36mcommons-csv\u001b[0;1m ---\u001b[m\n[\u001b[1;34mINFO\u001b[m] Loading execution data file /tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_0b0003e3_v0_20260125_180144_164165/target/jacoco.exec\n[\u001b[1;34mINFO\u001b[m] Analyzed bundle 'Apache Commons CSV' with 17 classes\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1;32mBUILD SUCCESS\u001b[m\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n[\u001b[1;34mINFO\u001b[m] Total time:  21.655 s\n[\u001b[1;34mINFO\u001b[m] Finished at: 2026-01-25T18:02:20Z\n[\u001b[1;34mINFO\u001b[m] \u001b[1m------------------------------------------------------------------------\u001b[m\n",
         "stderr": "",
         "selected_tests": [
           "org.apache.commons.csv.CSVParserTest#testGetRecordFourBytesRead+testGetRecordThreeBytesRead",
           "org.apache.commons.csv.JiraCsv196Test#testParseFourBytes+testParseThreeBytes"
-        ]
+        ],
+        "status": "fail"
       },
       "coverage": {
         "available": true,
-        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_0b0003e3_v0_20260124_045924_421654/target/site/jacoco/jacoco.xml",
+        "jacoco_report_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_0b0003e3_v0_20260125_180144_164165/target/site/jacoco/jacoco.xml",
         "method_coverage": {
-          "total_methods": 4,
+          "total_methods": 2,
           "covered_methods": 0,
           "coverage_ratio": 0.0,
           "details": [
             {
-              "method": "org.apache.commons.csv.Builder.get",
+              "method": "org.apache.commons.csv.CSVParser.Builder.get",
               "covered": false
             },
             {
-              "method": "org.apache.commons.csv.Builder.setCharacterOffset",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setRecordNumber",
-              "covered": false
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrackBytes",
+              "method": "org.apache.commons.csv.CSVParser.Builder.setTrackBytes",
               "covered": false
             }
           ]
         },
         "method_line_coverage": {
-          "total_methods": 4,
+          "total_methods": 2,
           "methods_with_data": 0,
           "covered_lines": 0,
           "total_lines": 0,
           "coverage_ratio": 0.0,
           "details": [
             {
-              "method": "org.apache.commons.csv.Builder.get",
+              "method": "org.apache.commons.csv.CSVParser.Builder.get",
               "covered_lines": 0,
               "total_lines": 0,
               "coverage_ratio": 0.0
             },
             {
-              "method": "org.apache.commons.csv.Builder.setCharacterOffset",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setRecordNumber",
-              "covered_lines": 0,
-              "total_lines": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrackBytes",
+              "method": "org.apache.commons.csv.CSVParser.Builder.setTrackBytes",
               "covered_lines": 0,
               "total_lines": 0,
               "coverage_ratio": 0.0
@@ -659,32 +592,20 @@
           ]
         },
         "method_branch_coverage": {
-          "total_methods": 4,
+          "total_methods": 2,
           "methods_with_data": 0,
           "covered_branches": 0,
           "total_branches": 0,
           "coverage_ratio": 0.0,
           "details": [
             {
-              "method": "org.apache.commons.csv.Builder.get",
+              "method": "org.apache.commons.csv.CSVParser.Builder.get",
               "covered_branches": 0,
               "total_branches": 0,
               "coverage_ratio": 0.0
             },
             {
-              "method": "org.apache.commons.csv.Builder.setCharacterOffset",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setRecordNumber",
-              "covered_branches": 0,
-              "total_branches": 0,
-              "coverage_ratio": 0.0
-            },
-            {
-              "method": "org.apache.commons.csv.Builder.setTrackBytes",
+              "method": "org.apache.commons.csv.CSVParser.Builder.setTrackBytes",
               "covered_branches": 0,
               "total_branches": 0,
               "coverage_ratio": 0.0
@@ -692,42 +613,10 @@
           ]
         }
       },
-      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_987500/commons-csv_0b0003e3_v0_20260124_045924_421654"
+      "worktree_path": "/tmp/tubench_analysis_worktrees/commons-csv_1242701/commons-csv_0b0003e3_v0_20260125_180144_164165"
     },
-    "classification": {
-      "scenario": "B",
-      "scenario_description": "V-0.5失败，T-0.5通过：旧测试失败，但新测试在旧代码上可工作",
-      "type1_execution_error": {
-        "detected": true,
-        "subtype": "runtime_failure",
-        "confidence": "medium",
-        "evidence": {
-          "t05_analysis": "T-0.5通过，新测试在旧代码上可工作，可能涉及测试重构",
-          "v05_test_success": false,
-          "v0_test_success": true,
-          "failed_tests_count": 0,
-          "failed_tests": []
-        }
-      },
-      "type2_coverage_decrease": {
-        "detected": false,
-        "confidence": null,
-        "evidence": {
-          "note": "变更方法覆盖率不可用"
-        }
-      },
-      "type3_adaptive_change": {
-        "detected": false,
-        "confidence": null,
-        "evidence": {}
-      },
-      "all_types": [
-        "type1_execution_error"
-      ],
-      "primary_type": "type1_execution_error",
-      "types_count": 1
-    },
-    "qualified": true,
-    "analysis_timestamp": "2026-01-24T05:00:07.426236"
+    "classification": {},
+    "qualified": false,
+    "analysis_timestamp": "2026-01-25T18:02:21.370904"
   }
 }

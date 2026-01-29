@@ -207,10 +207,17 @@ class CommitAnalyzer:
             )
             
             # 检查V-1和V0是否都成功
+            def _test_pass(execution: dict) -> bool:
+                test_info = execution.get('test', {})
+                status = test_info.get('status')
+                if status:
+                    return status == 'pass'
+                return test_info.get('success', False)
+
             v1_ok = execution_results.get('v1', {}).get('build', {}).get('success', False) and \
-                    execution_results.get('v1', {}).get('test', {}).get('success', False)
+                    _test_pass(execution_results.get('v1', {}))
             v0_ok = execution_results.get('v0', {}).get('build', {}).get('success', False) and \
-                    execution_results.get('v0', {}).get('test', {}).get('success', False)
+                    _test_pass(execution_results.get('v0', {}))
             
             qualified = v1_ok and v0_ok
             

@@ -1,6 +1,6 @@
 {
   "cache_key": "commons-csv_b25b2509c839f490546586d70f360448bb17e449_method",
-  "cached_at": "2026-01-24T04:57:07.441331",
+  "cached_at": "2026-01-25T17:58:36.335400",
   "project": "commons-csv",
   "commit_hash": "b25b2509c839f490546586d70f360448bb17e449",
   "phase": "method",
@@ -72,8 +72,10 @@
           ],
           "start_line": 385,
           "end_line": 391,
+          "package": "org.apache.commons.csv",
           "file": "src/main/java/org/apache/commons/csv/CSVPrinter.java",
-          "package": "org.apache.commons.csv"
+          "return_type": null,
+          "modifiers": []
         }
       ],
       "test_methods": [
@@ -83,8 +85,10 @@
           "parameters": [],
           "start_line": 141,
           "end_line": 174,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -93,8 +97,10 @@
           "parameters": [],
           "start_line": 177,
           "end_line": 197,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -103,8 +109,10 @@
           "parameters": [],
           "start_line": 416,
           "end_line": 438,
-          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVParserTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -115,21 +123,10 @@
           ],
           "start_line": 121,
           "end_line": 151,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
-          "is_test_method": false
-        },
-        {
-          "class": "CSVPrinterTest",
-          "method": "doRandom",
-          "parameters": [
-            "CSVFormat",
-            "int"
-          ],
-          "start_line": 153,
-          "end_line": 157,
           "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
-          "package": "org.apache.commons.csv",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": false
         },
         {
@@ -138,8 +135,10 @@
           "parameters": [],
           "start_line": 1455,
           "end_line": 1475,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -148,8 +147,10 @@
           "parameters": [],
           "start_line": 1478,
           "end_line": 1503,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -160,8 +161,22 @@
           ],
           "start_line": 1507,
           "end_line": 1527,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
+          "is_test_method": true
+        },
+        {
+          "class": "CSVPrinterTest",
+          "method": "testPrintCSVRecords",
+          "parameters": [],
+          "start_line": 1506,
+          "end_line": 1526,
+          "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -170,8 +185,10 @@
           "parameters": [],
           "start_line": 1673,
           "end_line": 1696,
-          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/CSVPrinterTest.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": true
         },
         {
@@ -185,14 +202,32 @@
           ],
           "start_line": 42,
           "end_line": 48,
-          "file": "src/test/java/org/apache/commons/csv/Utils.java",
           "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/Utils.java",
+          "return_type": null,
+          "modifiers": [],
+          "is_test_method": false
+        },
+        {
+          "class": "Utils",
+          "method": "compare",
+          "parameters": [
+            "String",
+            "String",
+            "List"
+          ],
+          "start_line": 41,
+          "end_line": 47,
+          "package": "org.apache.commons.csv",
+          "file": "src/test/java/org/apache/commons/csv/Utils.java",
+          "return_type": null,
+          "modifiers": [],
           "is_test_method": false
         }
       ],
       "summary": {
         "source_methods_count": 1,
-        "test_methods_count": 10
+        "test_methods_count": 11
       }
     },
     "diff_info": {
