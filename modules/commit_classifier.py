@@ -3,7 +3,7 @@ Commit分类器 - 基于执行结果进行三种类型分类
 
 类型定义:
 - Type1 (执行出错): V-0.5编译失败或测试失败
-- Type2 (覆盖率降低): V-0.5覆盖率相比V-1下降
+- Type2 (覆盖率差距): V0相比V-0.5覆盖率提升，说明旧测试覆盖不足
 - Type3 (适应性调整): 不属于Type1和Type2的合格commit
 """
 
@@ -39,7 +39,7 @@ class CommitClassifier:
         
         分类逻辑:
         1. 先检测Type1（执行出错）
-        2. 再检测Type2（覆盖率降低）
+        2. 再检测Type2（覆盖率差距）
         3. 如果不属于Type1和Type2，则归为Type3（适应性调整）
         
         T-0.5用于辅助分析，提供额外的置信度信息
@@ -61,7 +61,7 @@ class CommitClassifier:
         type1_result = self._detect_type1(v05_result, t05_result, v0_result)
         
         # 检测Type2
-        type2_result = self._detect_type2(v1_result, v05_result, t05_result)
+        type2_result = self._detect_type2(v05_result, t05_result, v0_result)
         
         # 检测Type3（兜底）
         is_type1 = type1_result.get('detected', False)
@@ -210,10 +210,25 @@ class CommitClassifier:
             }
             return result
         
-        # 情况2: V-0.5测试失败
+        # 情况2: V-0.5测试编译失败
         v05_test_status = self._get_test_status(v05_result)
         v0_test_status = self._get_test_status(v0_result)
-        
+        v05_error_type = v05_test.get('error_type')
+
+        if v05_test_status == 'error' and v05_error_type == 'test_compile':
+            result['detected'] = True
+            result['subtype'] = 'test_compile_failure'
+            result['confidence'] = 'high'
+            result['evidence'] = {
+                'v05_test_status': v05_test_status,
+                'v05_error_type': v05_error_type,
+                'error_message': v05_test.get('error_message'),
+                't05_test_status': self._get_test_status(t05_result),
+                'v0_test_status': v0_test_status
+            }
+            return result
+
+        # 情况3: V-0.5测试失败
         if v05_test_status == 'fail':
             # 确认V0测试是通过的（排除测试本身有问题的情况）
             if v0_test_status == 'pass':
@@ -244,12 +259,13 @@ class CommitClassifier:
         
         return result
     
-    def _detect_type2(self, v1_result: Dict, v05_result: Dict, t05_result: Dict) -> Dict:
+    def _detect_type2(self, v05_result: Dict, t05_result: Dict, v0_result: Dict) -> Dict:
         """
-        检测Type2: 覆盖率降低
+        检测Type2: 覆盖率差距
         
         判定条件:
-        - V-0.5相比V-1的变更方法覆盖率下降超过阈值
+        - V0相比V-0.5的变更方法覆盖率提升超过阈值
+        - 或 V0相比V-0.5的变更方法分支覆盖率提升超过阈值
         
         T-0.5辅助分析:
         - T-0.5的变更方法覆盖率可以显示新测试增加了多少覆盖
@@ -270,41 +286,82 @@ class CommitClassifier:
             return result
         
         # 获取覆盖率数据
-        v1_coverage = v1_result.get('coverage', {})
         v05_coverage = v05_result.get('coverage', {})
+        v0_coverage = v0_result.get('coverage', {})
         t05_coverage = t05_result.get('coverage', {}) if t05_result.get('build', {}).get('success') else {}
 
         # 使用变更方法的行覆盖率（更严格）
-        v1_method_cov = v1_coverage.get('method_line_coverage')
         v05_method_cov = v05_coverage.get('method_line_coverage')
+        v0_method_cov = v0_coverage.get('method_line_coverage')
         t05_method_cov = t05_coverage.get('method_line_coverage') if t05_coverage else None
 
-        if v1_method_cov and v05_method_cov and v1_method_cov.get('total_lines', 0) > 0:
-            v1_ratio = v1_method_cov.get('coverage_ratio', 0)
-            v05_ratio = v05_method_cov.get('coverage_ratio', 0)
-            coverage_diff = v05_ratio - v1_ratio
+        line_signal = None
+        branch_signal = None
 
-            if coverage_diff < -self.coverage_threshold:
-                result['detected'] = True
-                result['confidence'] = 'high' if coverage_diff < -0.1 else 'medium'
-                result['evidence'] = {
+        if v05_method_cov and v0_method_cov and v05_method_cov.get('total_lines', 0) > 0:
+            v05_ratio = v05_method_cov.get('coverage_ratio', 0)
+            v0_ratio = v0_method_cov.get('coverage_ratio', 0)
+            coverage_diff = v0_ratio - v05_ratio
+
+            if coverage_diff >= self.coverage_threshold:
+                line_signal = {
                     'metric': 'changed_methods_line_coverage',
-                    'v1_coverage_ratio': round(v1_ratio, 4),
                     'v05_coverage_ratio': round(v05_ratio, 4),
+                    'v0_coverage_ratio': round(v0_ratio, 4),
                     'coverage_diff': round(coverage_diff, 4),
-                    'total_lines': v1_method_cov.get('total_lines', 0),
+                    'total_lines': v05_method_cov.get('total_lines', 0),
                     'threshold': self.coverage_threshold
                 }
 
                 if t05_method_cov and t05_method_cov.get('total_lines', 0) > 0:
                     t05_ratio = t05_method_cov.get('coverage_ratio', 0)
-                    result['evidence']['t05_coverage_ratio'] = round(t05_ratio, 4)
-                    if t05_ratio > v1_ratio:
-                        result['evidence']['new_tests_coverage_gain'] = round(t05_ratio - v1_ratio, 4)
+                    line_signal['t05_coverage_ratio'] = round(t05_ratio, 4)
+
+        # 分支覆盖率信号
+        branch_threshold = getattr(AnalysisConfig, 'BRANCH_COVERAGE_INCREASE_THRESHOLD', self.coverage_threshold)
+        v05_branch_cov = v05_coverage.get('method_branch_coverage')
+        v0_branch_cov = v0_coverage.get('method_branch_coverage')
+        if v05_branch_cov and v0_branch_cov and v05_branch_cov.get('total_branches', 0) > 0:
+            v05_branch_ratio = v05_branch_cov.get('coverage_ratio', 0)
+            v0_branch_ratio = v0_branch_cov.get('coverage_ratio', 0)
+            branch_diff = v0_branch_ratio - v05_branch_ratio
+
+            if branch_diff >= branch_threshold:
+                branch_signal = {
+                    'metric': 'changed_methods_branch_coverage',
+                    'v05_branch_ratio': round(v05_branch_ratio, 4),
+                    'v0_branch_ratio': round(v0_branch_ratio, 4),
+                    'branch_coverage_diff': round(branch_diff, 4),
+                    'total_branches': v05_branch_cov.get('total_branches', 0),
+                    'threshold': branch_threshold
+                }
+
+        if line_signal or branch_signal:
+            result['detected'] = True
+            max_diff = 0.0
+            if line_signal:
+                max_diff = max(max_diff, line_signal.get('coverage_diff', 0))
+            if branch_signal:
+                max_diff = max(max_diff, branch_signal.get('branch_coverage_diff', 0))
+            result['confidence'] = 'high' if max_diff >= 0.1 else 'medium'
+            result['evidence'] = {'signals': []}
+            if line_signal:
+                result['evidence']['signals'].append(line_signal)
+            if branch_signal:
+                result['evidence']['signals'].append(branch_signal)
+
+            primary_signal = line_signal or branch_signal
+            if primary_signal:
+                result['evidence'].update(primary_signal)
+            if branch_signal and 'branch_coverage_diff' not in result['evidence']:
+                result['evidence']['branch_coverage_diff'] = branch_signal.get('branch_coverage_diff')
             return result
 
-        # 只使用变更方法覆盖率；若缺失则直接返回
-        result['evidence']['note'] = '变更方法覆盖率不可用'
+        # 覆盖率不可用或无显著提升
+        if not (v05_method_cov and v0_method_cov):
+            result['evidence']['note'] = '变更方法覆盖率不可用'
+        else:
+            result['evidence']['note'] = '变更方法覆盖率提升不显著'
         
         return result
     
@@ -327,7 +384,7 @@ class CommitClassifier:
             result['detected'] = True
             result['confidence'] = 'low' if scenario == 'U' else 'high'
             result['evidence'] = {
-                'reason': '不属于Type1（执行出错）且不属于Type2（覆盖率降低），归类为适应性调整',
+                'reason': '不属于Type1（执行出错）且不属于Type2（覆盖率差距），归类为适应性调整',
                 'scenario': scenario,
                 'scenario_meaning': self._get_type3_scenario_meaning(scenario)
             }

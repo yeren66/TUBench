@@ -320,12 +320,14 @@ class IsolatedExecutor:
             test_result = maven_executor.test_with_jacoco(selected_tests=selected_tests)
             
             result['return_code'] = test_result.get('return_code', -1)
-            result['stdout'] = test_result.get('stdout', '')[-5000:]
-            result['stderr'] = test_result.get('stderr', '')[-5000:]
+            test_output = test_result.get('stdout', '') or ''
+            test_error_output = test_result.get('stderr', '') or ''
+            result['stdout'] = test_output[-5000:]
+            result['stderr'] = test_error_output[-5000:]
             result['selected_tests'] = selected_tests
             
             # 解析测试结果
-            test_summary = self._parse_test_summary(test_result.get('stdout', ''))
+            test_summary = self._parse_test_summary(test_output)
             if test_summary.get('total_tests', 0) == 0:
                 report_summary = self._parse_test_summary_from_reports(worktree_path)
                 if report_summary:
@@ -336,6 +338,13 @@ class IsolatedExecutor:
             if (result.get('failed', 0) > 0) or (result.get('errors', 0) > 0):
                 failed_tests = self._parse_failed_tests(worktree_path)
                 result['failed_tests'] = failed_tests
+
+            # 检测测试编译失败
+            compile_error = self._detect_test_compile_error(test_output)
+            if compile_error:
+                result['error_type'] = 'test_compile'
+                if not result.get('error_message'):
+                    result['error_message'] = compile_error
 
             status, reason = self._derive_test_status(result)
             result['status'] = status
@@ -747,6 +756,26 @@ class IsolatedExecutor:
             return 'error', "Test execution failed"
 
         return 'pass', None
+
+    def _detect_test_compile_error(self, output: str) -> Optional[str]:
+        """检测测试编译失败"""
+        if not output:
+            return None
+
+        lower = output.lower()
+        if 'could not compile test sources' in lower:
+            return "Test compilation failed: could not compile test sources"
+
+        if 'failed to execute goal' in lower and ('testcompile' in lower or 'test-compile' in lower):
+            for line in output.splitlines():
+                line_lower = line.lower()
+                if 'failed to execute goal' in line_lower and ('testcompile' in line_lower or 'test-compile' in line_lower):
+                    return line.strip()[:200]
+
+        if ('compilation error' in lower or 'compilation failure' in lower) and ('testcompile' in lower or 'test-compile' in lower):
+            return "Test compilation failed"
+
+        return None
     
     def _cleanup_worktree(self, worktree_path: str):
         """清理worktree"""

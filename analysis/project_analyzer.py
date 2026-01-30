@@ -312,55 +312,96 @@ class ProjectAnalyzer:
         
         if not to_process:
             return results
-        
-        # 并发处理
-        with ProcessPoolExecutor(max_workers=self.workers) as executor:
-            futures = {}
-            
-            for info in to_process:
-                future = executor.submit(
-                    _process_single_commit_execution,
-                    self.project_path,
-                    self.output_dir,
-                    info
-                )
-                futures[future] = info['commit_hash']
-            
+
+        def _process_sequential(items: List[dict]) -> List[dict]:
+            seq_results = []
             completed = 0
-            for future in as_completed(futures):
-                commit_hash = futures[future]
+            for info in items:
+                commit_hash = info['commit_hash']
                 completed += 1
-                
                 try:
-                    result = future.result(timeout=AnalysisConfig.COMMIT_TIMEOUT)
-                    
+                    result = _process_single_commit_execution(
+                        self.project_path,
+                        self.output_dir,
+                        info
+                    )
                     if result:
-                        results.append(result)
-                        
-                        # 更新统计
+                        seq_results.append(result)
                         if result.get('v1_execution', {}).get('build', {}).get('success'):
                             self._stats['v1_build_success'] += 1
                         if result.get('v0_execution', {}).get('build', {}).get('success'):
                             self._stats['v0_build_success'] += 1
-                        
-                        # 缓存结果
                         self.cache_manager.set_cache(
                             self.project_name, commit_hash, 'execution', result
                         )
-                        
-                        # 保存commit详情
                         self._save_commit_result(commit_hash, result)
-                    
                     status = "✓" if result and result.get('qualified') else "✗"
-                    logger.info(f"  [{completed}/{len(to_process)}] {commit_hash[:8]} {status}")
-                    
+                    logger.info(f"  [{completed}/{len(items)}] {commit_hash[:8]} {status}")
                 except Exception as e:
-                    logger.error(f"  [{completed}/{len(to_process)}] {commit_hash[:8]} 失败: {e}")
+                    logger.error(f"  [{completed}/{len(items)}] {commit_hash[:8]} 失败: {e}")
                     self._stats['errors'].append({
                         'commit': commit_hash,
                         'phase': 'execution',
                         'error': str(e)
                     })
+            return seq_results
+        
+        if self.workers <= 1:
+            results.extend(_process_sequential(to_process))
+            return results
+
+        # 并发处理
+        try:
+            with ProcessPoolExecutor(max_workers=self.workers) as executor:
+                futures = {}
+                
+                for info in to_process:
+                    future = executor.submit(
+                        _process_single_commit_execution,
+                        self.project_path,
+                        self.output_dir,
+                        info
+                    )
+                    futures[future] = info['commit_hash']
+                
+                completed = 0
+                for future in as_completed(futures):
+                    commit_hash = futures[future]
+                    completed += 1
+                    
+                    try:
+                        result = future.result(timeout=AnalysisConfig.COMMIT_TIMEOUT)
+                        
+                        if result:
+                            results.append(result)
+                            
+                            # 更新统计
+                            if result.get('v1_execution', {}).get('build', {}).get('success'):
+                                self._stats['v1_build_success'] += 1
+                            if result.get('v0_execution', {}).get('build', {}).get('success'):
+                                self._stats['v0_build_success'] += 1
+                            
+                            # 缓存结果
+                            self.cache_manager.set_cache(
+                                self.project_name, commit_hash, 'execution', result
+                            )
+                            
+                            # 保存commit详情
+                            self._save_commit_result(commit_hash, result)
+                        
+                        status = "✓" if result and result.get('qualified') else "✗"
+                        logger.info(f"  [{completed}/{len(to_process)}] {commit_hash[:8]} {status}")
+                        
+                    except Exception as e:
+                        logger.error(f"  [{completed}/{len(to_process)}] {commit_hash[:8]} 失败: {e}")
+                        self._stats['errors'].append({
+                            'commit': commit_hash,
+                            'phase': 'execution',
+                            'error': str(e)
+                        })
+        except PermissionError as e:
+            logger.warning(f"ProcessPool不可用，改为顺序执行: {e}")
+            results.extend(_process_sequential(to_process))
         
         return results
     
@@ -503,10 +544,12 @@ class ProjectAnalyzer:
         type1_count = 0
         type1_compile = 0
         type1_runtime = 0
+        type1_test_compile = 0
         type2_count = 0
         type3_count = 0
         
-        coverage_decreases = []
+        line_coverage_gains = []
+        branch_coverage_gains = []
         scenarios = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
         
         type1_examples = []
@@ -529,6 +572,8 @@ class ProjectAnalyzer:
                 subtype = c['type1_execution_error'].get('subtype')
                 if subtype == 'compile_failure':
                     type1_compile += 1
+                elif subtype == 'test_compile_failure':
+                    type1_test_compile += 1
                 else:
                     type1_runtime += 1
                 if len(type1_examples) < 3:
@@ -539,7 +584,9 @@ class ProjectAnalyzer:
                 type2_count += 1
                 evidence = c['type2_coverage_decrease'].get('evidence', {})
                 if 'coverage_diff' in evidence:
-                    coverage_decreases.append(evidence['coverage_diff'])
+                    line_coverage_gains.append(evidence['coverage_diff'])
+                if 'branch_coverage_diff' in evidence:
+                    branch_coverage_gains.append(evidence['branch_coverage_diff'])
                 if len(type2_examples) < 3:
                     type2_examples.append(r['commit_hash'])
             
@@ -560,14 +607,17 @@ class ProjectAnalyzer:
                 'percentage': pct(type1_count),
                 'subtypes': {
                     'compile_failure': type1_compile,
-                    'runtime_failure': type1_runtime
+                    'runtime_failure': type1_runtime,
+                    'test_compile_failure': type1_test_compile
                 },
                 'examples': type1_examples
             },
             'type2_coverage_decrease': {
                 'count': type2_count,
                 'percentage': pct(type2_count),
-                'avg_coverage_decrease': sum(coverage_decreases) / len(coverage_decreases) if coverage_decreases else 0,
+                'avg_line_coverage_gain': sum(line_coverage_gains) / len(line_coverage_gains) if line_coverage_gains else 0,
+                'avg_branch_coverage_gain': sum(branch_coverage_gains) / len(branch_coverage_gains) if branch_coverage_gains else 0,
+                'avg_coverage_decrease': sum(line_coverage_gains) / len(line_coverage_gains) if line_coverage_gains else 0,
                 'examples': type2_examples
             },
             'type3_adaptive_change': {

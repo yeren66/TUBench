@@ -170,7 +170,7 @@ def analyze_single_project(project_path: str, args, logger) -> dict:
         logger.info(f"\n项目 {project_name} 分析完成!")
         logger.info(f"  合格commits: {len(result.qualified_commits)}")
         logger.info(f"  Type1 (执行出错): {result.type_statistics.get('type1_execution_error', {}).get('count', 0)}")
-        logger.info(f"  Type2 (覆盖率降低): {result.type_statistics.get('type2_coverage_decrease', {}).get('count', 0)}")
+        logger.info(f"  Type2 (覆盖率差距): {result.type_statistics.get('type2_coverage_decrease', {}).get('count', 0)}")
         logger.info(f"  Type3 (适应性调整): {result.type_statistics.get('type3_adaptive_change', {}).get('count', 0)}")
         
         return {

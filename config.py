@@ -36,6 +36,8 @@ class AnalysisConfig:
     # ========== 覆盖率配置 ==========
     # 覆盖率下降阈值（低于此值判定为Type2）
     COVERAGE_DECREASE_THRESHOLD = 0.02  # 2%
+    # 分支覆盖率提升阈值（高于此值判定为Type2-branch）
+    BRANCH_COVERAGE_INCREASE_THRESHOLD = 0.02  # 2%
     
     # ========== 缓存配置 ==========
     # 是否启用缓存

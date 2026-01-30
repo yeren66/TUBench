@@ -9,7 +9,7 @@ TUBench是一个测试演化数据集构建工具。在正式构建数据集之�
 开发一个独立的分析工具 `analysis.py`，用于：
 1. 分析17个defects4j-projects中的Java项目
 2. 筛选符合条件的commits
-3. 对每个合格commit进行三种类型分类（执行出错、覆盖率降低、适应性调整）
+3. 对每个合格commit进行三种类型分类（执行出错、覆盖率差距、适应性调整）
 4. 生成详细的分析报告供研究人员查阅
 
 ### 1.3 与现有TUBench的关系
@@ -45,7 +45,7 @@ V-1 (父commit) ─────────────────────�
 | 类型 | 名称 | 检测条件 | 含义 |
 |------|------|----------|------|
 | Type1 | 执行出错 | V-0.5编译失败或测试失败 | 旧测试无法在新代码上正常执行 |
-| Type2 | 覆盖率降低 | V-0.5变更方法覆盖率比V-1下降 | 旧测试对新代码的覆盖不足 |
+| Type2 | 覆盖率差距 | V0变更方法覆盖率比V-0.5提升 | 旧测试对新代码的覆盖不足 |
 | Type3 | 适应性调整 | 不属于Type1和Type2 | 测试需要适应性修改 |
 
 **分类规则**：
@@ -230,8 +230,10 @@ class AnalysisConfig:
     COMMIT_TIMEOUT = 1800  # 30分钟
     
     # ========== 覆盖率配置 ==========
-    # 覆盖率下降阈值（低于此值判定为Type2）
+    # 覆盖率提升阈值（V0 - V-0.5 超过此值判定为Type2）
     COVERAGE_DECREASE_THRESHOLD = 0.02  # 2%
+    # 分支覆盖率提升阈值（V0 - V-0.5 超过此值判定为Type2-branch）
+    BRANCH_COVERAGE_INCREASE_THRESHOLD = 0.02  # 2%
     
     # ========== 缓存配置 ==========
     # 是否启用缓存
@@ -586,15 +588,17 @@ class ProjectAnalysisResult:
     #         "percentage": str,
     #         "subtypes": {
     #             "compile_failure": int,
-    #             "runtime_failure": int
+    #             "runtime_failure": int,
+    #             "test_compile_failure": int
     #         },
     #         "examples": [str, str, str]  # 3个示例commit hash
     #     },
     #     "type2_coverage_decrease": {
     #         "count": int,
     #         "percentage": str,
-    #         "avg_coverage_decrease": float,
-    #         "max_coverage_decrease": float,
+    #         "avg_line_coverage_gain": float,
+    #         "avg_branch_coverage_gain": float,
+    #         "avg_coverage_decrease": float,  # 兼容字段（同avg_line_coverage_gain）
     #         "examples": [str, str, str]
     #     },
     #     "type3_adaptive_change": {
@@ -745,7 +749,7 @@ class ProjectAnalysisResult:
 │ 对每个execution_result:                                         │
 │ - 判定场景 (A/B/C/D)                                            │
 │ - 检测Type1 (执行出错)                                          │
-│ - 检测Type2 (覆盖率降低)                                        │
+│ - 检测Type2 (覆盖率差距)                                        │
 │ - 检测Type3 (适应性调整 = 非Type1且非Type2)                     │
 │                                                                 │
 │ 输出: classified_commits[]                                      │
@@ -792,9 +796,9 @@ process_single_commit(commit_hash):
     │   │   ├── maven_executor.compile(path_v05)
     │   │   │   └── 如果失败 → Type1 (compile_failure)
     │   │   ├── maven_executor.test_with_jacoco(path_v05)
-    │   │   │   └── 如果失败 → Type1 (runtime_failure)
+    │   │   │   └── 如果失败 → Type1 (runtime_failure / test_compile_failure)
     │   │   ├── coverage_analyzer.parse_report(path_v05)
-    │   │   │   └── 对比V-1 → 可能Type2
+    │   │   │   └── 对比V0 → 可能Type2
     │   │   └── cleanup_worktree(path_v05)
     │   │
     │   ├── 3.3 执行T-0.5
@@ -903,7 +907,7 @@ class CommitClassifier:
         初始化
         
         Args:
-            coverage_threshold: 覆盖率下降阈值，默认2%
+            coverage_threshold: 覆盖率提升阈值（V0 - V-0.5），默认2%
         """
         pass
     
@@ -935,7 +939,7 @@ class CommitClassifier:
                      v1_result: dict,
                      v05_result: dict,
                      t05_result: dict) -> dict:
-        """检测Type2: 覆盖率降低"""
+        """检测Type2: 覆盖率差距"""
         pass
     
     def _detect_type3(self, is_type1: bool, is_type2: bool) -> dict:
@@ -1129,7 +1133,7 @@ class ReportGenerator:
 | Type1 (执行出错) | 85 | 32.9% | V-0.5编译或测试失败 |
 | ├─ 编译失败 | 23 | 8.9% | |
 | └─ 运行时失败 | 62 | 24.0% | |
-| Type2 (覆盖率降低) | 67 | 26.0% | V-0.5变更方法覆盖率下降 |
+| Type2 (覆盖率差距) | 67 | 26.0% | V0变更方法覆盖率提升 |
 | Type3 (适应性调整) | 142 | 55.0% | 其他情况 |
 
 ### 重叠统计
@@ -1160,7 +1164,7 @@ class ReportGenerator:
 2. **def67890** - 2024-02-20 - "Add new parse options"
    - 编译错误: `cannot find symbol: method parseNew(...)`
 
-### Type2 示例 (覆盖率降低)
+### Type2 示例 (覆盖率差距)
 1. **ghi11111** - 2024-01-10 - "Refactor CSVFormat"
    - V-1覆盖率: 85.2%
    - V-0.5覆盖率: 78.6%

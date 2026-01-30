@@ -120,9 +120,10 @@ class ReportGenerator:
         
         subtypes = type1.get('subtypes', {})
         lines.append(f"| ├─ 编译失败 | {subtypes.get('compile_failure', 0)} | - | |")
+        lines.append(f"| ├─ 测试编译失败 | {subtypes.get('test_compile_failure', 0)} | - | |")
         lines.append(f"| └─ 运行时失败 | {subtypes.get('runtime_failure', 0)} | - | |")
         
-        lines.append(f"| Type2 (覆盖率降低) | {type2.get('count', 0)} | {type2.get('percentage', '0%')} | V-0.5覆盖率下降 |")
+        lines.append(f"| Type2 (覆盖率差距) | {type2.get('count', 0)} | {type2.get('percentage', '0%')} | V0覆盖率高于V-0.5 |")
         lines.append(f"| Type3 (适应性调整) | {type3.get('count', 0)} | {type3.get('percentage', '0%')} | 其他情况 |")
         lines.append("")
         
@@ -170,7 +171,7 @@ class ReportGenerator:
             lines.append("")
         
         if type2.get('examples'):
-            lines.append("### Type2 示例 (覆盖率降低)\n")
+            lines.append("### Type2 示例 (覆盖率差距)\n")
             for i, commit in enumerate(type2['examples'][:3], 1):
                 short = commit[:8]
                 lines.append(f"{i}. [{short}](commits/type2_{short}/summary.md)")
@@ -471,18 +472,18 @@ class ReportGenerator:
                 lines.append(f"| {path} | {ftype} | {f.get('lines_added', 0)} | {f.get('lines_removed', 0)} |")
             lines.append("")
 
-            v1_line_details = {}
             v05_line_details = {}
-            v1_cov = v1.get('coverage', {}).get('method_line_coverage', {})
+            v0_line_details = {}
             v05_cov = v05.get('coverage', {}).get('method_line_coverage', {})
-            for d in v1_cov.get('details', []) or []:
-                v1_line_details[d.get('method')] = d.get('coverage_ratio', 0)
+            v0_cov = v0.get('coverage', {}).get('method_line_coverage', {})
             for d in v05_cov.get('details', []) or []:
                 v05_line_details[d.get('method')] = d.get('coverage_ratio', 0)
+            for d in v0_cov.get('details', []) or []:
+                v0_line_details[d.get('method')] = d.get('coverage_ratio', 0)
 
             lines.append("### Changed Methods (Source)\n")
-            lines.append("| Method | File | +Lines | -Lines | ΔLines | V-1 Line Cov | V-0.5 Line Cov | ΔCoverage |")
-            lines.append("|--------|------|--------|--------|--------|--------------|----------------|-----------|")
+            lines.append("| Method | File | +Lines | -Lines | ΔLines | V-0.5 Line Cov | V0 Line Cov | ΔCoverage |")
+            lines.append("|--------|------|--------|--------|--------|----------------|--------------|-----------|")
 
             changed_source = method_changes.get('source_methods', [])
             stats_source = method_change_stats.get('source', []) if method_change_stats else []
@@ -498,12 +499,12 @@ class ReportGenerator:
                 removed = s.get('removed_lines', 0)
                 total = s.get('total_changed_lines', added + removed)
                 full_name = key
-                v1_ratio = v1_line_details.get(full_name, 0)
                 v05_ratio = v05_line_details.get(full_name, 0)
-                delta = v05_ratio - v1_ratio
+                v0_ratio = v0_line_details.get(full_name, 0)
+                delta = v0_ratio - v05_ratio
                 lines.append(
                     f"| {full_name} | {m.get('file','')} | {added} | {removed} | {total} | "
-                    f"{v1_ratio:.4f} | {v05_ratio:.4f} | {delta:+.4f} |"
+                    f"{v05_ratio:.4f} | {v0_ratio:.4f} | {delta:+.4f} |"
                 )
             lines.append("")
 
@@ -607,7 +608,7 @@ class ReportGenerator:
         totals = summary.get('totals', {})
         lines.append(f"- **合格Commits总数**: {totals.get('qualified_commits', 0)}")
         lines.append(f"- **Type1 (执行出错)**: {totals.get('type1_count', 0)}")
-        lines.append(f"- **Type2 (覆盖率降低)**: {totals.get('type2_count', 0)}")
+        lines.append(f"- **Type2 (覆盖率差距)**: {totals.get('type2_count', 0)}")
         lines.append(f"- **Type3 (适应性调整)**: {totals.get('type3_count', 0)}")
         lines.append("")
         
